@@ -12,11 +12,15 @@ class Background(BoxLayout):
 class Hvn_Gui(App):
 
     def build(self):
-        return Background()
-
-    #def build(self):
-    #    clearbtn = Button(text='generate')
-    #    return clearbtn 
+        btn = Button(text ="Generate", 
+                   font_size ="20sp", 
+                   background_color =(1, 1, 1, 1), 
+                   color =(1, 1, 1, 1),  
+                   size =(32, 32), 
+                   size_hint =(.2, .2), 
+                   pos =(300, 250))  
+        return btn
+        #return Background()
 
 
 if __name__ == '__main__':
