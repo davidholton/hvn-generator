@@ -1,9 +1,12 @@
 import random
 import json
+import os
+
+module_dir = os.path.dirname(os.path.abspath(__file__))
 
 # --------------------------------------------------------------------------- #
 
-with open("data.json") as f:
+with open(os.path.join(module_dir, "data.json")) as f:
     data = json.load(f)
 
 
@@ -106,7 +109,7 @@ def generate_full_name(race, gender) -> tuple:
     return (first_name, last_name)
 
 
-def generate_class():
+def generate_class() -> str:
     """
     Same code as generate_races for now. See that for details. The word class
     is a reserved keyword :( so we use _class.
@@ -163,18 +166,19 @@ def generate_ability_scores(race, _class) -> dict:
 # --------------------------------------------------------------------------- #
 
 
-race = generate_race()
-print(race)
+# if __name__ == "__main__":
+#     race = generate_race()
+#     print(race)
 
-gender = generate_gender()
-print(gender)
+#     gender = generate_gender()
+#     print(gender)
 
-full_name = generate_full_name(race, gender)
-print(full_name[0], full_name[1])
+#     full_name = generate_full_name(race, gender)
+#     print(full_name[0], full_name[1])
 
-char_class = generate_class()
-print(char_class)
+#     char_class = generate_class()
+#     print(char_class)
 
-ability_scores = generate_ability_scores(race, char_class)
-for k, v in ability_scores.items():
-    print(k + ": ", v)
+#     ability_scores = generate_ability_scores(race, char_class)
+#     for k, v in ability_scores.items():
+#         print(k + ": ", v)
