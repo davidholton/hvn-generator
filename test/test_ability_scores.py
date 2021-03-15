@@ -1,8 +1,11 @@
-import hvn
+from . import hvn
 from collections import Counter
 
 
 def test_positive_scores():
+    """
+    Assert that all scores are non-negative
+    """
     race_name, class_name = "human", "commoner"
 
     ability_scores = hvn.generate_ability_scores(race_name, class_name)
