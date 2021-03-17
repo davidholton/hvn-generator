@@ -1,3 +1,6 @@
+# HVN-Generator
+[![Build Status](https://travis-ci.com/davidholton/hvn-generator.svg?branch=main)](https://travis-ci.com/davidholton/hvn-generator)
+
 ## Installing
 First you will need to make a clone of this repository using the following command or through your favorite source control application. Make sure to change your working directory into the cloned project folder.
 
