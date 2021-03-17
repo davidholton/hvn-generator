@@ -33,6 +33,17 @@ def roll(d: int, n: int, sort: bool = False, reverse: bool = False) -> list:
 # --------------------------------------------------------------------------- #
 
 
+def generate_power_score() -> int:
+    """
+    Creates the character's internal power score [1, 100]. Power score is used to
+    determine how interesting a character information will be. Higher score
+    means a character that has a higher potential
+    """
+    rolls = roll(3, 100, True)
+
+    return rolls[0]
+
+
 def generate_race() -> str:
     """
     From the JSON file make two lists. One for the population and the weights
