@@ -21,12 +21,12 @@ def test_score_distribution():
     an equal value.
     """
 
-    race_name, class_name = "human", "wizard"
-    # Wizard order: int, con, dex
+    race_name, class_name = "human", "commoner"
+    # Commoner order: con, str, wis
 
     ability_scores = hvn.generate_ability_scores(race_name, class_name)
     largest_scores = [v for k, v in Counter(ability_scores).most_common(3)]
 
-    expected_scores = ["int", "con", "dex"]
+    expected_scores = ["con", "str", "wis"]
     for index, ability in enumerate(expected_scores):
         assert(ability_scores[ability] == largest_scores[index])
