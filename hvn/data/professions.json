@@ -2,7 +2,7 @@
 	"thresholds": {
 		"high": 90,
 		"medium": 60,
-		"low": 0,
+		"low": 0
 	},
 	"low": [
 		"Cowherd","Farmer","Gardner","Goatherd","Plowman","Shepherd","Swineherd","Thresher","Vintner","Woodcutter","Stonecutter","Hunter",
