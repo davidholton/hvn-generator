@@ -4,6 +4,15 @@ from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 
+baseGen = {'name': "", 'race': "", \
+        'gender': "", 'profession': "", \
+        'health': "", 'ac': "", \
+        'str': "", 'dex': "", 'con': "", \
+        'int': "", 'wis': "", 'cha': "", \
+        'saves': "", 'skills': "", \
+        'features': "", 'attack': "", \
+        'treasure': "", 'phys': "", \
+        'traits': ""}
 
 class HVNLayout(FloatLayout):
     pass
@@ -22,21 +31,19 @@ class HVNApp(App):
         parent.add_widget(optButt)
         return parent
 
-    def generate(self, ob):
-        print(Window.size)
+
+    def generate(self, obj):
         generation()
 
     def genOptions(self, obj):
-        print(Window.size)
         optionGeneration()
     
 
 def generation():
-    pass
+    print(baseGen.values())
 
 def optionGeneration():
     pass
 
 if __name__ == "__main__":
     HVNApp().run()
-
