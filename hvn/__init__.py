@@ -55,6 +55,13 @@ def generate_power_score() -> int:
     return rolls[0]
 
 
+def generate_level(power_score) -> int:
+    """
+    Returns a character level [1, 5] based off of a power score [1, 100]
+    """
+    return max(1, power_score / 100)
+
+
 def generate_race() -> str:
     """
     From the JSON file make two lists. One for the population and the weights
