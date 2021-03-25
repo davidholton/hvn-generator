@@ -1,5 +1,6 @@
 import random
 import json
+import math
 import os
 
 module_dir = os.path.dirname(os.path.abspath(__file__))
@@ -175,16 +176,18 @@ def generate_profession(power_score) -> str:
     return profession
 
 
-def generate_ability_scores(race, class_name) -> dict:
+def generate_ability_scores(race, class_name) -> tuple:
     """
-    Generate the ability scores based off of race modifiers and proper class
-    distributions
+    Generate the ability scores and their modifiers based off of race modifiers
+    and proper class distributions
     """
 
     ability_scores = {
         "str": 0, "dex": 0, "con": 0,
         "int": 0, "wis": 0, "cha": 0,
     }
+
+    ability_modifiers = {}
 
     A = 4
     X = 6
@@ -209,7 +212,11 @@ def generate_ability_scores(race, class_name) -> dict:
     for ability in race_modifiers:
         ability_scores[ability] += race_modifiers[ability]
 
-    return ability_scores
+    # Create the final modifiers after race modifers are applied
+    for ability, score in ability_scores.items():
+        ability_modifiers[ability] = math.floor((score - 10) / 2)
+
+    return (ability_scores, ability_modifiers)
 
 # --------------------------------------------------------------------------- #
 
@@ -227,9 +234,9 @@ def generate_ability_scores(race, class_name) -> dict:
 #     char_class = generate_class()
 #     print(char_class)
 
-#     ability_scores = generate_ability_scores(race, char_class)
-#     for k, v in ability_scores.items():
-#         print(k + ": ", v)
+#     ability_scores, ability_mods = generate_ability_scores(race, char_class)
+#     print(ability_scores)
+#     print(ability_mods)
 
 #     power_score = generate_power_score()
 #     print("power score:", power_score)
