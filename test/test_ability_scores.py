@@ -1,5 +1,6 @@
 from . import hvn
 from collections import Counter
+import math
 
 
 def test_positive_scores():
@@ -30,3 +31,14 @@ def test_score_distribution():
     expected_scores = ["con", "str", "wis"]
     for index, ability in enumerate(expected_scores):
         assert(ability_scores[ability] == largest_scores[index])
+
+
+def test_modifiers():
+    """
+    Verifies that the final score modifiers are correct
+    """
+    race_name, class_name = "human", "commoner"
+
+    ability_scores, mods = hvn.generate_ability_scores(race_name, class_name)
+    for ability, score in ability_scores.items():
+        assert(mods[ability] == math.floor((score - 10) / 2))
