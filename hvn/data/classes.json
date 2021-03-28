@@ -1,0 +1,174 @@
+{
+    "commoner": {
+		"weight": 20,
+		"distribution": ["con","str","wis"],
+		"hdMax": 6,
+		"speed": 30,
+		"saveProf": {
+			"con" : true
+		},
+		"skillProf": {
+			"athletics" : true,
+			"nature" : true,
+			"survival" : true
+		},
+		"miscProf": {
+			"simpleWep" : true,
+			"lightArmor" : true
+		},
+        "features": [
+            ["commoner Level 1 Test Feature V1", "commoner Level 1 Test Feature V2"],
+            ["commoner Level 2 Test Feature V1", "commoner Level 2 Test Feature V2"],
+            ["commoner Level 3 Test Feature V1", "commoner Level 3 Test Feature V2"],
+            ["commoner Level 4 Test Feature V1", "commoner Level 4 Test Feature V2"],
+            ["commoner Level 5 Test Feature V1", "commoner Level 5 Test Feature V2"]
+        ]
+    },
+    "expert": {
+		"weight": 8,
+		"distribution": ["wis","int","con"],
+		"hdMax": 6,
+		"speed": 30,
+		"saveProf": {
+			"int" : true,
+			"wis" : true
+		},
+		"skillProf": {
+			"animalHandling" : true,
+			"insight" : true,
+			"medicine" : true
+		},
+		"miscProf": {
+			"simpleWep" : true,
+			"lightArmor" : true
+		},
+        "features": [
+            ["expert Level 1 Test Feature V1", "expert Level 1 Test Feature V2"],
+            ["expert Level 2 Test Feature V1", "expert Level 2 Test Feature V2"],
+            ["expert Level 3 Test Feature V1", "expert Level 3 Test Feature V2"],
+            ["expert Level 4 Test Feature V1", "expert Level 4 Test Feature V2"],
+            ["expert Level 5 Test Feature V1", "expert Level 5 Test Feature V2"]
+        ]
+    },
+    "warrior": {
+		"weight": 12,
+		"distribution": ["str","con","dex"],
+		"hdMax": 8,
+		"speed": 30,
+		"saveProf": {
+			"str" : true,
+			"con" : true
+		},
+		"skillProf": {
+			"athletics" : true,
+			"intimidation" : true,
+			"perception" : true
+		},
+		"miscProf": {
+			"simpleWep" : true,
+			"martialWep" : true,
+			"shields" : true,
+			"lightArmor" : true,
+			"mediumArmor" : true,
+			"heavyArmor" : true
+		},
+        "features": [
+            ["warrior Level 1 Test Feature V1", "warrior Level 1 Test Feature V2"],
+            ["warrior Level 2 Test Feature V1", "warrior Level 2 Test Feature V2"],
+            ["warrior Level 3 Test Feature V1", "warrior Level 3 Test Feature V2"],
+            ["warrior Level 4 Test Feature V1", "warrior Level 4 Test Feature V2"],
+            ["warrior Level 5 Test Feature V1", "warrior Level 5 Test Feature V2"]
+        ]
+    },
+    "aristocrat": {
+		"weight": 1,
+		"distribution": ["cha","wis","int"],
+		"hdMax": 6,
+		"speed": 30,
+		"saveProf": {
+			"wis" : true,
+			"cha" : true
+		},
+		"skillProf": {
+			"deception" : true,
+			"history" : true,
+			"insight" : true,
+			"persuasion" : true
+		},
+		"miscProf": {
+			"simpleWep" : true,
+			"martialWep" : false,
+			"shields" : false,
+			"lightArmor" : false,
+			"mediumArmor" : false,
+			"heavyArmor" : false
+		},
+        "features": [
+            ["aristocrat Level 1 Test Feature V1", "aristocrat Level 1 Test Feature V2"],
+            ["aristocrat Level 2 Test Feature V1", "aristocrat Level 2 Test Feature V2"],
+            ["aristocrat Level 3 Test Feature V1", "aristocrat Level 3 Test Feature V2"],
+            ["aristocrat Level 4 Test Feature V1", "aristocrat Level 4 Test Feature V2"],
+            ["aristocrat Level 5 Test Feature V1", "aristocrat Level 5 Test Feature V2"]
+        ]
+    },
+    "adept": {
+		"weight": 7,
+		"distribution": ["wis","con","int"],
+		"hdMax": 6,
+		"speed": 30,
+		"saveProf": {
+			"int" : true,
+			"wis" : true
+		},
+		"skillProf": {
+			"arcana" : true,
+			"history" : true,
+			"medicine" : true,
+			"religion" : true,
+			"survival" : true
+		},
+		"miscProf": {
+			"simpleWep" : true,
+			"lightArmor" : true
+		},
+        "features": [
+            ["adept Level 1 Test Feature V1", "adept Level 1 Test Feature V2"],
+            ["adept Level 2 Test Feature V1", "adept Level 2 Test Feature V2"],
+            ["adept Level 3 Test Feature V1", "adept Level 3 Test Feature V2"],
+            ["adept Level 4 Test Feature V1", "adept Level 4 Test Feature V2"],
+            ["adept Level 5 Test Feature V1", "adept Level 5 Test Feature V2"]
+        ]
+    },
+	"outlaw": {
+		"weight": 4,
+		"distribution": ["dex","con","int"],
+		"hdMax": 8,
+		"speed": 30,
+		"saveProf": {
+			"dex" : true,
+			"int" : true
+		},
+		"skillProf": {
+			"acrobatics" : true,
+			"deception" : true,
+			"insight" : true,
+			"intimidation" : true,
+			"perception" : true,
+			"sleightHand" : true
+		},
+		"miscProf": {
+			"simpleWep" : true,
+			"martialWep" : true,
+			"shields" : true,
+			"lightArmor" : true,
+			"mediumArmor" : true
+		},
+        "features": [
+            ["outlaw Level 1 Test Feature V1", "outlaw Level 1 Test Feature V2"],
+            ["outlaw Level 2 Test Feature V1", "outlaw Level 2 Test Feature V2"],
+            ["outlaw Level 3 Test Feature V1", "outlaw Level 3 Test Feature V2"],
+            ["outlaw Level 4 Test Feature V1", "outlaw Level 4 Test Feature V2"],
+            ["outlaw Level 5 Test Feature V1", "outlaw Level 5 Test Feature V2"]
+        ]
+    }
+}

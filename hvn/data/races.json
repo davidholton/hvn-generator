@@ -1,0 +1,32 @@
+{
+    "dragonborn": {
+        "weight": 1,
+        "modifiers": {
+            "int": 2,
+            "cha": 1
+        }
+    },
+    "dwarf": {
+        "weight": 2,
+        "modifiers": {
+            "con": 2
+        }
+    },
+    "elf": {
+        "weight": 3,
+        "modifiers": {
+            "dex": 2
+        }
+    },
+    "human": {
+        "weight": 5,
+        "modifiers": {
+            "str": 1,
+            "dex": 1,
+            "con": 1,
+            "int": 1,
+            "wis": 1,
+            "cha": 1
+        }
+    }
+}

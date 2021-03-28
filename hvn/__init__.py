@@ -1,13 +1,24 @@
 import random
 import json
+import math
 import os
 
 module_dir = os.path.dirname(os.path.abspath(__file__))
 
 # --------------------------------------------------------------------------- #
 
-with open(os.path.join(module_dir, "data.json")) as f:
-    data = json.load(f)
+# The one time Lua beats out Python. Wish I had a rawset(_G, k, v)
+with open(os.path.join(module_dir, "data/classes.json")) as f:
+    classes = json.load(f)
+
+with open(os.path.join(module_dir, "data/names.json")) as f:
+    names = json.load(f)
+
+with open(os.path.join(module_dir, "data/professions.json")) as f:
+    professions = json.load(f)
+
+with open(os.path.join(module_dir, "data/races.json")) as f:
+    races = json.load(f)
 
 
 def set_seed(seed: int) -> None:
@@ -44,6 +55,13 @@ def generate_power_score() -> int:
     return rolls[0]
 
 
+def generate_level(power_score) -> int:
+    """
+    Returns a character level [1, 5] based off of a power score [1, 100]
+    """
+    return max(1, power_score / 100)
+
+
 def generate_race() -> str:
     """
     From the JSON file make two lists. One for the population and the weights
@@ -53,7 +71,7 @@ def generate_race() -> str:
     population = []
     weights = []
 
-    for race in data["races"].items():
+    for race in races.items():
         population.append(race[0])
         weights.append(race[1]["weight"])
 
@@ -81,12 +99,15 @@ def generate_first_name(race, gender) -> str:
     race-neutral name set defined by `chance_of_neutral_name`.
     """
 
-    chance_of_neutral_name = 0.25
+    # chance_of_neutral_name = 0.25
 
-    if random.random() <= chance_of_neutral_name:
-        race = "neutral"
+    # if random.random() <= chance_of_neutral_name:
+    #     race = "neutral"
 
-    valid_names = data["names"].get(race)["first_names"].get(gender)
+    # valid_names = data["names"].get(race)["first_names"].get(gender)
+    # first_name = random.choice(valid_names)
+
+    valid_names = names["genericFirst"].get(gender)
     first_name = random.choice(valid_names)
 
     return first_name
@@ -98,12 +119,15 @@ def generate_last_name(race) -> str:
     race-neutral name set defined by `chance_of_neutral_name`.
     """
 
-    chance_of_neutral_name = 0.25
+    # chance_of_neutral_name = 0.25
 
-    if random.random() <= chance_of_neutral_name:
-        race = "neutral"
+    # if random.random() <= chance_of_neutral_name:
+    #     race = "neutral"
 
-    valid_names = data["names"].get(race)["last_names"]
+    # valid_names = data["names"].get(race)["last_names"]
+    # last_name = random.choice(valid_names)
+
+    valid_names = names["genericLast"]
     last_name = random.choice(valid_names)
 
     return last_name
@@ -122,32 +146,55 @@ def generate_full_name(race, gender) -> tuple:
 
 def generate_class() -> str:
     """
-    Same code as generate_races for now. See that for details. The word class
-    is a reserved keyword :( so we use _class.
+    Same code as generate_races for now. See that for details.
     """
     population = []
     weights = []
 
-    for _class in data["classes"].items():
-        population.append(_class[0])
-        weights.append(_class[1]["weight"])
+    for class_name in classes.items():
+        population.append(class_name[0])
+        weights.append(class_name[1]["weight"])
 
     # Subscripted to pull out from returned list
-    _class = random.choices(population, weights)[0]
+    class_name = random.choices(population, weights)[0]
 
-    return _class
+    return class_name
 
 
-def generate_ability_scores(race, _class) -> dict:
+def generate_profession(power_score) -> str:
     """
-    Generate the ability scores based off of race modifiers and proper class
-    distributions
+    Takes power score translates that into a "profession bracket". High power
+    score means a rarer profession. Check "professions.json" for the minimum
+    threshold for each bracket.
+    """
+    bracket = "low"
+    thresholds = professions["thresholds"]
+
+    # Get the profession bracket
+    for level in thresholds:
+        if power_score >= thresholds.get(level):
+            bracket = level
+            break
+
+    # From the bracket get the valid professions and pick a random one
+    valid_professions = professions.get(bracket)
+    profession = random.choice(valid_professions)
+
+    return profession
+
+
+def generate_ability_scores(race, class_name) -> tuple:
+    """
+    Generate the ability scores and their modifiers based off of race modifiers
+    and proper class distributions
     """
 
     ability_scores = {
         "str": 0, "dex": 0, "con": 0,
         "int": 0, "wis": 0, "cha": 0,
     }
+
+    ability_modifiers = {}
 
     A = 4
     X = 6
@@ -156,7 +203,7 @@ def generate_ability_scores(race, _class) -> dict:
     # To ensure randomness for non distributed classes we do NOT sort rolls
 
     # Apply the class distribution
-    distribution = data["classes"].get(_class)["distribution"]
+    distribution = classes.get(class_name)["distribution"]
     for ability in distribution:
         # Pop the largest roll
         largest = rolls.pop(rolls.index(max(rolls)))
@@ -168,11 +215,15 @@ def generate_ability_scores(race, _class) -> dict:
         ability_scores[ability] += score
 
     # Adjust for race modifiers
-    race_modifiers = data["races"].get(race)["modifiers"]
+    race_modifiers = races.get(race)["modifiers"]
     for ability in race_modifiers:
         ability_scores[ability] += race_modifiers[ability]
 
-    return ability_scores
+    # Create the final modifiers after race modifers are applied
+    for ability, score in ability_scores.items():
+        ability_modifiers[ability] = math.floor((score - 10) / 2)
+
+    return (ability_scores, ability_modifiers)
 
 # --------------------------------------------------------------------------- #
 
@@ -190,6 +241,12 @@ def generate_ability_scores(race, _class) -> dict:
 #     char_class = generate_class()
 #     print(char_class)
 
-#     ability_scores = generate_ability_scores(race, char_class)
-#     for k, v in ability_scores.items():
-#         print(k + ": ", v)
+#     ability_scores, ability_mods = generate_ability_scores(race, char_class)
+#     print(ability_scores)
+#     print(ability_mods)
+
+#     power_score = generate_power_score()
+#     print("power score:", power_score)
+
+#     profession = generate_profession(power_score)
+#     print("profession:", profession)
