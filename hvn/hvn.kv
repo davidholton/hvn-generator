@@ -9,7 +9,7 @@
 
         Button:
             text: "Option"
-	    on_press: root.btn()
+	    #on_press: root.btn()
             pos_hint: {"top": 1, "right": 1}
             size_hint: (None, None)
             size: 200, 100
@@ -19,7 +19,14 @@
 	    post_hint: {"x": 0.15, "y": 0.1}
 	    size_hint: (None, None)
 	    size: 200, 100
-   
+
+<HVNOption>:
+	canvas.before:
+		Rectangle:
+			size: self.size
+			source: "images/dice.jpg"
+
+	
 #    GridLayout:
 #
 #	Label:
