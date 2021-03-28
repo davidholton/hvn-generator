@@ -1,0 +1,65 @@
+<HVNLayout>:
+    canvas.before:
+        Rectangle:
+            size: self.size
+            source: "images/dice.jpg"
+
+    FloatLayout:
+        size: root.width, root.height
+
+        Button:
+            text: "Option"
+	    on_press: root.btn()
+            pos_hint: {"top": 1, "right": 1}
+            size_hint: (None, None)
+            size: 200, 100
+
+	Button:
+	    text: "Generate"
+	    post_hint: {"x": 0.15, "y": 0.1}
+	    size_hint: (None, None)
+	    size: 200, 100
+   
+#    GridLayout:
+#
+#	Label:
+#	    text: ''
+#	    size_hint: None, None
+#	    size: 50, 50
+#	GridLayout:
+#	    #orientation: 'vertical'
+#	    row: 3
+#	    Label:
+#	    	text: '' 
+#	    Button:
+#	    	text: 'Generate'
+#	    	size_hint: None, None
+#	    	size: 200, 100
+#		on_press: root.genBtn()
+#	    Label:
+#	    	text: ''
+#	    	size_hint: None, None
+#	    	size: 200, 50
+#	Label:
+#	    text: ''
+#	    size_hint: None, None
+#	    size: 450, 100
+#	GridLayout:
+#	    #orientation: 'vertical'
+#	    row: 3
+#	    Label:
+#	    	text: '' 
+#	    Button:
+#	    	text: 'Option'
+#	    	size_hint: None, None
+#	    	size: 200, 100
+#		#on_press: root.optBtn()
+#	    Label:
+#	    	text: ''
+#	    	size_hint: None, None
+#	    	size: 200, 480
+#	Label:
+#	    text: ''
+#	    size_hint: None, None
+#	    size: 200, 100
+#
