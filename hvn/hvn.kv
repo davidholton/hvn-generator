@@ -4,69 +4,109 @@
             size: self.size
             source: "images/dice.jpg"
 
-    FloatLayout:
-        size: root.width, root.height
+	FloatLayout:
+		size: root.width, root.height
+		pos: 0, 0
 
-        Button:
-            text: "Option"
-	    #on_press: root.btn()
-            pos_hint: {"top": 1, "right": 1}
-            size_hint: (None, None)
-            size: 200, 100
+		Button:
+			text: "Option"
+			on_press: root.manager.current = 'option'
+			pos_hint: {"top": 0.97, "right": 0.97}
+			size_hint: (None, None)
+			size: 200, 100
 
-	Button:
-	    text: "Generate"
-	    post_hint: {"x": 0.15, "y": 0.1}
-	    size_hint: (None, None)
-	    size: 200, 100
+		Button:
+			text: "Generate"
+			on_press: root.manager.current = 'generate'
+			pos_hint: {"x": 0.06, "y": 0.06}
+			size_hint: (None, None)
+			size: 200, 100
 
 <HVNOption>:
-	canvas.before:
-		Rectangle:
-			size: self.size
-			source: "images/dice.jpg"
+    canvas.before:
+        Rectangle:
+            size: self.size
+            source: "images/dice.jpg"
 
-	
-#    GridLayout:
-#
-#	Label:
-#	    text: ''
-#	    size_hint: None, None
-#	    size: 50, 50
-#	GridLayout:
-#	    #orientation: 'vertical'
-#	    row: 3
-#	    Label:
-#	    	text: '' 
-#	    Button:
-#	    	text: 'Generate'
-#	    	size_hint: None, None
-#	    	size: 200, 100
-#		on_press: root.genBtn()
-#	    Label:
-#	    	text: ''
-#	    	size_hint: None, None
-#	    	size: 200, 50
-#	Label:
-#	    text: ''
-#	    size_hint: None, None
-#	    size: 450, 100
-#	GridLayout:
-#	    #orientation: 'vertical'
-#	    row: 3
-#	    Label:
-#	    	text: '' 
-#	    Button:
-#	    	text: 'Option'
-#	    	size_hint: None, None
-#	    	size: 200, 100
-#		#on_press: root.optBtn()
-#	    Label:
-#	    	text: ''
-#	    	size_hint: None, None
-#	    	size: 200, 480
-#	Label:
-#	    text: ''
-#	    size_hint: None, None
-#	    size: 200, 100
-#
+	profession: profession
+
+	FloatLayout:
+		size: root.width, root.height
+		pos: 0, 0
+
+		Button:
+			text: "Close"
+			on_press: root.manager.current = 'layout'
+			pos_hint: {"x": 0.06, "y": 0.8}
+			size_hint: (None, None)
+			size: 200, 100
+
+		Button:
+			text: 'Power Score'
+			pos_hint: {"x": 0.4, "y": 0.8}
+			size_hint: (None, None)
+			size: 200, 50
+
+		Button:
+			text: 'Race'
+			pos_hint: {"x": 0.4, "y": 0.7}
+			size_hint: (None, None)
+			size: 200, 50
+
+		Button:
+			text: 'Gender'
+			pos_hint: {"x": 0.4, "y": 0.6}
+			size_hint: (None, None)
+			size: 200, 50
+
+		Button:
+			text: 'Class'
+			pos_hint: {"x": 0.4, "y": 0.5}
+			size_hint: (None, None)
+			size: 200, 50
+
+		TextInput:
+			id: profession
+			hint_text: 'Type your profession'
+			multiline: False
+			size_hint: None, None
+			pos_hint: {"x": 0.4, "y": 0.4}
+			size: 200, 50
+		Button:
+			text: 'Submit profession'
+			pos_hint: {"x": 0.4, "y": 0.3}
+			size_hint: (None, None)
+			size: 200, 50
+
+		Button:
+			text: "Generate"
+			on_press: root.manager.current = 'generate'
+			pos_hint: {"x": 0.06, "y": 0.06}
+			size_hint: (None, None)
+			size: 200, 100
+
+
+<HVNGenerate>:
+    canvas.before:
+        Rectangle:
+            size: self.size
+            source: "images/dice.jpg"
+
+	FloatLayout:
+		size: root.width, root.height
+		pos: 0, 0
+
+		Button:
+			text: "Option"
+			on_press: root.manager.current = 'option'
+			size_hint: (None, None)
+			pos_hint: {"x": 0.06, "y": 0.8}
+			size: 200, 100
+
+		Button:
+			text: "Generate"
+			on_press: root.manager.current = 'generate'
+			pos_hint: {"x": 0.06, "y": 0.06}
+			size_hint: (None, None)
+			size: 200, 100
+
