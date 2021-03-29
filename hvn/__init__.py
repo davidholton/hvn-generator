@@ -55,11 +55,20 @@ def generate_power_score() -> int:
     return rolls[0]
 
 
+def generate_hit_dice(level, class_name) -> str:
+    """
+    """
+    dice = classes.get(class_name)["hdMax"]
+    hit_dice = str(level) + "d" + str(dice)
+
+    return hit_dice
+
+
 def generate_level(power_score) -> int:
     """
     Returns a character level [1, 5] based off of a power score [1, 100]
     """
-    return max(1, power_score / 100)
+    return max(1, math.ceil(power_score / 20))
 
 
 def generate_race() -> str:
@@ -238,10 +247,10 @@ def generate_ability_scores(race, class_name) -> tuple:
 #     full_name = generate_full_name(race, gender)
 #     print(full_name[0], full_name[1])
 
-#     char_class = generate_class()
-#     print(char_class)
+#     class_name = generate_class()
+#     print(class_name)
 
-#     ability_scores, ability_mods = generate_ability_scores(race, char_class)
+#     ability_scores, ability_mods = generate_ability_scores(race, class_name)
 #     print(ability_scores)
 #     print(ability_mods)
 
@@ -250,3 +259,9 @@ def generate_ability_scores(race, class_name) -> tuple:
 
 #     profession = generate_profession(power_score)
 #     print("profession:", profession)
+
+#     level = generate_level(power_score)
+#     print("level:", level)
+
+#     hit_dice = generate_hit_dice(level, class_name)
+#     print("hd:", hit_dice)
