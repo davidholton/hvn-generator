@@ -235,6 +235,10 @@ def generate_ability_scores(race, class_name) -> tuple:
     return (ability_scores, ability_modifiers)
 
 
+def get_bonus(level) -> int:
+    return math.ceil((level / 4) + 1)
+
+
 def generate_saves(level, class_name, modifiers) -> tuple:
     """
     Generate the saving throw bonuses for each ability. Each bonus is the
@@ -243,19 +247,18 @@ def generate_saves(level, class_name, modifiers) -> tuple:
     """
 
     # Calculate the saving throw bonus per level
-    bonus = math.ceil((level / 4) + 1)
-    prof_skills = classes.get(class_name)["saveProf"]
+    bonus = get_bonus(level)
+    prof_abilities = classes.get(class_name)["saveProf"]
 
     # Saving throw for each ability is the modifier + the bonus if they are
     # proficient in the ability
     saving_throws = {}
     for ability, modifier in modifiers.items():
         saving_throws[ability] = modifier
-        if prof_skills.get(ability):
+        if prof_abilities.get(ability):
             saving_throws[ability] += bonus
 
     return saving_throws
-
 
 # --------------------------------------------------------------------------- #
 
