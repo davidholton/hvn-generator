@@ -234,6 +234,29 @@ def generate_ability_scores(race, class_name) -> tuple:
 
     return (ability_scores, ability_modifiers)
 
+
+def generate_saves(level, class_name, modifiers) -> tuple:
+    """
+    Generate the saving throw bonuses for each ability. Each bonus is the
+    ability modifier. If the character class is proficient in the ability
+    then add an additional bonus to that ability.
+    """
+
+    # Calculate the saving throw bonus per level
+    bonus = math.ceil((level / 4) + 1)
+    prof_skills = classes.get(class_name)["saveProf"]
+
+    # Saving throw for each ability is the modifier + the bonus if they are
+    # proficient in the ability
+    saving_throws = {}
+    for ability, modifier in modifiers.items():
+        saving_throws[ability] = modifier
+        if prof_skills.get(ability):
+            saving_throws[ability] += bonus
+
+    return saving_throws
+
+
 # --------------------------------------------------------------------------- #
 
 
@@ -250,6 +273,7 @@ def generate_ability_scores(race, class_name) -> tuple:
 #     level = generate_level(power_score)
 #     hit_dice = generate_hit_dice(level, class_name)
 #     ability_scores, ability_mods = generate_ability_scores(race, class_name)
+#     saving_throws = generate_saves(level, class_name, ability_mods)
 
 #     print("Name:", full_name[0], full_name[1])
 #     print("Race:", race)
@@ -262,3 +286,7 @@ def generate_ability_scores(race, class_name) -> tuple:
 #     for ability, score in ability_scores.items():
 #         sign = "+" if ability_mods[ability] >= 0 else ""
 #         print(f"\t{ability}: {score:2d} ({sign}{ability_mods[ability]})")
+#     print("Saving Throws:")
+#     for ability, bonus in saving_throws.items():
+#         sign = "+" if bonus >= 0 else ""
+#         print(f"\t{ability}: {sign}{bonus}")
