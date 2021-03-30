@@ -41,6 +41,28 @@ def roll(d: int, n: int, sort: bool = False, reverse: bool = False) -> list:
 
     return rolls
 
+
+skill_to_ability = {
+    "athletics": "str",
+    "acrobatics": "dex",
+    "sleightHand": "dex",
+    "stealth": "dex",
+    "arcana": "int",
+    "history": "int",
+    "investigation": "int",
+    "nature": "int",
+    "religion": "int",
+    "animalHandling": "wis",
+    "insight": "wis",
+    "medicine": "wis",
+    "perception": "wis",
+    "survival": "wis",
+    "deception": "cha",
+    "intimidation": "cha",
+    "performance": "cha",
+    "persuasion": "cha"
+}
+
 # --------------------------------------------------------------------------- #
 
 
@@ -260,6 +282,23 @@ def generate_saves(level, class_name, modifiers) -> tuple:
 
     return saving_throws
 
+
+def generate_skills(level, class_name, modifiers) -> dict:
+    """
+    For each skill (in skill_to_ability) get the modifier based on its
+    associated ability. If class is proficient in the skill add the level bonus
+    """
+    bonus = get_bonus(level)
+    prof_skills = classes.get(class_name)["skillProf"]
+
+    skills = {}
+    for skill, ability in skill_to_ability.items():
+        skills[skill] = modifiers[ability]
+        if prof_skills.get(skill):
+            skills[skill] += bonus
+
+    return skills
+
 # --------------------------------------------------------------------------- #
 
 
@@ -277,6 +316,7 @@ def generate_saves(level, class_name, modifiers) -> tuple:
 #     hit_dice = generate_hit_dice(level, class_name)
 #     ability_scores, ability_mods = generate_ability_scores(race, class_name)
 #     saving_throws = generate_saves(level, class_name, ability_mods)
+#     skill_throws = generate_skills(level, class_name, ability_mods)
 
 #     print("Name:", full_name[0], full_name[1])
 #     print("Race:", race)
@@ -293,3 +333,7 @@ def generate_saves(level, class_name, modifiers) -> tuple:
 #     for ability, bonus in saving_throws.items():
 #         sign = "+" if bonus >= 0 else ""
 #         print(f"\t{ability}: {sign}{bonus}")
+#     print("Skill Bonuses:")
+#     for skill, bonus in skill_throws.items():
+#         sign = "+" if bonus >= 0 else ""
+#         print(f"\t{skill}: {sign}{bonus}")
