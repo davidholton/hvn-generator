@@ -1,460 +1,460 @@
 {
-	"armor": {
-		"light": {
-			"padded": {
-				"ac": 11,
-				"dex": true,
-				"dexMax": 99
-			},
-			"leather": {
-				"ac": 11,
-				"dex": true,
-				"dexMax": 99
-			},
-			"studded leather": {
-				"ac": 12,
-				"dex": true,
-				"dexMax": 99
-			}
-		},
-		"medium": {
-			"hide": {
-				"ac": 12,
-				"dex": true,
-				"dexMax": 2
-			},
-			"chain shirt": {
-				"ac": 13,
-				"dex": true,
-				"dexMax": 2
-			},
-			"scale mail": {
-				"ac": 14,
-				"dex": true,
-				"dexMax": 2
-			},
-			"breastplate": {
-				"ac": 14,
-				"dex": true,
-				"dexMax": 2
-			},
-			"half plate": {
-				"ac": 15,
-				"dex": true,
-				"dexMax": 2
-			}
-		},
-		"heavy": {
-			"ring mail": {
-				"ac": 14,
-				"dex": false,
-				"dexMax": 0
-			},
-			"chain mail": {
-				"ac": 16,
-				"dex": false,
-				"dexMax": 0,
-				"strMin": 13
-			},
-			"splint": {
-				"ac": 17,
-				"dex": false,
-				"dexMax": 0,
-				"strMin": 15
-			},
-			"plate": {
-				"ac": 18,
-				"dex": false,
-				"dexMax": 0,
-				"strMin": 15
-			},
-		}
-	},
-	"shield": {
-		"acBonus": 2,
-		"oneHand": true
-	},
-	"weapons": {
-		"melee": {
-			"simple":{
-				"club":{
-					"damageMin": 1,
-					"damageMax": 4,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": true
-				},
-				"dagger":{
-					"damageMin": 1,
-					"damageMax": 4,
-					"damageMod": ["str", "dex"],
-					"attackMod": ["str", "dex"],
-					"damageType": "piercing",
-					"throwable": true,
-					"range": 20,
-					"disRange": 60,
-					"oneHand": true
-				},
-				"greatclub":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": false
-				},
-				"handaxe":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"throwable": true,
-					"range": 20,
-					"disRange": 60,
-					"oneHand": true
-				},
-				"javelin":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "piercing",
-					"throwable": true,
-					"range": 30,
-					"disRange": 120,
-					"oneHand": true
-				},
-				"light hammer":{
-					"damageMin": 1,
-					"damageMax": 4,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"throwable": true,
-					"range": 20,
-					"disRange": 60,
-					"oneHand": true
-				},
-				"mace":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": true
-				},
-				"quarterstaff (one-handed)":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": true,
-					"sister": "quarterstaff (two-handed)"
-				},
-				"quarterstaff (two-handed)":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": false,
-					"sister": "quarterstaff (one-handed)"
-				},
-				"sickle":{
-					"damageMin": 1,
-					"damageMax": 4,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": true
-				},
-				"spear (one-handed)":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "piercing",
-					"throwable": true,
-					"range": 20,
-					"disRange": 60,
-					"oneHand": true,
-					"sister": "spear (two-handed)"
-				},
-				"spear (two-handed)":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "piercing",
-					"oneHand": false,
-					"sister": "spear (one-handed)"
-				}
-			},
-			"martial": {
-				"battleaxe (one-handed)":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": true,
-					"sister": "battleaxe (two-handed)"
-				},
-				"battleaxe (two-handed)":{
-					"damageMin": 1,
-					"damageMax": 10,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": false,
-					"sister": "battleaxe (one-handed)"
-				},
-				"flail":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": true
-				},
-				"glaive":{
-					"damageMin": 1,
-					"damageMax": 10,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": false,
-					"reach": 10
-				},
-				"greataxe":{
-					"damageMin": 1,
-					"damageMax": 12,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": false
-				},
-				"greatsword":{
-					"damageMin": 2,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": false
-				},
-				"halberd":{
-					"damageMin": 1,
-					"damageMax": 10,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": false,
-					"reach": 10
-				},
-				"longsword (one-handed)":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": true,
-					"sister": "longsword (two-handed)"
-				},
-				"longsword (two-handed)":{
-					"damageMin": 1,
-					"damageMax": 10,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": false,
-					"sister": "longsword (one-handed)"
-				},
-				"maul":{
-					"damageMin": 2,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": false
-				},
-				"morningstar":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": true
-				},
-				"pike":{
-					"damageMin": 1,
-					"damageMax": 10,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "slashing",
-					"oneHand": false,
-					"reach": 10
-				},
-				"rapier":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": ["str", "dex"],
-					"attackMod": ["str", "dex"],
-					"damageType": "piercing",
-					"oneHand": true
-				},
-				"scimitar":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": ["str", "dex"],
-					"attackMod": ["str", "dex"],
-					"damageType": "slashing",
-					"oneHand": true
-				},
-				"shortsword":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": ["str", "dex"],
-					"attackMod": ["str", "dex"],
-					"damageType": "piercing",
-					"oneHand": true
-				},
-				"trident (one-handed)":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "piercing",
-					"throwable": true,
-					"range": 20,
-					"disRange": 60,
-					"oneHand": true,
-					"sister": "trident (two-handed)"
-				},
-				"trident (two-handed)":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "piercing",
-					"oneHand": false,
-					"sister": "trident (one-handed)"
-				},
-				"war pick":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "piercing",
-					"oneHand": true
-				},
-				"warhammer (one-handed)":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": true,
-					"sister": "warhammer (two-handed)"
-				},
-				"warhammer (two-handed)":{
-					"damageMin": 1,
-					"damageMax": 10,
-					"damageMod": "str",
-					"attackMod": "str",
-					"damageType": "bludgeoning",
-					"oneHand": false,
-					"sister": "warhammer (one-handed)"
-				}
-			}
-		},
-		"ranged": {
-			"simple": {
-				"light crossbow":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "dex",
-					"attackMod": "dex",
-					"damageType": "piercing",
-					"range": 80,
-					"disRange": 320,
-					"oneHand": false,
-				},
-				"dart":{
-					"damageMin": 1,
-					"damageMax": 4,
-					"damageMod": ["str", "dex"],
-					"attackMod": ["str", "dex"],
-					"damageType": "piercing",
-					"range": 20,
-					"disRange": 60,
-					"oneHand": false,
-				},
-				"shortbow":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "dex",
-					"attackMod": "dex",
-					"damageType": "piercing",
-					"range": 80,
-					"disRange": 320,
-					"oneHand": false,
-				},
-				"sling":{
-					"damageMin": 1,
-					"damageMax": 4,
-					"damageMod": "dex",
-					"attackMod": "dex",
-					"damageType": "bludgeoning",
-					"range": 30,
-					"disRange": 120,
-					"oneHand": true
-				}
-			},
-			"martial":{
-				"blowgun":{
-					"damageMin": 1,
-					"damageMax": 1,
-					"damageMod": "dex",
-					"attackMod": "dex",
-					"damageType": "piercing",
-					"range": 25,
-					"disRange": 100,
-					"oneHand": true
-				},
-				"hand crossbow":{
-					"damageMin": 1,
-					"damageMax": 6,
-					"damageMod": "dex",
-					"attackMod": "dex",
-					"damageType": "piercing",
-					"range": 30,
-					"disRange": 120,
-					"oneHand": true
-				},
-				"heavy crossbow":{
-					"damageMin": 1,
-					"damageMax": 10,
-					"damageMod": "dex",
-					"attackMod": "dex",
-					"damageType": "piercing",
-					"range": 100,
-					"disRange": 400,
-					"oneHand": false
-				},
-				"longbow":{
-					"damageMin": 1,
-					"damageMax": 8,
-					"damageMod": "dex",
-					"attackMod": "dex",
-					"damageType": "piercing",
-					"range": 150,
-					"disRange": 600,
-					"oneHand": false
-				}
-			}
-		}
-	}
+    "armor": {
+        "light": {
+            "padded": {
+                "ac": 11,
+                "dex": true,
+                "dexMax": 99
+            },
+            "leather": {
+                "ac": 11,
+                "dex": true,
+                "dexMax": 99
+            },
+            "studded leather": {
+                "ac": 12,
+                "dex": true,
+                "dexMax": 99
+            }
+        },
+        "medium": {
+            "hide": {
+                "ac": 12,
+                "dex": true,
+                "dexMax": 2
+            },
+            "chain shirt": {
+                "ac": 13,
+                "dex": true,
+                "dexMax": 2
+            },
+            "scale mail": {
+                "ac": 14,
+                "dex": true,
+                "dexMax": 2
+            },
+            "breastplate": {
+                "ac": 14,
+                "dex": true,
+                "dexMax": 2
+            },
+            "half plate": {
+                "ac": 15,
+                "dex": true,
+                "dexMax": 2
+            }
+        },
+        "heavy": {
+            "ring mail": {
+                "ac": 14,
+                "dex": false,
+                "dexMax": 0
+            },
+            "chain mail": {
+                "ac": 16,
+                "dex": false,
+                "dexMax": 0,
+                "strMin": 13
+            },
+            "splint": {
+                "ac": 17,
+                "dex": false,
+                "dexMax": 0,
+                "strMin": 15
+            },
+            "plate": {
+                "ac": 18,
+                "dex": false,
+                "dexMax": 0,
+                "strMin": 15
+            }
+        }
+    },
+    "shield": {
+        "acBonus": 2,
+        "oneHand": true
+    },
+    "weapons": {
+        "melee": {
+            "simple": {
+                "club": {
+                    "damageMin": 1,
+                    "damageMax": 4,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": true
+                },
+                "dagger": {
+                    "damageMin": 1,
+                    "damageMax": 4,
+                    "damageMod": ["str", "dex"],
+                    "attackMod": ["str", "dex"],
+                    "damageType": "piercing",
+                    "throwable": true,
+                    "range": 20,
+                    "disRange": 60,
+                    "oneHand": true
+                },
+                "greatclub": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": false
+                },
+                "handaxe": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "throwable": true,
+                    "range": 20,
+                    "disRange": 60,
+                    "oneHand": true
+                },
+                "javelin": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "piercing",
+                    "throwable": true,
+                    "range": 30,
+                    "disRange": 120,
+                    "oneHand": true
+                },
+                "light hammer": {
+                    "damageMin": 1,
+                    "damageMax": 4,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "throwable": true,
+                    "range": 20,
+                    "disRange": 60,
+                    "oneHand": true
+                },
+                "mace": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": true
+                },
+                "quarterstaff (one-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": true,
+                    "sister": "quarterstaff (two-handed)"
+                },
+                "quarterstaff (two-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": false,
+                    "sister": "quarterstaff (one-handed)"
+                },
+                "sickle": {
+                    "damageMin": 1,
+                    "damageMax": 4,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": true
+                },
+                "spear (one-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "piercing",
+                    "throwable": true,
+                    "range": 20,
+                    "disRange": 60,
+                    "oneHand": true,
+                    "sister": "spear (two-handed)"
+                },
+                "spear (two-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "piercing",
+                    "oneHand": false,
+                    "sister": "spear (one-handed)"
+                }
+            },
+            "martial": {
+                "battleaxe (one-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": true,
+                    "sister": "battleaxe (two-handed)"
+                },
+                "battleaxe (two-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 10,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": false,
+                    "sister": "battleaxe (one-handed)"
+                },
+                "flail": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": true
+                },
+                "glaive": {
+                    "damageMin": 1,
+                    "damageMax": 10,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": false,
+                    "reach": 10
+                },
+                "greataxe": {
+                    "damageMin": 1,
+                    "damageMax": 12,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": false
+                },
+                "greatsword": {
+                    "damageMin": 2,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": false
+                },
+                "halberd": {
+                    "damageMin": 1,
+                    "damageMax": 10,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": false,
+                    "reach": 10
+                },
+                "longsword (one-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": true,
+                    "sister": "longsword (two-handed)"
+                },
+                "longsword (two-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 10,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": false,
+                    "sister": "longsword (one-handed)"
+                },
+                "maul": {
+                    "damageMin": 2,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": false
+                },
+                "morningstar": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": true
+                },
+                "pike": {
+                    "damageMin": 1,
+                    "damageMax": 10,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "slashing",
+                    "oneHand": false,
+                    "reach": 10
+                },
+                "rapier": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": ["str", "dex"],
+                    "attackMod": ["str", "dex"],
+                    "damageType": "piercing",
+                    "oneHand": true
+                },
+                "scimitar": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": ["str", "dex"],
+                    "attackMod": ["str", "dex"],
+                    "damageType": "slashing",
+                    "oneHand": true
+                },
+                "shortsword": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": ["str", "dex"],
+                    "attackMod": ["str", "dex"],
+                    "damageType": "piercing",
+                    "oneHand": true
+                },
+                "trident (one-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "piercing",
+                    "throwable": true,
+                    "range": 20,
+                    "disRange": 60,
+                    "oneHand": true,
+                    "sister": "trident (two-handed)"
+                },
+                "trident (two-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "piercing",
+                    "oneHand": false,
+                    "sister": "trident (one-handed)"
+                },
+                "war pick": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "piercing",
+                    "oneHand": true
+                },
+                "warhammer (one-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": true,
+                    "sister": "warhammer (two-handed)"
+                },
+                "warhammer (two-handed)": {
+                    "damageMin": 1,
+                    "damageMax": 10,
+                    "damageMod": "str",
+                    "attackMod": "str",
+                    "damageType": "bludgeoning",
+                    "oneHand": false,
+                    "sister": "warhammer (one-handed)"
+                }
+            }
+        },
+        "ranged": {
+            "simple": {
+                "light crossbow": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "dex",
+                    "attackMod": "dex",
+                    "damageType": "piercing",
+                    "range": 80,
+                    "disRange": 320,
+                    "oneHand": false
+                },
+                "dart": {
+                    "damageMin": 1,
+                    "damageMax": 4,
+                    "damageMod": ["str", "dex"],
+                    "attackMod": ["str", "dex"],
+                    "damageType": "piercing",
+                    "range": 20,
+                    "disRange": 60,
+                    "oneHand": false
+                },
+                "shortbow": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "dex",
+                    "attackMod": "dex",
+                    "damageType": "piercing",
+                    "range": 80,
+                    "disRange": 320,
+                    "oneHand": false
+                },
+                "sling": {
+                    "damageMin": 1,
+                    "damageMax": 4,
+                    "damageMod": "dex",
+                    "attackMod": "dex",
+                    "damageType": "bludgeoning",
+                    "range": 30,
+                    "disRange": 120,
+                    "oneHand": true
+                }
+            },
+            "martial": {
+                "blowgun": {
+                    "damageMin": 1,
+                    "damageMax": 1,
+                    "damageMod": "dex",
+                    "attackMod": "dex",
+                    "damageType": "piercing",
+                    "range": 25,
+                    "disRange": 100,
+                    "oneHand": true
+                },
+                "hand crossbow": {
+                    "damageMin": 1,
+                    "damageMax": 6,
+                    "damageMod": "dex",
+                    "attackMod": "dex",
+                    "damageType": "piercing",
+                    "range": 30,
+                    "disRange": 120,
+                    "oneHand": true
+                },
+                "heavy crossbow": {
+                    "damageMin": 1,
+                    "damageMax": 10,
+                    "damageMod": "dex",
+                    "attackMod": "dex",
+                    "damageType": "piercing",
+                    "range": 100,
+                    "disRange": 400,
+                    "oneHand": false
+                },
+                "longbow": {
+                    "damageMin": 1,
+                    "damageMax": 8,
+                    "damageMod": "dex",
+                    "attackMod": "dex",
+                    "damageType": "piercing",
+                    "range": 150,
+                    "disRange": 600,
+                    "oneHand": false
+                }
+            }
+        }
+    }
 }
