@@ -238,30 +238,27 @@ def generate_ability_scores(race, class_name) -> tuple:
 
 
 # if __name__ == "__main__":
-#     race = generate_race()
-#     print(race)
-
-#     gender = generate_gender()
-#     print(gender)
-
-#     full_name = generate_full_name(race, gender)
-#     print(full_name[0], full_name[1])
-
-#     class_name = generate_class()
-#     print(class_name)
-
-#     ability_scores, ability_mods = generate_ability_scores(race, class_name)
-#     print(ability_scores)
-#     print(ability_mods)
 
 #     power_score = generate_power_score()
-#     print("power score:", power_score)
+#     print("Power Score:", power_score)
 
+#     race = generate_race()
+#     gender = generate_gender()
+#     class_name = generate_class()
+#     full_name = generate_full_name(race, gender)
 #     profession = generate_profession(power_score)
-#     print("profession:", profession)
-
 #     level = generate_level(power_score)
-#     print("level:", level)
-
 #     hit_dice = generate_hit_dice(level, class_name)
-#     print("hd:", hit_dice)
+#     ability_scores, ability_mods = generate_ability_scores(race, class_name)
+
+#     print("Name:", full_name[0], full_name[1])
+#     print("Race:", race)
+#     print("Gender:", gender)
+#     print("Profession:", profession)
+#     print("Level:", level)
+#     print("Hit Dice:", hit_dice)
+#     print("Class:", class_name)
+#     print("Stats:")
+#     for ability, score in ability_scores.items():
+#         sign = "+" if ability_mods[ability] >= 0 else ""
+#         print(f"\t{ability}: {score:2d} ({sign}{ability_mods[ability]})")
