@@ -1,5 +1,7 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.button import Button
+from kivy.uix.dropdown import DropDown
 # import __init__ as hvn
 
 # baseGen = {'name': "", 'race': "",
@@ -12,19 +14,28 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 #           'treasure': "", 'phys': "",
 #           'traits': ""}
 
+dropdown = DropDown()
 def gen():
     print('hello')
 
 
-def opt():
-    print('bye')
+def opt(self):
+    pwScore = Button(text='Power Score', size_hint=(None, None))
+    for index in range(10):
+        btn = Button(text='Value %d' % index, size_hint_y=None, height=44)
+        btn.bind(on_release=lambda btn: dropdown.select(btn.text))
+        dropdown.add_widget(btn)
+    pwScore.bind(on_release=dropdown.open)
+    self.add_widget(pwScore)
 
+    print('bye')
+    
 class HVNLayout(Screen):
     def genBtn(self):
         gen()
 
     def optBtn(self):
-        opt()
+        opt(self)
 
 
 class HVNOption(Screen):
@@ -32,8 +43,10 @@ class HVNOption(Screen):
         gen()
 
     def optBtn(self):
-        opt()
+        opt(self)
 
+    def abScore(self):
+        pass
 
 
 class HVNGenerate(Screen):
@@ -41,7 +54,7 @@ class HVNGenerate(Screen):
         gen()
 
     def optBtn(self):
-        opt()
+        opt(self)
 
 
 
