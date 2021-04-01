@@ -12,17 +12,37 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 #           'treasure': "", 'phys': "",
 #           'traits': ""}
 
+def gen():
+    print('hello')
+
+
+def opt():
+    print('bye')
 
 class HVNLayout(Screen):
-    pass
+    def genBtn(self):
+        gen()
+
+    def optBtn(self):
+        opt()
 
 
 class HVNOption(Screen):
-    pass
+    def genBtn(self):
+        gen()
+
+    def optBtn(self):
+        opt()
+
 
 
 class HVNGenerate(Screen):
-    pass
+    def genBtn(self):
+        gen()
+
+    def optBtn(self):
+        opt()
+
 
 
 class HVNApp(App):
