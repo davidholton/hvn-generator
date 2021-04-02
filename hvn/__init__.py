@@ -66,12 +66,53 @@ skill_to_ability = {
 # --------------------------------------------------------------------------- #
 
 
+def get_classes() -> list:
+    """
+    Return a list of possible classes
+    """
+
+    return list(classes.keys())
+
+
+def get_professions() -> list:
+    """
+    Return a list of possible professions
+    """
+
+    low = professions.get("low")
+    medium = professions.get("medium")
+    high = professions.get("high")
+
+    return low + medium + high
+
+
+def get_professions_organized() -> dict:
+    """
+    Return a dict of possible professions organized by ranking
+    """
+
+    low = professions.get("low")
+    medium = professions.get("medium")
+    high = professions.get("high")
+
+    return {"low": low, "medium": medium, "high": high}
+
+
+def get_races() -> list:
+    """
+    Return a list of possible races
+    """
+
+    return list(races.keys())
+
+
 def generate_power_score() -> int:
     """
     Creates the character's internal power score [1, 100]. Power score is used
     to determine how interesting a character information will be. Higher score
     means a character that has a higher potential
     """
+
     rolls = roll(3, 100, True)
 
     return rolls[0]
@@ -79,17 +120,33 @@ def generate_power_score() -> int:
 
 def generate_hit_dice(level, class_name) -> str:
     """
+    Returns a string that follows dice-notation. Where rolls is the characters
+    level and the dice is the predefined class hit dice.
     """
+
     dice = classes.get(class_name)["hdMax"]
     hit_dice = str(level) + "d" + str(dice)
 
     return hit_dice
 
 
+def generate_hit_points(class_name, modifiers) -> int:
+    """
+    Calculates the hit points for a character. Based on constitution modifier
+    plus highest value on the class assigned hit dice.
+    """
+
+    dice = classes.get(class_name)["hdMax"]
+    hit_points = dice + modifiers["con"]
+
+    return hit_points
+
+
 def generate_level(power_score) -> int:
     """
     Returns a character level [1, 5] based off of a power score [1, 100]
     """
+
     return max(1, math.ceil(power_score / 20))
 
 
@@ -179,6 +236,7 @@ def generate_class() -> str:
     """
     Same code as generate_races for now. See that for details.
     """
+
     population = []
     weights = []
 
@@ -198,6 +256,7 @@ def generate_profession(power_score) -> str:
     score means a rarer profession. Check "professions.json" for the minimum
     threshold for each bracket.
     """
+
     bracket = "low"
     thresholds = professions["thresholds"]
 
@@ -288,6 +347,7 @@ def generate_skills(level, class_name, modifiers) -> dict:
     For each skill (in skill_to_ability) get the modifier based on its
     associated ability. If class is proficient in the skill add the level bonus
     """
+
     bonus = get_bonus(level)
     prof_skills = classes.get(class_name)["skillProf"]
 
@@ -313,16 +373,18 @@ def generate_skills(level, class_name, modifiers) -> dict:
 #     full_name = generate_full_name(race, gender)
 #     profession = generate_profession(power_score)
 #     level = generate_level(power_score)
-#     hit_dice = generate_hit_dice(level, class_name)
 #     ability_scores, ability_mods = generate_ability_scores(race, class_name)
 #     saving_throws = generate_saves(level, class_name, ability_mods)
 #     skill_throws = generate_skills(level, class_name, ability_mods)
+#     hit_points = generate_hit_points(class_name, ability_mods)
+#     hit_dice = generate_hit_dice(level, class_name)
 
 #     print("Name:", full_name[0], full_name[1])
 #     print("Race:", race)
 #     print("Gender:", gender)
 #     print("Profession:", profession)
 #     print("Level:", level)
+#     print("Hit Points:", hit_points)
 #     print("Hit Dice:", hit_dice)
 #     print("Class:", class_name)
 #     print("Stats:")

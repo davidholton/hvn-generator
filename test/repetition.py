@@ -44,22 +44,24 @@ def character_gen_test():
     full_name = hvn.generate_full_name(race, gender)
     profession = hvn.generate_profession(power_score)
     level = hvn.generate_level(power_score)
+    ability_scores, modifiers = hvn.generate_ability_scores(race, class_name)
+    saving_throws = hvn.generate_saves(level, class_name, modifiers)
+    skill_throws = hvn.generate_skills(level, class_name, modifiers)
+    hit_points = hvn.generate_hit_points(class_name, modifiers)
     hit_dice = hvn.generate_hit_dice(level, class_name)
-    ability_scores, ability_mod = hvn.generate_ability_scores(race, class_name)
-    saving_throws = hvn.generate_saves(level, class_name, ability_mod)
-    skill_throws = hvn.generate_skills(level, class_name, ability_mod)
 
     print("Name:", full_name[0], full_name[1])
     print("Race:", race)
     print("Gender:", gender)
     print("Profession:", profession)
     print("Level:", level)
+    print("Hit Points:", hit_points)
     print("Hit Dice:", hit_dice)
     print("Class:", class_name)
     print("Stats:")
     for ability, score in ability_scores.items():
-        sign = "+" if ability_mod[ability] >= 0 else ""
-        print(f"\t{ability}: {score:2d} ({sign}{ability_mod[ability]})")
+        sign = "+" if modifiers[ability] >= 0 else ""
+        print(f"\t{ability}: {score:2d} ({sign}{modifiers[ability]})")
     print("Saving Throws:")
     for ability, bonus in saving_throws.items():
         sign = "+" if bonus >= 0 else ""

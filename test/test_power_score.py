@@ -7,9 +7,7 @@ def test_power_score():
     """
     power_score = hvn.generate_power_score()
 
-    if 1 <= power_score <= 100:
-        return True
-    return False
+    assert(1 <= power_score <= 100)
 
 
 def test_level():
@@ -18,23 +16,21 @@ def test_level():
     """
 
     # Level 1 interval
-    if hvn.generate_level(1) != 1 and hvn.generate_level(20) != 1:
-        return False
+    assert(hvn.generate_level(1) == 1)
+    assert(hvn.generate_level(20) == 1)
 
     # Level 2 interval
-    if hvn.generate_level(21) != 2 and hvn.generate_level(50) != 2:
-        return False
+    assert(hvn.generate_level(21) == 2)
+    assert(hvn.generate_level(40) == 2)
 
     # Level 3 interval
-    if hvn.generate_level(51) != 3 and hvn.generate_level(80) != 3:
-        return False
+    assert(hvn.generate_level(41) == 3)
+    assert(hvn.generate_level(60) == 3)
 
     # Level 4 interval
-    if hvn.generate_level(81) != 4 and hvn.generate_level(90) != 4:
-        return False
+    assert(hvn.generate_level(61) == 4)
+    assert(hvn.generate_level(80) == 4)
 
     # Level 5 interval
-    if hvn.generate_level(91) != 5 and hvn.generate_level(100) != 5:
-        return False
-
-    return True
+    assert(hvn.generate_level(81) == 5)
+    assert(hvn.generate_level(100) == 5)
