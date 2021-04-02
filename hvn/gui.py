@@ -3,23 +3,10 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 import __init__ as hvn
-import json
-import os
 
-module_dir = os.path.dirname(os.path.abspath(__file__))
 
-with open(os.path.join(module_dir, "data/classes.json")) as f:
-    classes = json.load(f)
-
-with open(os.path.join(module_dir, "data/names.json")) as f:
-    names = json.load(f)
-
-with open(os.path.join(module_dir, "data/professions.json")) as f:
-    professions = json.load(f)
-
-with open(os.path.join(module_dir, "data/races.json")) as f:
-    races = json.load(f)
-
+classes = hvn.get_classes()
+races = hvn.get_races()
 genders = {"Male", "Female"}
 
 
