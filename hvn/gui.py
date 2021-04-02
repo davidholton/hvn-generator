@@ -3,6 +3,24 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 import __init__ as hvn
+import json
+import os
+
+module_dir = os.path.dirname(os.path.abspath(__file__))
+
+with open(os.path.join(module_dir, "data/classes.json")) as f:
+    classes = json.load(f)
+
+with open(os.path.join(module_dir, "data/names.json")) as f:
+    names = json.load(f)
+
+with open(os.path.join(module_dir, "data/professions.json")) as f:
+    professions = json.load(f)
+
+with open(os.path.join(module_dir, "data/races.json")) as f:
+    races = json.load(f)
+
+genders = {"Male", "Female"}
 
 
 class baseGen:
@@ -14,18 +32,54 @@ class baseGen:
     profession = ""
     level = 0
     name = ""
+    saves = {}
+    skills = {}
+    abiliity_score = {}
 
 
-class optGen:
-    power_score = -1
-    race = ""
-    gender = ""
-    profession = "" 
-    charClass = ""  
-    profession = ""
+race_dropdown = DropDown()
+gender_dropdown = DropDown()
+char_class_dropdown = DropDown()
+pw_score_dropdown = DropDown()
+race_widget = Button(text='Race', size_hint=(None, None),
+                     size=(200, 50), pos_hint=({'x': .4, 'y': .7}))
+gender_widget = Button(text='Gender', size_hint=(None, None),
+                       size=(200, 50), pos_hint=({'x': .4, 'y': .6}))
+char_class_widget = Button(text='Class', size_hint=(None, None),
+                           size=(200, 50), pos_hint=({'x': .4, 'y': .5}))
+pw_score_widget = Button(text='Power Score', size_hint=(None, None),
+                         size=(200, 50), pos_hint=({'x': .4, 'y': .8}))
 
-dropdown = DropDown()
-pwScore = Button(text='Power Score', size_hint=(None, None))
+for index in range(3, 19):
+    btn = Button(text='Power Score %d' % index, size_hint_y=None, height=50)
+    btn.bind(on_release=lambda btn: pw_score_dropdown.select(btn.text))
+    pw_score_dropdown.add_widget(btn)
+
+
+pw_score_widget.bind(on_release=pw_score_dropdown.open)
+
+for race in races:
+    btn = Button(text=race, size_hint_y=None, height=50)
+    btn.bind(on_release=lambda btn: race_dropdown.select(btn.text))
+    race_dropdown.add_widget(btn)
+
+race_widget.bind(on_release=race_dropdown.open)
+
+
+for gender in genders:
+    btn = Button(text=gender, size_hint_y=None, height=50)
+    btn.bind(on_release=lambda btn: gender_dropdown.select(btn.text))
+    gender_dropdown.add_widget(btn)
+
+gender_widget.bind(on_release=gender_dropdown.open)
+
+for char_class in classes:
+    btn = Button(text=char_class, size_hint_y=None, height=50)
+    btn.bind(on_release=lambda btn: char_class_dropdown.select(btn.text))
+    char_class_dropdown.add_widget(btn)
+
+char_class_widget.bind(on_release=char_class_dropdown.open)
+
 
 # this function really needs to be refactored, but for now it works
 def gen():
@@ -42,8 +96,14 @@ def gen():
 
     baseGen.name = hvn.generate_full_name(baseGen.race, baseGen.gender)
     baseGen.level = hvn.generate_level(baseGen.power_score)
+    baseGen.abiliity_score = hvn.generate_ability_scores(baseGen.race,
+                                                         baseGen.char_class)
+    baseGen.saves = hvn.generate_saves(baseGen.level, baseGen.char_class,
+                                       baseGen.abiliity_score[1])
+    baseGen.skills = hvn.generate_skills(baseGen.level, baseGen.char_class,
+                                         baseGen.abiliity_score[1])
 
-    #this is a bad way to reset it, but for now it works
+    # this is a bad way to reset it, but for now it works
     baseGen.power_score = -1
     baseGen.race = ""
     baseGen.gender = ""
@@ -52,15 +112,9 @@ def gen():
     baseGen.profession = ""
     baseGen.level = 0
     baseGen.name = ""
-
-
-def opt(self):
-    for index in range(10):
-        btn = Button(text='Value %d' % index, size_hint_y=None, height=44)
-        btn.bind(on_release=lambda btn: dropdown.select(btn.text))
-        dropdown.add_widget(btn)
-
-    pwScore.bind(on_release=dropdown.open)
+    baseGen.saves = {}
+    baseGen.skills = {}
+    baseGen.abiliity_score = {}
 
 
 class HVNLayout(Screen):
@@ -68,10 +122,17 @@ class HVNLayout(Screen):
         gen()
 
     def optBtn(self):
-        opt(self)
+        pass
 
 
 class HVNOption(Screen):
+    def __init__(self, **kwargs):
+        super(HVNOption, self).__init__(**kwargs)
+        self.add_widget(pw_score_widget)
+        self.add_widget(race_widget)
+        self.add_widget(gender_widget)
+        self.add_widget(char_class_widget)
+
     def genBtn(self):
         gen()
 
@@ -81,13 +142,17 @@ class HVNOption(Screen):
     def abScore(self):
         pass
 
+    def profession(self):
+        baseGen.profession = self.profession.text
+        print(baseGen.profession)
+
 
 class HVNGenerate(Screen):
     def genBtn(self):
         gen()
 
     def optBtn(self):
-        opt(self)
+        pass
 
 
 class HVNApp(App):
