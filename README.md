@@ -23,6 +23,5 @@ Verbose testing can be ran with the `-s -v` flags: `python -m pytest -s -v` to e
 An example of the HVN of the output data can be tried by running `pytest -s test/repetition.py`.
 
 ### To run GUI version
-the GUI is currently on it's own branch. To access it use `git checkout gui` 
 
 Start with `python gui.py`
