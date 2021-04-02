@@ -66,6 +66,46 @@ skill_to_ability = {
 # --------------------------------------------------------------------------- #
 
 
+def get_classes() -> list:
+    """
+    Return a list of possible classes
+    """
+
+    return list(classes.keys())
+
+
+def get_professions() -> list:
+    """
+    Return a list of possible professions
+    """
+
+    low = professions.get("low")
+    medium = professions.get("medium")
+    high = professions.get("high")
+
+    return low + medium + high
+
+
+def get_professions_organized() -> dict:
+    """
+    Return a dict of possible professions organized by ranking
+    """
+
+    low = professions.get("low")
+    medium = professions.get("medium")
+    high = professions.get("high")
+
+    return {"low": low, "medium": medium, "high": high}
+
+
+def get_races() -> list:
+    """
+    Return a list of possible races
+    """
+
+    return list(races.keys())
+
+
 def generate_power_score() -> int:
     """
     Creates the character's internal power score [1, 100]. Power score is used
