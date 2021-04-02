@@ -7,6 +7,7 @@ import __init__ as hvn
 
 classes = hvn.get_classes()
 races = hvn.get_races()
+professions = hvn.get_professions()
 genders = {"Male", "Female"}
 
 
@@ -28,15 +29,18 @@ race_dropdown = DropDown()
 gender_dropdown = DropDown()
 char_class_dropdown = DropDown()
 pw_score_dropdown = DropDown()
-race_widget = Button(text='Race', size_hint=(None, None),
-                     size=(200, 50), pos_hint=({'x': .4, 'y': .7}))
-gender_widget = Button(text='Gender', size_hint=(None, None),
-                       size=(200, 50), pos_hint=({'x': .4, 'y': .6}))
-char_class_widget = Button(text='Class', size_hint=(None, None),
-                           size=(200, 50), pos_hint=({'x': .4, 'y': .5}))
-pw_score_widget = Button(text='Power Score', size_hint=(None, None),
-                         size=(200, 50), pos_hint=({'x': .4, 'y': .8}))
+profession_dropdown = DropDown()
 
+race_widget = Button(text='Race', size_hint=(None, None),
+                     size=(200, 50), pos_hint=({'x': .4, 'y': .6}))
+gender_widget = Button(text='Gender', size_hint=(None, None),
+                       size=(200, 50), pos_hint=({'x': .4, 'y': .5}))
+char_class_widget = Button(text='Class', size_hint=(None, None),
+                           size=(200, 50), pos_hint=({'x': .4, 'y': .4}))
+pw_score_widget = Button(text='Power Score', size_hint=(None, None),
+                         size=(200, 50), pos_hint=({'x': .4, 'y': .7}))
+profession_widget = Button(text='Professions', size_hint=(None, None),
+                           size=(200, 50), pos_hint=({'x': .4, 'y': .3}))
 for index in range(3, 19):
     btn = Button(text='Power Score %d' % index, size_hint_y=None, height=50)
     btn.bind(on_release=lambda btn: pw_score_dropdown.select(btn.text))
@@ -66,6 +70,17 @@ for char_class in classes:
     char_class_dropdown.add_widget(btn)
 
 char_class_widget.bind(on_release=char_class_dropdown.open)
+
+for prof in professions:
+    btn = Button(text=prof, size_hint_y=None, height=50)
+    btn.bind(on_release=lambda btn: profession_dropdown.select(btn.text))
+    profession_dropdown.add_widget(btn)
+
+profession_widget.bind(on_release=profession_dropdown.open)
+
+
+def rc_btn(in_rc):
+    baseGen.race = in_rc
 
 
 # this function really needs to be refactored, but for now it works
@@ -104,6 +119,14 @@ def gen():
     baseGen.abiliity_score = {}
 
 
+def set_base_gen(in_pw_sc, in_race, in_gender, in_prof, in_class):
+    baseGen.power_score = in_pw_sc
+    baseGen.race = in_race
+    baseGen.gender = in_gender
+    baseGen.profession = in_prof
+    baseGen.char_class = in_class
+
+
 class HVNLayout(Screen):
     def genBtn(self):
         gen()
@@ -119,19 +142,13 @@ class HVNOption(Screen):
         self.add_widget(race_widget)
         self.add_widget(gender_widget)
         self.add_widget(char_class_widget)
+        self.add_widget(profession_widget)
 
     def genBtn(self):
         gen()
 
     def optBtn(self):
         pass
-
-    def abScore(self):
-        pass
-
-    def profession(self):
-        baseGen.profession = self.profession.text
-        print(baseGen.profession)
 
 
 class HVNGenerate(Screen):
