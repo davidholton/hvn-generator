@@ -1,26 +1,39 @@
 {
-	"thresholds": {
-		"high": 90,
-		"medium": 60,
-		"low": 0
-	},
-	"low": [
-		"Cowherd","Farmer","Gardner","Goatherd","Plowman","Shepherd","Swineherd","Thresher","Vintner","Woodcutter","Stonecutter","Hunter",
-		"Mole Catcher","Rat Catcher","Trapper","Fisherman","Cobbler","Tanner","Shoemaker","Baker","Chef","Sous Chef","Furrier","Tailor",
-		"Pastrycook","Mason","Carpenter","Weaver","Cooper","Hatmaker","Saddler","Chicken Butcher","Meat Butcher","Buckle Maker","Roofer",
-		"Ropemaker","Bonecarver","Miner","Brewer","Cartwright","Wainwright","Arkwright","Woodturner","Woodcarver","Wheelwright","Webber",
-		"Plasterer","Miller","Nailmaker","Papermaker","Rugmaker","Rugweaver","Sailmaker","Saltboiler","Reedmaker","Quilter","Quarryman",
-		"Potter","Porter","Leatherworker","Fishmonger","Urchin","Servant","Barber"
-	],
-	"medium": [
-		"Lapidary","Gemcutter","Blacksmith","Weaponsmith","Armorsmith","Beekeeper","Perfumer","Jeweler","Minter","Jailer","Steward","Herald",
-		"Alchemist","Doctor","Leech-Collector","Castellan","Clerk","Coin-Stamper","Hayward","Judge","Sheriff","Town Crier","Compasssmith",
-		"Confectioner","Dyer","Banker","Glassblower","Spice Merchant","Wine Seller","Wool Merchant","Arrowsmith","Bowyer","Mailmaker",
-		"Artist","Composer","Limner","Playwright","Poet","Writer","Glasspainter","Falconer","Hawker","Attendant","Smelter","Messenger",
-		"Guard","Scout","Scribe","Tutor","Storyteller"
-	],
-	"high": [
-		"Guild Master","Merchant","Philosopher","Guard Captain","Calligrapher","Cartographer","Astronomer","Astrologer","Mathematician",
-		"Siege Engineer","Engineer","Architect","Goldsmith","Silversmith","Professor","Houndmaster","Tamer"
-	]
+    "thresholds": {
+        "high": 90,
+        "medium": 60,
+        "low": 0
+    },
+    "low": [
+        "Cowherd", "Farmer", "Gardner", "Goatherd", "Plowman", "Shepherd",
+        "Swineherd", "Thresher", "Vintner", "Woodcutter", "Stonecutter",
+        "Hunter", "Mole Catcher", "Rat Catcher", "Trapper", "Fisherman",
+        "Cobbler", "Tanner", "Shoemaker", "Baker", "Chef", "Sous Chef",
+        "Furrier", "Tailor", "Pastrycook", "Mason", "Carpenter", "Weaver",
+        "Cooper", "Hatmaker", "Saddler", "Chicken Butcher", "Meat Butcher",
+        "Buckle Maker", "Roofer", "Ropemaker", "Bonecarver", "Miner", "Brewer",
+        "Cartwright", "Wainwright", "Arkwright", "Woodturner", "Woodcarver",
+        "Wheelwright", "Webber", "Plasterer", "Miller", "Nailmaker",
+        "Papermaker", "Rugmaker", "Rugweaver", "Sailmaker", "Saltboiler",
+        "Reedmaker", "Quilter", "Quarryman", "Potter", "Porter",
+        "Leatherworker", "Fishmonger", "Urchin", "Servant", "Barber"
+    ],
+    "medium": [
+        "Lapidary", "Gemcutter", "Blacksmith", "Weaponsmith", "Armorsmith",
+        "Beekeeper", "Perfumer", "Jeweler", "Minter", "Jailer", "Steward",
+        "Herald", "Alchemist", "Doctor", "Leech-Collector", "Castellan",
+        "Clerk", "Coin-Stamper", "Hayward", "Judge", "Sheriff", "Town Crier",
+        "Compasssmith", "Confectioner", "Dyer", "Banker", "Glassblower",
+        "Spice Merchant", "Wine Seller", "Wool Merchant", "Arrowsmith",
+        "Bowyer", "Mailmaker", "Artist", "Composer", "Limner", "Playwright",
+        "Poet", "Writer", "Glasspainter", "Falconer", "Hawker", "Attendant",
+        "Smelter", "Messenger", "Guard", "Scout", "Scribe", "Tutor",
+        "Storyteller"
+    ],
+    "high": [
+        "Guild Master", "Merchant", "Philosopher", "Guard Captain",
+        "Calligrapher", "Cartographer", "Astronomer", "Astrologer",
+        "Mathematician", "Siege Engineer", "Engineer", "Architect", "Goldsmith",
+        "Silversmith", "Professor", "Houndmaster", "Tamer"
+    ]
 }

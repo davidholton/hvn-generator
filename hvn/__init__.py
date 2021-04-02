@@ -41,6 +41,28 @@ def roll(d: int, n: int, sort: bool = False, reverse: bool = False) -> list:
 
     return rolls
 
+
+skill_to_ability = {
+    "athletics": "str",
+    "acrobatics": "dex",
+    "sleightHand": "dex",
+    "stealth": "dex",
+    "arcana": "int",
+    "history": "int",
+    "investigation": "int",
+    "nature": "int",
+    "religion": "int",
+    "animalHandling": "wis",
+    "insight": "wis",
+    "medicine": "wis",
+    "perception": "wis",
+    "survival": "wis",
+    "deception": "cha",
+    "intimidation": "cha",
+    "performance": "cha",
+    "persuasion": "cha"
+}
+
 # --------------------------------------------------------------------------- #
 
 
@@ -55,11 +77,20 @@ def generate_power_score() -> int:
     return rolls[0]
 
 
+def generate_hit_dice(level, class_name) -> str:
+    """
+    """
+    dice = classes.get(class_name)["hdMax"]
+    hit_dice = str(level) + "d" + str(dice)
+
+    return hit_dice
+
+
 def generate_level(power_score) -> int:
     """
     Returns a character level [1, 5] based off of a power score [1, 100]
     """
-    return max(1, power_score / 100)
+    return max(1, math.ceil(power_score / 20))
 
 
 def generate_race() -> str:
@@ -225,28 +256,84 @@ def generate_ability_scores(race, class_name) -> tuple:
 
     return (ability_scores, ability_modifiers)
 
+
+def get_bonus(level) -> int:
+    return math.ceil((level / 4) + 1)
+
+
+def generate_saves(level, class_name, modifiers) -> tuple:
+    """
+    Generate the saving throw bonuses for each ability. Each bonus is the
+    ability modifier. If the character class is proficient in the ability
+    then add an additional bonus to that ability.
+    """
+
+    # Calculate the saving throw bonus per level
+    bonus = get_bonus(level)
+    prof_abilities = classes.get(class_name)["saveProf"]
+
+    # Saving throw for each ability is the modifier + the bonus if they are
+    # proficient in the ability
+    saving_throws = {}
+    for ability, modifier in modifiers.items():
+        saving_throws[ability] = modifier
+        if prof_abilities.get(ability):
+            saving_throws[ability] += bonus
+
+    return saving_throws
+
+
+def generate_skills(level, class_name, modifiers) -> dict:
+    """
+    For each skill (in skill_to_ability) get the modifier based on its
+    associated ability. If class is proficient in the skill add the level bonus
+    """
+    bonus = get_bonus(level)
+    prof_skills = classes.get(class_name)["skillProf"]
+
+    skills = {}
+    for skill, ability in skill_to_ability.items():
+        skills[skill] = modifiers[ability]
+        if prof_skills.get(skill):
+            skills[skill] += bonus
+
+    return skills
+
 # --------------------------------------------------------------------------- #
 
 
 # if __name__ == "__main__":
-#     race = generate_race()
-#     print(race)
-
-#     gender = generate_gender()
-#     print(gender)
-
-#     full_name = generate_full_name(race, gender)
-#     print(full_name[0], full_name[1])
-
-#     char_class = generate_class()
-#     print(char_class)
-
-#     ability_scores, ability_mods = generate_ability_scores(race, char_class)
-#     print(ability_scores)
-#     print(ability_mods)
 
 #     power_score = generate_power_score()
-#     print("power score:", power_score)
+#     print("Power Score:", power_score)
 
+#     race = generate_race()
+#     gender = generate_gender()
+#     class_name = generate_class()
+#     full_name = generate_full_name(race, gender)
 #     profession = generate_profession(power_score)
-#     print("profession:", profession)
+#     level = generate_level(power_score)
+#     hit_dice = generate_hit_dice(level, class_name)
+#     ability_scores, ability_mods = generate_ability_scores(race, class_name)
+#     saving_throws = generate_saves(level, class_name, ability_mods)
+#     skill_throws = generate_skills(level, class_name, ability_mods)
+
+#     print("Name:", full_name[0], full_name[1])
+#     print("Race:", race)
+#     print("Gender:", gender)
+#     print("Profession:", profession)
+#     print("Level:", level)
+#     print("Hit Dice:", hit_dice)
+#     print("Class:", class_name)
+#     print("Stats:")
+#     for ability, score in ability_scores.items():
+#         sign = "+" if ability_mods[ability] >= 0 else ""
+#         print(f"\t{ability}: {score:2d} ({sign}{ability_mods[ability]})")
+#     print("Saving Throws:")
+#     for ability, bonus in saving_throws.items():
+#         sign = "+" if bonus >= 0 else ""
+#         print(f"\t{ability}: {sign}{bonus}")
+#     print("Skill Bonuses:")
+#     for skill, bonus in skill_throws.items():
+#         sign = "+" if bonus >= 0 else ""
+#         print(f"\t{skill}: {sign}{bonus}")

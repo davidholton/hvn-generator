@@ -18,4 +18,11 @@ You are now all set!
 ## Running Tests
 From inside the root `hvn-generator/` directory run `python -m pytest`.
 
-Verbose testing can be ran with the `-s` flag: `python -m pytest -s` to enable printing from inside test cases.
+Verbose testing can be ran with the `-s -v` flags: `python -m pytest -s -v` to enable printing from inside test cases.
+
+An example of the HVN of the output data can be tried by running `pytest -s test/repetition.py`.
+
+### To run GUI version
+the GUI is currently on it's own branch. To access it use `git checkout gui` 
+
+Start with `python gui.py`
