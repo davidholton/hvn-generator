@@ -2,17 +2,21 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
+from kivy.uix.label import Label
 import __init__ as hvn
 
+# ----------------------------------------------- #
 
+# get all the available options
 classes = hvn.get_classes()
 races = hvn.get_races()
 professions = hvn.get_professions()
-genders = {"Male", "Female"}
+genders = {"male", "female"}
 
 
+# this class holds all the values that the program needs to display
 class baseGen:
-    power_score = -1
+    power_score = 0
     race = ""
     gender = ""
     profession = ""
@@ -25,12 +29,14 @@ class baseGen:
     abiliity_score = {}
 
 
+# creating dropdowns for the options menu
 race_dropdown = DropDown()
 gender_dropdown = DropDown()
 char_class_dropdown = DropDown()
 pw_score_dropdown = DropDown()
 profession_dropdown = DropDown()
 
+# The buttons that will open the dropdown
 race_widget = Button(text='Race', size_hint=(None, None),
                      size=(200, 50), pos_hint=({'x': .4, 'y': .6}))
 gender_widget = Button(text='Gender', size_hint=(None, None),
@@ -41,6 +47,8 @@ pw_score_widget = Button(text='Power Score', size_hint=(None, None),
                          size=(200, 50), pos_hint=({'x': .4, 'y': .7}))
 profession_widget = Button(text='Professions', size_hint=(None, None),
                            size=(200, 50), pos_hint=({'x': .4, 'y': .3}))
+
+# creating labels for all of the options
 for index in range(3, 19):
     btn = Button(text='Power Score %d' % index, size_hint_y=None, height=50)
     btn.bind(on_release=lambda btn: pw_score_dropdown.select(btn.text))
@@ -55,7 +63,6 @@ for race in races:
     race_dropdown.add_widget(btn)
 
 race_widget.bind(on_release=race_dropdown.open)
-
 
 for gender in genders:
     btn = Button(text=gender, size_hint_y=None, height=50)
@@ -79,24 +86,53 @@ for prof in professions:
 profession_widget.bind(on_release=profession_dropdown.open)
 
 
-def rc_btn(in_rc):
-    baseGen.race = in_rc
+# get the values from the dropdown
+def pw_btn(instance, value):
+    data = value.split()
+    baseGen.power_score = int(data[2])
 
 
-# this function really needs to be refactored, but for now it works
-def gen():
-    if baseGen.power_score == -1:
-        baseGen.power_score = hvn.generate_power_score()
-    if baseGen.race == "":
-        baseGen.race = hvn.generate_race()
-    if baseGen.gender == "":
-        baseGen.gender = hvn.generate_gender()
-    if baseGen.profession == "":
-        baseGen.profession = hvn.generate_profession(baseGen.power_score)
-    if baseGen.char_class == "":
-        baseGen.char_class = hvn.generate_class()
+def rc_btn(instance, value):
+    baseGen.race = value
 
-    baseGen.name = hvn.generate_full_name(baseGen.race, baseGen.gender)
+
+def gn_btn(instance, value):
+    baseGen.gender = value
+
+
+def cl_btn(instance, value):
+    baseGen.char_class = value
+
+
+def pr_btn(instance, value):
+    baseGen.profession = value
+
+
+# bind the dropdowns to call functions to get all the values
+pw_score_dropdown.bind(on_select=lambda instance, x:
+                       setattr(pw_score_widget, 'text', x))
+pw_score_dropdown.bind(on_select=pw_btn)
+race_dropdown.bind(on_select=lambda instance, x:
+                   setattr(race_widget, 'text', x))
+race_dropdown.bind(on_select=rc_btn)
+gender_dropdown.bind(on_select=lambda instance, x:
+                     setattr(gender_widget, 'text', x))
+gender_dropdown.bind(on_select=gn_btn)
+char_class_dropdown.bind(on_select=lambda instance, x:
+                         setattr(char_class_widget, 'text', x))
+char_class_dropdown.bind(on_select=cl_btn)
+profession_dropdown.bind(on_select=lambda instance, x:
+                         setattr(profession_widget, 'text', x))
+profession_dropdown.bind(on_select=pr_btn)
+
+
+# generating all the options that is required to be displayed.
+# It takes options as opt that calls weather or not options have been selected
+def gen(opt):
+    if opt == "none":
+        base_class()
+
+    name = hvn.generate_full_name(baseGen.race, baseGen.gender)
     baseGen.level = hvn.generate_level(baseGen.power_score)
     baseGen.abiliity_score = hvn.generate_ability_scores(baseGen.race,
                                                          baseGen.char_class)
@@ -104,38 +140,31 @@ def gen():
                                        baseGen.abiliity_score[1])
     baseGen.skills = hvn.generate_skills(baseGen.level, baseGen.char_class,
                                          baseGen.abiliity_score[1])
+    baseGen.name = name[0] + ' ' + name[1]
 
+
+# clear the data from class will be used for when the options are setup
+def base_class():
     # this is a bad way to reset it, but for now it works
-    baseGen.power_score = -1
-    baseGen.race = ""
-    baseGen.gender = ""
-    baseGen.profession = ""
-    baseGen.char_class = ""
-    baseGen.profession = ""
-    baseGen.level = 0
-    baseGen.name = ""
-    baseGen.saves = {}
-    baseGen.skills = {}
-    baseGen.abiliity_score = {}
+    baseGen.power_score = hvn.generate_power_score()
+    baseGen.race = hvn.generate_race()
+    baseGen.gender = hvn.generate_gender()
+    baseGen.profession = hvn.generate_profession(baseGen.power_score)
+    baseGen.char_class = hvn.generate_class()
 
 
-def set_base_gen(in_pw_sc, in_race, in_gender, in_prof, in_class):
-    baseGen.power_score = in_pw_sc
-    baseGen.race = in_race
-    baseGen.gender = in_gender
-    baseGen.profession = in_prof
-    baseGen.char_class = in_class
-
-
+# class for the first screen
 class HVNLayout(Screen):
     def genBtn(self):
-        gen()
+        gen("none")
 
     def optBtn(self):
         pass
 
 
+# class for the options screen
 class HVNOption(Screen):
+    # this __init__ displays all of the option buttons
     def __init__(self, **kwargs):
         super(HVNOption, self).__init__(**kwargs)
         self.add_widget(pw_score_widget)
@@ -145,20 +174,47 @@ class HVNOption(Screen):
         self.add_widget(profession_widget)
 
     def genBtn(self):
-        gen()
+        gen("with_opt")
 
     def optBtn(self):
         pass
 
 
+# class for the generated data page
 class HVNGenerate(Screen):
+    # display all of the result data
+    def __init__(self, **kwargs):
+        super(HVNGenerate, self).__init__(**kwargs)
+        rc_label = Label(text=baseGen.race,
+                         pos_hint=({'x': 0, 'y': 0.4}))
+        lv_label = Label(text=str(baseGen.level),
+                         pos_hint=({'x': 0, 'y': 0.35}))
+        gn_label = Label(text=baseGen.gender,
+                         pos_hint=({'x': 0, 'y': 0.3}))
+        pr_label = Label(text=baseGen.profession,
+                         pos_hint=({'x': 0, 'y': 0.25}))
+        nm_label = Label(text=baseGen.name,
+                         pos_hint=({'x': 0, 'y': 0.2}))
+        cl_label = Label(text=baseGen.char_class,
+                         pos_hint=({'x': 0, 'y': 0.15}))
+
+        self.add_widget(rc_label)
+        self.add_widget(lv_label)
+        self.add_widget(gn_label)
+        self.add_widget(pr_label)
+        self.add_widget(nm_label)
+        self.add_widget(cl_label)
+
     def genBtn(self):
-        gen()
+        self.clear_widgets()
+        self.__init__()
+        gen("none")
 
     def optBtn(self):
         pass
 
 
+# this is the main app that manages all the windows
 class HVNApp(App):
     def build(self):
         sm = ScreenManager()
