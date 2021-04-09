@@ -29,6 +29,14 @@ class baseGen:
     abiliity_score = {}
 
 
+class baseOpt:
+    pw_score = 0
+    race = ""
+    gender = ""
+    profession = ""
+    char_class = ""
+
+
 # creating dropdowns for the options menu
 race_dropdown = DropDown()
 gender_dropdown = DropDown()
@@ -89,23 +97,23 @@ profession_widget.bind(on_release=profession_dropdown.open)
 # get the values from the dropdown
 def pw_btn(instance, value):
     data = value.split()
-    baseGen.power_score = int(data[2])
+    baseOpt.pw_score = int(data[2])
 
 
 def rc_btn(instance, value):
-    baseGen.race = value
+    baseOpt.race = value
 
 
 def gn_btn(instance, value):
-    baseGen.gender = value
+    baseOpt.gender = value
 
 
 def cl_btn(instance, value):
-    baseGen.char_class = value
+    baseOpt.char_class = value
 
 
 def pr_btn(instance, value):
-    baseGen.profession = value
+    baseOpt.profession = value
 
 
 # bind the dropdowns to call functions to get all the values
@@ -131,6 +139,27 @@ profession_dropdown.bind(on_select=pr_btn)
 def gen(opt):
     if opt == "none":
         base_class()
+    else:
+        if baseOpt.pw_score == 0:
+            baseGen.power_score = hvn.generate_power_score()
+        else:
+            baseGen.power_score = baseOpt.pw_score
+        if baseOpt.race == "":
+            baseGen.race = hvn.generate_race()
+        else:
+            baseGen.race = baseOpt.race
+        if baseOpt.gender == "":
+            baseGen.gender = hvn.generate_gender()
+        else:
+            baseGen.gender = baseOpt.gender
+        if baseOpt.profession == "":
+            baseGen.profession = hvn.generate_profession(baseGen.power_score)
+        else:
+            baseGen.profession = baseOpt.profession
+        if baseOpt.char_class == "":
+            baseGen.char_class = hvn.generate_class()
+        else:
+            baseGen.char_class = baseOpt.char_class
 
     name = hvn.generate_full_name(baseGen.race, baseGen.gender)
     baseGen.level = hvn.generate_level(baseGen.power_score)
@@ -141,6 +170,13 @@ def gen(opt):
     baseGen.skills = hvn.generate_skills(baseGen.level, baseGen.char_class,
                                          baseGen.abiliity_score[1])
     baseGen.name = name[0] + ' ' + name[1]
+
+    # this is really dumb way to reset class
+    baseOpt.pw_score = 0
+    baseOpt.race = ""
+    baseOpt.gender = ""
+    baseOpt.char_class = ""
+    baseOpt.profession = ""
 
 
 # clear the data from class will be used for when the options are setup
