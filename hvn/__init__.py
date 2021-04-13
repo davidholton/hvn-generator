@@ -363,9 +363,11 @@ def generate_skills(level, class_name, modifiers) -> dict:
     return skills
 
 
-def generate_armor(power_score, lvl, class_name, mods, one_hand=False) -> dict:
+def generate_armor(power_score, level, class_name, modifiers, equip) -> dict:
     """
-    Generate the characters armor, shields, and armor class
+    Generate the characters armor and armor class. If a character generates a
+    shield we also add it to their equipment dictionary. Returns a tuple of the
+    armor name, armor, and armor class.
     """
 
     prof_armor = classes.get(class_name)["equipProf"]["armor"]
@@ -398,7 +400,7 @@ def generate_armor(power_score, lvl, class_name, mods, one_hand=False) -> dict:
     while True:
         armor_name = random.choice(armors)
 
-        if lvl >= 3 or armor_name != "plate":
+        if level >= 3 or armor_name != "plate":
             break
 
     armor = equipment["armor"].get(armor_level).get(armor_name)
@@ -406,19 +408,28 @@ def generate_armor(power_score, lvl, class_name, mods, one_hand=False) -> dict:
 
     # Add dex modifier if applicable
     if armor["dex"]:
-        ac += min(mods["dex"], armor["dexMax"])
+        ac += min(modifiers["dex"], armor["dexMax"])
 
-    # Generate a shield if the character has a one handed weapon
-    shield = False
-    if prof_armor.get("shield") and one_hand:
+    # Check if the character has a one-handed weapon
+    one_handed = False
+    for item in equip.values():
+        if item["oneHand"]:
+            one_handed = True
+            break
+
+    # Generate a shield if the character has a one-handed weapon and they are
+    # proficient with a shield
+    if prof_armor.get("shield") and one_handed:
         # Chance of having a shield increases by 25% per level
         # Max of 100% of course
-        shield_chance = max(1, 0.25 * lvl)
+        shield_chance = min(1, 0.25 * level)
         if random.random() <= shield_chance:
+            equip["shield"] = equipment["shield"]
             ac += equipment["shield"]["acBonus"]
-            shield = True
+            # NOTE: unsure if we actually add the ac bonus to the ac as shields
+            # seem to be situational
 
-    return {"armor": armor_name, "shield": shield}, ac
+    return (armor_name, armor, ac)
 
 
 # --------------------------------------------------------------------------- #
@@ -435,12 +446,14 @@ def generate_armor(power_score, lvl, class_name, mods, one_hand=False) -> dict:
 #     full_name = generate_full_name(race, gender)
 #     profession = generate_profession(power_score)
 #     level = generate_level(power_score)
-#     ability_scores, ability_mods = generate_ability_scores(race, class_name)
-#     saving_throws = generate_saves(level, class_name, ability_mods)
-#     skill_throws = generate_skills(level, class_name, ability_mods)
-#     hit_points = generate_hit_points(class_name, ability_mods)
+#     ability_scores, modifiers = generate_ability_scores(race, class_name)
+#     saving_throws = generate_saves(level, class_name, modifiers)
+#     skill_throws = generate_skills(level, class_name, modifiers)
+#     hit_points = generate_hit_points(class_name, modifiers)
 #     hit_dice = generate_hit_dice(level, class_name)
-#     armor, ac = generate_armor(power_score, level, class_name, ability_mods, True)
+#     equip = {}
+#     armor_name, armor, ac = generate_armor(power_score, level, class_name,
+#                                            modifiers, equip)
 
 #     print("Name:", full_name[0], full_name[1])
 #     print("Race:", race)
@@ -449,11 +462,12 @@ def generate_armor(power_score, lvl, class_name, mods, one_hand=False) -> dict:
 #     print("Level:", level)
 #     print("Hit Points:", hit_points)
 #     print("Hit Dice:", hit_dice)
+#     print("AC:", ac)
 #     print("Class:", class_name)
 #     print("Stats:")
 #     for ability, score in ability_scores.items():
-#         sign = "+" if ability_mods[ability] >= 0 else ""
-#         print(f"\t{ability}: {score:2d} ({sign}{ability_mods[ability]})")
+#         sign = "+" if modifiers[ability] >= 0 else ""
+#         print(f"\t{ability}: {score:2d} ({sign}{modifiers[ability]})")
 #     print("Saving Throws:")
 #     for ability, bonus in saving_throws.items():
 #         sign = "+" if bonus >= 0 else ""
@@ -462,3 +476,5 @@ def generate_armor(power_score, lvl, class_name, mods, one_hand=False) -> dict:
 #     for skill, bonus in skill_throws.items():
 #         sign = "+" if bonus >= 0 else ""
 #         print(f"\t{skill}: {sign}{bonus}")
+#     print("Armor:")
+#     print(f"\t{armor_name}: {armor}")
