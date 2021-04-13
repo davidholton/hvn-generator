@@ -432,6 +432,45 @@ def generate_armor(power_score, level, class_name, modifiers, equip) -> dict:
     return (armor_name, armor, ac)
 
 
+def generate_equipment(level, class_name) -> dict:
+    """
+    Generate the characters equipment based off of their class and level.
+    Returns a dict filled with the weapons. If a weapon is one-handed we also
+    might add a shield in the return dictionary if you also generate the armor.
+    Weapons with a sister weapon will also get that variant. Ranged weapons are
+    also given to randomly based off a chance.
+    """
+
+    # Get the dictionary of proficient weapons by the character class
+    prof_weaps = classes.get(class_name)["equipProf"]["weapons"]
+    prof_weaps = list(prof_weaps.keys())
+
+    # Decide if the melee weapon will be either "simple" or "martial"
+    # * Assuming the character is proficient in both *
+    weapon_type = prof_weaps[random.randrange(len(prof_weaps))]
+
+    # Pick a random melee weapon
+    weapons = equipment["weapons"]["melee"].get(weapon_type)
+    weapon_name, weapon = random.choice(list(weapons.items()))
+
+    # If the weapon has a sister weapon be sure to add that one as well
+    char_equipment = {weapon_name: weapon}
+    if weapon.get("sister"):
+        sister = weapons.get(weapon["sister"])
+        char_equipment[weapon["sister"]] = sister
+
+    # Generate a ranged weapon
+    ranged_chance = min(1, 0.25 * level)
+    if random.random() <= ranged_chance:
+        # Chance of having a ranged weapon goes up by 25% per level
+        weapon_type = prof_weaps[random.randrange(len(prof_weaps))]
+
+        weapons = equipment["weapons"]["ranged"].get(weapon_type)
+        weapon_name, weapon = random.choice(list(weapons.items()))
+
+    return char_equipment
+
+
 # --------------------------------------------------------------------------- #
 
 
@@ -451,7 +490,7 @@ def generate_armor(power_score, level, class_name, modifiers, equip) -> dict:
 #     skill_throws = generate_skills(level, class_name, modifiers)
 #     hit_points = generate_hit_points(class_name, modifiers)
 #     hit_dice = generate_hit_dice(level, class_name)
-#     equip = {}
+#     equip = generate_equipment(level, class_name)
 #     armor_name, armor, ac = generate_armor(power_score, level, class_name,
 #                                            modifiers, equip)
 
@@ -478,3 +517,6 @@ def generate_armor(power_score, level, class_name, modifiers, equip) -> dict:
 #         print(f"\t{skill}: {sign}{bonus}")
 #     print("Armor:")
 #     print(f"\t{armor_name}: {armor}")
+#     print("Equipment:")
+#     for name, item in equip.items():
+#         print(f"\t{name}: {item}")
