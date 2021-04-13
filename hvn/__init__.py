@@ -20,6 +20,9 @@ with open(os.path.join(module_dir, "data/professions.json")) as f:
 with open(os.path.join(module_dir, "data/races.json")) as f:
     races = json.load(f)
 
+with open(os.path.join(module_dir, "data/equipment.json")) as f:
+    equipment = json.load(f)
+
 
 def set_seed(seed: int) -> None:
     random.seed(seed)
@@ -359,6 +362,65 @@ def generate_skills(level, class_name, modifiers) -> dict:
 
     return skills
 
+
+def generate_armor(power_score, lvl, class_name, mods, one_hand=False) -> dict:
+    """
+    Generate the characters armor, shields, and armor class
+    """
+
+    prof_armor = classes.get(class_name)["equipProf"]["armor"]
+
+    # Create a list of the proficient armors that the character can use
+    # Weights are decided off of power score
+    population = []
+    weights = []
+
+    if prof_armor.get("light"):
+        population.append("light")
+        weights.append(2 if power_score <= 20 else 1)
+
+    if prof_armor.get("medium"):
+        population.append("medium")
+        weights.append(1 if power_score <= 20 else 2)
+
+    if prof_armor.get("heavy"):
+        population.append("heavy")
+        weights.append(2 if power_score <= 50 else 3)
+
+    # Pick the armor level
+    armor_level = random.choices(population, weights)[0]
+    # Get the possible armors from that level
+    armors = list(equipment["armor"].get(armor_level))
+
+    # Pick a random armor from that armor level
+    # If we are picking from the heavy armor level and it happens to be a
+    # full-plate armor make sure the character is at least level three
+    while True:
+        armor_name = random.choice(armors)
+
+        if lvl >= 3 or armor_name != "plate":
+            break
+
+    armor = equipment["armor"].get(armor_level).get(armor_name)
+    ac = armor["ac"]
+
+    # Add dex modifier if applicable
+    if armor["dex"]:
+        ac += min(mods["dex"], armor["dexMax"])
+
+    # Generate a shield if the character has a one handed weapon
+    shield = False
+    if prof_armor.get("shield") and one_hand:
+        # Chance of having a shield increases by 25% per level
+        # Max of 100% of course
+        shield_chance = max(1, 0.25 * lvl)
+        if random.random() <= shield_chance:
+            ac += equipment["shield"]["acBonus"]
+            shield = True
+
+    return {"armor": armor_name, "shield": shield}, ac
+
+
 # --------------------------------------------------------------------------- #
 
 
@@ -378,6 +440,7 @@ def generate_skills(level, class_name, modifiers) -> dict:
 #     skill_throws = generate_skills(level, class_name, ability_mods)
 #     hit_points = generate_hit_points(class_name, ability_mods)
 #     hit_dice = generate_hit_dice(level, class_name)
+#     armor, ac = generate_armor(power_score, level, class_name, ability_mods, True)
 
 #     print("Name:", full_name[0], full_name[1])
 #     print("Race:", race)
