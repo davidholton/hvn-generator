@@ -175,7 +175,7 @@
         "equipProf": {
             "weapons": {
                 "simple": true,
-                "martialWep": true
+                "martial": true
             },
             "armor": {
                 "light": true,
