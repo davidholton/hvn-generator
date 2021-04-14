@@ -49,27 +49,86 @@ def character_gen_test():
     skill_throws = hvn.generate_skills(level, class_name, modifiers)
     hit_points = hvn.generate_hit_points(class_name, modifiers)
     hit_dice = hvn.generate_hit_dice(level, class_name)
-
+    equip = hvn.generate_equipment(level, class_name)
+    bonus = hvn.get_bonus(level)
+    prof_abilities = hvn.classes.get(class_name)["saveProf"]
+    prof_skills = hvn.classes.get(class_name)["skillProf"]
+    armor_name, armor, ac = hvn.generate_armor(power_score, level, class_name,
+                                             modifiers, equip)
     print("Name:", full_name[0], full_name[1])
     print("Race:", race)
     print("Gender:", gender)
     print("Profession:", profession)
     print("Level:", level)
-    print("Hit Points:", hit_points)
-    print("Hit Dice:", hit_dice)
-    print("Class:", class_name)
+    print("Hit Points:", hit_points, "(", hit_dice, ")")
+    #    print("Hit Dice:", hit_dice)
+    print("AC:", ac, " (",armor_name,")")
+    #print("Equipment:")
+    #for name, item in equip.items():
+    #    print(f"\t{name}: {item}")
+    print("Archetype:", class_name)
     print("Stats:")
     for ability, score in ability_scores.items():
         sign = "+" if modifiers[ability] >= 0 else ""
-        print(f"\t{ability}: {score:2d} ({sign}{modifiers[ability]})")
+        print(f"|{ability}: {score:2d} ({sign}{modifiers[ability]})|", end ='')
+    print("")
     print("Saving Throws:")
-    for ability, bonus in saving_throws.items():
-        sign = "+" if bonus >= 0 else ""
-        print(f"\t{ability}: {sign}{bonus}")
+    for ability, modifier in modifiers.items():
+        if prof_abilities.get(ability):
+            sign = "+" if modifiers[ability] >= 0 else ""
+            print(f"\t{ability}: {sign}{modifiers[ability]}")
+        
     print("Skill Bonuses:")
     for skill, bonus in skill_throws.items():
-        sign = "+" if bonus >= 0 else ""
-        print(f"\t{skill}: {sign}{bonus}")
+        if prof_skills.get(skill):
+            sign = "+" if bonus >= 0 else ""
+            print(f"\t{skill}: {sign}{bonus}")
+
+def character_gen_test_verbose():
+     power_score = hvn.generate_power_score()
+     print("Power Score:", power_score)
+
+     race = hvn.generate_race()
+     gender = hvn.generate_gender()
+     class_name = hvn.generate_class()
+     full_name = hvn.generate_full_name(race, gender)
+     profession = hvn.generate_profession(power_score)
+     level = hvn.generate_level(power_score)
+     ability_scores, modifiers = hvn.generate_ability_scores(race, class_name)
+     saving_throws = hvn.generate_saves(level, class_name, modifiers)
+     skill_throws = hvn.generate_skills(level, class_name, modifiers)
+     hit_points = hvn.generate_hit_points(class_name, modifiers)
+     hit_dice = hvn.generate_hit_dice(level, class_name)
+     equip = hvn.generate_equipment(level, class_name)
+     armor_name, armor, ac = hvn.generate_armor(power_score, level, class_name,
+                                            modifiers, equip)
+
+     print("Name:", full_name[0], full_name[1])
+     print("Race:", race)
+     print("Gender:", gender)
+     print("Profession:", profession)
+     print("Level:", level)
+     print("Hit Points:", hit_points)
+     print("Hit Dice:", hit_dice)
+     print("AC:", ac)
+     print("Class:", class_name)
+     print("Stats:")
+     for ability, score in ability_scores.items():
+         sign = "+" if modifiers[ability] >= 0 else ""
+         print(f"\t{ability}: {score:2d} ({sign}{modifiers[ability]})")
+     print("Saving Throws:")
+     for ability, bonus in saving_throws.items():
+         sign = "+" if bonus >= 0 else ""
+         print(f"\t{ability}: {sign}{bonus}")
+     print("Skill Bonuses:")
+     for skill, bonus in skill_throws.items():
+         sign = "+" if bonus >= 0 else ""
+         print(f"\t{skill}: {sign}{bonus}")
+     print("Armor:")
+     print(f"\t{armor_name}: {armor}")
+     print("Equipment:")
+     for name, item in equip.items():
+         print(f"\t{name}: {item}")
 
 
 def test_repetition():
@@ -91,5 +150,8 @@ def test_repetition():
     print("\nRunning Name Test with 10000 Names:")
     name_test(10000)
 
-    print("\nGenerating a Test Character:")
+    print("\nGenerating a Clean Test Character:")
     character_gen_test()
+
+    print("\nGenerating a Verbose Test Character:")
+    character_gen_test_verbose()
