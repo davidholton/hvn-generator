@@ -188,7 +188,7 @@
 		"Brightmoon","Moonwarden","Summermoon","Summerstar","Eveningmoon","Eveningtide","Stormsong","Stormvein","Featherheart",
 		"Fangfire","Dawnseeker","Sunsong","Sunchaser","Brightwing","Sanguinius","Sanguinar","Valanar"
 	],
-	"orcFirst":[
+	"orcFirst":{
 		"male":[
 			"Angwrath","Arrok","Arnor","Ackgrash","Agrimor","Azhag","Bolf","Bolg","Bragash","Bronzgrim","Briddle","Brick",
 			"Brimtooth","Bigbash","Broknar","Badruk","Bardok","Bax","Borgut","Brak","Brogtar","Borik","Brokmar",
@@ -196,14 +196,14 @@
 			"Durkol","Ghazrak","Ghazak","Grudgefist","Grudgemok","Gristle","Giraka","Gorbad","Gundbad","Gorbash","Gorduz",
 			"Gorfang","Grimgor","Grokka","Grom","Grotsnag","Grommash","Grulsik","Grumlock","Grimlock","Haringar","Hakkar",
 			"Haknor","Harknor","Harkon","Igrith","Jorik","Jorgum","Jormungand","Killmaim","Kilknor","Kimfist","Larmy",
-			"Larien","Laterien","Ludwig","Lugloth","Lugmod","Liknor","Lorug","Lekmund","Marim","Mawrn","Marwyn","Morglum"
+			"Larien","Laterien","Ludwig","Lugloth","Lugmod","Liknor","Lorug","Lekmund","Marim","Mawrn","Marwyn","Morglum",
 			"Mawga","Mauga","Magrok","Morg","Morgo","Morgoth","Morgwyn","Nokk","Nokkrash","Nokrim","Nokrosh","Orior","Ogrim",
 			"Orgrim","Ogur","Orgur","Ordok","Orm","Ormok","Orrik","Pushkrimp","Pugnash","Taugrek","Traunt","Trimgrit"
 		],
 		"female":[
 			"Aggram","Agra","Aggra","Giselda","Griselda","Garona","Gruella","Geyah","Garada","Garuda", "Grelda","Grelod"
 		]
-	],
+	},
 	"orcLast":[
 		"Angerfist","Angerhorn","Angertusk","Anvilbash","Anvilwrath","Arnhorn","Argrim","Angron","Brutalspit","Brutalfist",
 		"Bloodscream","Bloodspit","Bloodcrusher","Bloodfury","Bigfist","Bloodmoon","Crushgrip","Cruelsun","Coalgrin","Coalfist",
