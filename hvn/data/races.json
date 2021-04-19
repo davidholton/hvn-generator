@@ -1,25 +1,44 @@
 {
-    "dragonborn": {
-        "weight": 1,
+    "gnome": {
+        "weight": 2,
         "modifiers": {
             "int": 2,
-            "cha": 1
+            "dex": 1
         }
     },
     "dwarf": {
-        "weight": 2,
+        "weight": 3,
         "modifiers": {
             "con": 2
         }
     },
     "elf": {
-        "weight": 3,
+        "weight": 2,
         "modifiers": {
             "dex": 2
         }
     },
+    "half-elf": {
+        "weight": 3,
+        "modifiers": {
+            "cha": 2
+        }
+    },
+    "halfling": {
+        "weight": 2,
+        "modifiers": {
+            "dex": 2
+        }
+    },
+    "half-orc": {
+        "weight": 2,
+        "modifiers": {
+            "str": 2,
+            "con": 1
+        }
+    },
     "human": {
-        "weight": 5,
+        "weight": 4,
         "modifiers": {
             "str": 1,
             "dex": 1,
@@ -27,6 +46,13 @@
             "int": 1,
             "wis": 1,
             "cha": 1
+        }
+    },
+    "orc": {
+        "weight": 2,
+        "modifiers": {
+            "str": 2,
+            "con": 1
         }
     }
 }
