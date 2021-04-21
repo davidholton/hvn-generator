@@ -26,35 +26,37 @@ def test_saving_throws():
     Check if the saving throws are generated correctly with the right bonuses
     """
 
+    char = hvn.HVNGenerator()
+
     # Test with a level 1
-    level, class_name = 1, "commoner"
-    modifiers = {
+    char.level, char.class_name = 1, "commoner"
+    char.modifiers = {
         "str": 1, "dex": 1, "con": 1,
         "int": 1, "wis": 1, "cha": 1,
     }
 
-    saving_throws = hvn.generate_saves(level, class_name, modifiers)
+    saving_throws = char.gen_saves()
     assert_expected(saving_throws, {
         "str": 1, "dex": 1, "con": 3,
         "int": 1, "wis": 1, "cha": 1,
     })
 
     # Test level bonus works for same class
-    level = 10
-    saving_throws = hvn.generate_saves(level, class_name, modifiers)
+    char.level = 10
+    saving_throws = char.gen_saves()
     assert_expected(saving_throws, {
         "str": 1, "dex": 1, "con": 5,
         "int": 1, "wis": 1, "cha": 1,
     })
 
     # Test different classes work
-    level, class_name = 4, "expert"
-    modifiers = {
+    char.level, char.class_name = 4, "expert"
+    char.modifiers = {
         "str": 1, "dex": 2, "con": 2,
         "int": 2, "wis": 4, "cha": -1,
     }
 
-    saving_throws = hvn.generate_saves(level, class_name, modifiers)
+    saving_throws = char.gen_saves()
     assert_expected(saving_throws, {
         "str": 1, "dex": 2, "con": 2,
         "int": 4, "wis": 6, "cha": -1,
@@ -67,14 +69,16 @@ def test_skill_throws():
     and ability modifiers.
     """
 
+    char = hvn.HVNGenerator()
+
     # Test with a level 1
-    level, class_name = 1, "commoner"
-    modifiers = {
+    char.level, char.class_name = 1, "commoner"
+    char.modifiers = {
         "str": 1, "dex": 1, "con": 1,
         "int": 1, "wis": 1, "cha": 1,
     }
 
-    skill_throws = hvn.generate_skills(level, class_name, modifiers)
+    skill_throws = char.gen_skills()
     assert_expected(skill_throws, {
         "athletics": 3, "acrobatics": 1, "sleightHand": 1, "stealth": 1,
         "arcana": 1, "history": 1, "investigation": 1, "nature": 3,
@@ -84,8 +88,8 @@ def test_skill_throws():
     })
 
     # Test level bonus works for same class
-    level = 10
-    skill_throws = hvn.generate_skills(level, class_name, modifiers)
+    char.level = 10
+    skill_throws = char.gen_skills()
     assert_expected(skill_throws, {
         "athletics": 5, "acrobatics": 1, "sleightHand": 1, "stealth": 1,
         "arcana": 1, "history": 1, "investigation": 1, "nature": 5,
@@ -95,13 +99,13 @@ def test_skill_throws():
     })
 
     # Test different classes work
-    level, class_name = 4, "expert"
-    modifiers = {
+    char.level, char.class_name = 4, "expert"
+    char.modifiers = {
         "str": 1, "dex": 2, "con": 2,
         "int": 2, "wis": 4, "cha": -1,
     }
 
-    skill_throws = hvn.generate_skills(level, class_name, modifiers)
+    skill_throws = char.gen_skills()
     assert_expected(skill_throws, {
         "athletics": 1, "acrobatics": 2, "sleightHand": 2, "stealth": 2,
         "arcana": 2, "history": 2, "investigation": 2, "nature": 2,
