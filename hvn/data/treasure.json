@@ -1,76 +1,124 @@
 {
-	"lowPower":{
-		"gems":[
-			"Azurite(5gp)","Azurite(10gp)","Azurite(15gp)","Banded Agate(5gp)","Banded Agate(10gp)","Banded Agate(15gp)",
-			"Blue Quartz(5gp)","Blue Quartz(10gp)","Blue Quartz(15gp)","Eye Agate(5gp)","Eye Agate(10gp)","Eye Agate(15gp)",
-			"Fibrilous Quartz(5gp)","Fibrilous Quartz(10gp)","Fibrilous Quartz(15gp)","Hematite(5gp)","Hematite(10gp)",
-			"Hematite(15gp)","Irregular Mud Pearl(5gp)","Irregular Mud Pearl(10gp)","Irregular Mud Pearl(15gp)",
-			"Lapis Lazuli(5gp)","Lapis Lazuli(10gp)","Lapis Lazuli(15gp)","Malachite(5gp)","Malachite(10gp)","Malachite(15gp)",
-			"Mica(5gp)","Mica(10gp)","Mica(15gp)","Moss Agate(5gp)","Moss Agate(10gp)","Moss Agate(15gp)","Obsidian(5gp)",
-			"Obsidian(10gp)","Obsidian(15gp)","Rhodochrosite(5gp)","Rhodochrosite(10gp)","Rhodochrosite(15gp)",
-			"Tiger Eye(5gp)","Tiger Eye(10gp)","Tiger Eye(15gp)","Turqoise(5gp)","Turqoise(10gp)","Turqoise(15gp)",
-			"Viridium(5gp)","Viridium(10gp)","Viridium(15gp)"
-		],
-		"trinkets":[
-			"Carved Bone Dice Set(10gp)","Carved Bone Dice Set(15gp)","Silver Necklace(25gp)","Silver Necklace(50gp)",
-			"Copper Ring(5gp)","Silver Ring(25gp)","Gold Ring(75gp)","Copper Necklace(10gp)","Copper Necklace(15gp)",
-			"Linen Handkerchief(1sp)","Silk Handkerchief(5gp)","Silk Gloves(10gp)","Fine Leather Gloves(15gp)",
-			"Fine Leather Belt(5sp)","Iron Brooch(10gp)","Rough Leather Gloves(5sp)","Well-Worn Boots(2sp)","Hard Leather Boots(7sp)",
-			"Linen Sash(4sp)","Silk Sash(35gp)","Pressed Copper Token(1gp)","Pressed Silver Token(10gp)","Silver Fork(4sp)",
-			"Silver Spoon(5sp)","Silver Knife(1gp)"
-		],
-		"junk":[
-			"Bag of Chalk(1sp)","Piton(1sp)","Pouch of Tobacco(5sp)","Sewing Needle(5sp)","Waterskin(1gp)","Chunk of Rations(1sp)",
-			"Bag of Iron Nails(5sp)","Old Whetstone(1cp)","Clay Cup(1cp)"
-		]
-	},
-	"mediumPower":{
-		"gems":[
-			"Black Onyx(25gp)","Black Onyx(50gp)","Black Onyx(75gp)","Black Onyx(100gp)","Bloodstone(25gp)","Bloodstone(50gp)",
-			"Bloodstone(75gp)","Bloodstone(100gp)","Carnelian(25gp)","Carnelian(50gp)","Carnelian(75gp)","Carnelian(100gp)",
-			"Chalcedony(25gp)","Chalcedony(50gp)","Chalcedony(75gp)","Chalcedony(100gp)","Chrysoprase(25gp)","Chrysoprase(50gp)",
-			"Chrysoprase(75gp)","Chrysoprase(100gp)","Citrine(25gp)","Citrine(50gp)","Citrine(75gp)","Citrine(100gp)",
-			"Clear Quartz(25gp)","Clear Quartz(50gp)","Clear Quartz(75gp)","Clear Quartz(100gp)","Jasper(25gp)","Jasper(50gp)",
-			"Jasper(75gp)","Jasper(100gp)","Moonstone(25gp)","Moonstone(50gp)","Moonstone(75gp)","Moonstone(100gp)",
-			"Peridot(25gp)","Peridot(50gp)","Peridot(75gp)","Peridot(100gp)","Rose Quartz(25gp)","Rose Quartz(50gp)",
-			"Rose Quartz(75gp)","Rose Quartz(100gp)","Sard(25gp)","Sard(50gp)","Sard(75gp)","Sard(100gp)","Sardonyx(25gp)",
-			"Sardonyx(50gp)","Sardonyx(75gp)","Sardonyx(100gp)","Smoky Quartz(25gp)","Smoky Quartz(50gp)","Smoky Quartz(75gp)",
-			"Smoky Quartz(100gp)","Star Rose Quartz(25gp)","Star Rose Quartz(50gp)","Star Rose Quartz(75gp)","Star Rose Quartz(100gp)",
-			"Zircon(25gp)","Zircon(50gp)","Zircon(75gp)","Zircon(100gp)"
-		],
-		"trinkets":[
-			"Marble Dice Set(25gp)","Chisled Granite Knight Figurine(50gp)","Masterwork Silver Necklace(125gp)","Gold Necklace(100gp)",
-			"Engraved Copper Ring(15gp)","Silver Crest Ring(75gp)","Platinum Ring(150gp)","Gold Signet Ring(100gp)","Pressed Gold Token(100gp)",
-			"Silver Earring(50gp)","Gold Earring(100gp)","Steel Studded Heavy Leather Gloves(10gp)","Silver Lined Fine Leather Belt(50gp)",
-			"Reinforced Heavy Boots(5gp)","Silk Scarf(10gp)","Golden Cufflinks(40gp)","Feather Pin(5sp)","Embossed Silk Gloves(20gp)",
-			"Embossed Silk Sash(50gp)","Platinum Brooch(80gp)"
-		],
-		"junk":[
-			"Pouch of Common Spices(4sp)","Sharp Letter Opener(2gp)","Toolbelt with Tools(50gp)","Fancy Waterskin(10gp)",
-			"Empty Satchel(5sp)","Steel Cup(1sp)","Small Bag of Jerky(3sp)","Roll of Blank Parchment","Empty Parchment Case"
-		]
-	},
-	"highPower":{
-		"gems":[
-			"Amber(50gp)","Amber(100gp)","Amber(250gp)","Amethyst(50gp)","Amethyst(100gp)","Amethyst(250gp)","Azure Moonstone(50gp)",
-			"Azure Moonstone(100gp)","Azure Moonstone(250gp)","Brown-Green Garnet(50gp)","Brown-Green Garnet(100gp)","Brown-Green Garnet(250gp)",
-			"Chrysoberyl(50gp)","Chrysoberyl(100gp)","Chrysoberyl(250gp)","Coralite(50gp)","Coralite(100gp)","Coralite(250gp)",
-			"Deep Green Spinel(50gp)","Deep Green Spinel(100gp)","Deep Green Spinel(250gp)","Golden Pearl(50gp)","Golden Pearl(100gp)",
-			"Golden Pearl(250gp)","Jade(50gp)","Jade(100gp)","Jade(250gp)","Pink Pearl(50gp)","Pink Pearl(100gp)","Pink Pearl(250gp)",
-			"Red Garnet(50gp)","Red Garnet(100gp)","Red Garnet(250gp)","Red Spinel(50gp)","Red Spinel(100gp)","Red Spinel(250gp)",
-			"Red-Brown Spinel(50gp)","Red-Brown Spinel(100gp)","Red-Brown Spinel(250gp)","Silver Pearl(50gp)","Silver Pearl(100gp)",
-			"Silver Pearl(250gp)","Tourmaline(50gp)","Tourmaline(100gp)","Tourmaline(250gp)","Vermillion Onyx(50gp)","Vermillion Onyx(100gp)",
-			"Vermillion Onyx(250gp)","White Pearl(50gp)","White Pearl(100gp)","White Pearl(250gp)"
-		],
-		"trinkets":[
-			"Hand Bell(5gp)","Map Case with Map(5gp)","1oz Ink Vial(10gp)","Inkpen(1sp)","Small Steel Pocket Mirror(10gp)","Signal Whistle(8sp)",
-			"White Spidersilk Scarf(250gp)","Stopwatch on Mithril Chain(400gp)","Platinum Crest Ring(200gp)","Pearl Cufflinks(120gp)",
-			"Gem-Studded Bronze Armbands(450gp)","Baby Sealskin Boots(100gp)","Embossed Silk Scarf(50gp)","Masterwork Leather Gloves(120gp)",
-			"Obsidian Flensing Knife(100gp)","Vial of Antitoxin(50gp)"
-		],
-		"junk":[
-			"Pouch of Dried Fruits(5gp)","Air-tight Flask(30gp)","Silver Cup(5gp)","Handful of Dried Berries(3sp)","Cotton Noseplugs(2cp)",
-			"Fancy Whetstone(1sp)","Flask of Common-Grade Ale(4sp)"
-		]
-	}
+    "lowPower": {
+        "gems": [
+            "Azurite(5gp)", "Azurite(10gp)", "Azurite(15gp)",
+            "Banded Agate(5gp)", "Banded Agate(10gp)", "Banded Agate(15gp)",
+            "Blue Quartz(5gp)", "Blue Quartz(10gp)", "Blue Quartz(15gp)",
+            "Eye Agate(5gp)", "Eye Agate(10gp)", "Eye Agate(15gp)",
+            "Fibrilous Quartz(5gp)", "Fibrilous Quartz(10gp)",
+            "Fibrilous Quartz(15gp)", "Hematite(5gp)", "Hematite(10gp)",
+            "Hematite(15gp)", "Irregular Mud Pearl(5gp)",
+            "Irregular Mud Pearl(10gp)", "Irregular Mud Pearl(15gp)",
+            "Lapis Lazuli(5gp)", "Lapis Lazuli(10gp)", "Lapis Lazuli(15gp)",
+            "Malachite(5gp)", "Malachite(10gp)", "Malachite(15gp)", "Mica(5gp)",
+            "Mica(10gp)", "Mica(15gp)", "Moss Agate(5gp)", "Moss Agate(10gp)",
+            "Moss Agate(15gp)", "Obsidian(5gp)", "Obsidian(10gp)",
+            "Obsidian(15gp)", "Rhodochrosite(5gp)", "Rhodochrosite(10gp)",
+            "Rhodochrosite(15gp)", "Tiger Eye(5gp)", "Tiger Eye(10gp)",
+            "Tiger Eye(15gp)", "Turqoise(5gp)", "Turqoise(10gp)",
+            "Turqoise(15gp)", "Viridium(5gp)", "Viridium(10gp)",
+            "Viridium(15gp)"
+        ],
+        "trinkets": [
+            "Carved Bone Dice Set(10gp)", "Carved Bone Dice Set(15gp)",
+            "Silver Necklace(25gp)", "Silver Necklace(50gp)",
+            "Copper Ring(5gp)", "Silver Ring(25gp)", "Gold Ring(75gp)",
+            "Copper Necklace(10gp)", "Copper Necklace(15gp)",
+            "Linen Handkerchief(1sp)", "Silk Handkerchief(5gp)",
+            "Silk Gloves(10gp)", "Fine Leather Gloves(15gp)",
+            "Fine Leather Belt(5sp)", "Iron Brooch(10gp)",
+            "Rough Leather Gloves(5sp)", "Well-Worn Boots(2sp)",
+            "Hard Leather Boots(7sp)",  "Linen Sash(4sp)", "Silk Sash(35gp)",
+            "Pressed Copper Token(1gp)", "Pressed Silver Token(10gp)",
+            "Silver Fork(4sp)", "Silver Spoon(5sp)", "Silver Knife(1gp)"
+        ],
+        "junk": [
+            "Bag of Chalk(1sp)", "Piton(1sp)", "Pouch of Tobacco(5sp)",
+            "Sewing Needle(5sp)", "Waterskin(1gp)", "Chunk of Rations(1sp)",
+            "Bag of Iron Nails(5sp)", "Old Whetstone(1cp)", "Clay Cup(1cp)"
+        ]
+    },
+    "mediumPower": {
+        "gems": [
+            "Black Onyx(25gp)", "Black Onyx(50gp)", "Black Onyx(75gp)",
+            "Black Onyx(100gp)", "Bloodstone(25gp)", "Bloodstone(50gp)",
+            "Bloodstone(75gp)", "Bloodstone(100gp)", "Carnelian(25gp)",
+            "Carnelian(50gp)", "Carnelian(75gp)", "Carnelian(100gp)",
+            "Chalcedony(25gp)", "Chalcedony(50gp)", "Chalcedony(75gp)",
+            "Chalcedony(100gp)", "Chrysoprase(25gp)", "Chrysoprase(50gp)",
+            "Chrysoprase(75gp)", "Chrysoprase(100gp)", "Citrine(25gp)",
+            "Citrine(50gp)", "Citrine(75gp)", "Citrine(100gp)",
+            "Clear Quartz(25gp)", "Clear Quartz(50gp)", "Clear Quartz(75gp)",
+            "Clear Quartz(100gp)", "Jasper(25gp)", "Jasper(50gp)",
+            "Jasper(75gp)", "Jasper(100gp)", "Moonstone(25gp)",
+            "Moonstone(50gp)", "Moonstone(75gp)", "Moonstone(100gp)",
+            "Peridot(25gp)", "Peridot(50gp)", "Peridot(75gp)", "Peridot(100gp)",
+            "Rose Quartz(25gp)", "Rose Quartz(50gp)", "Rose Quartz(75gp)",
+            "Rose Quartz(100gp)", "Sard(25gp)", "Sard(50gp)", "Sard(75gp)",
+            "Sard(100gp)", "Sardonyx(25gp)", "Sardonyx(50gp)", "Sardonyx(75gp)",
+            "Sardonyx(100gp)", "Smoky Quartz(25gp)", "Smoky Quartz(50gp)",
+            "Smoky Quartz(75gp)", "Smoky Quartz(100gp)",
+            "Star Rose Quartz(25gp)", "Star Rose Quartz(50gp)",
+            "Star Rose Quartz(75gp)", "Star Rose Quartz(100gp)", "Zircon(25gp)",
+            "Zircon(50gp)", "Zircon(75gp)", "Zircon(100gp)"
+        ],
+        "trinkets": [
+            "Marble Dice Set(25gp)", "Chisled Granite Knight Figurine(50gp)",
+            "Masterwork Silver Necklace(125gp)", "Gold Necklace(100gp)",
+            "Engraved Copper Ring(15gp)", "Silver Crest Ring(75gp)",
+            "Platinum Ring(150gp)", "Gold Signet Ring(100gp)",
+            "Pressed Gold Token(100gp)", "Silver Earring(50gp)",
+            "Gold Earring(100gp)", "Steel Studded Heavy Leather Gloves(10gp)",
+            "Silver Lined Fine Leather Belt(50gp)",
+            "Reinforced Heavy Boots(5gp)", "Silk Scarf(10gp)",
+            "Golden Cufflinks(40gp)", "Feather Pin(5sp)",
+            "Embossed Silk Gloves(20gp)", "Embossed Silk Sash(50gp)",
+            "Platinum Brooch(80gp)"
+        ],
+        "junk": [
+            "Pouch of Common Spices(4sp)", "Sharp Letter Opener(2gp)",
+            "Toolbelt with Tools(50gp)", "Fancy Waterskin(10gp)",
+            "Empty Satchel(5sp)", "Steel Cup(1sp)", "Small Bag of Jerky(3sp)",
+            "Roll of Blank Parchment", "Empty Parchment Case"
+        ]
+    },
+    "highPower": {
+        "gems": [
+            "Amber(50gp)", "Amber(100gp)", "Amber(250gp)", "Amethyst(50gp)",
+            "Amethyst(100gp)", "Amethyst(250gp)", "Azure Moonstone(50gp)",
+            "Azure Moonstone(100gp)", "Azure Moonstone(250gp)",
+            "Brown-Green Garnet(50gp)", "Brown-Green Garnet(100gp)",
+            "Brown-Green Garnet(250gp)", "Chrysoberyl(50gp)",
+            "Chrysoberyl(100gp)", "Chrysoberyl(250gp)", "Coralite(50gp)",
+            "Coralite(100gp)", "Coralite(250gp)", "Deep Green Spinel(50gp)",
+            "Deep Green Spinel(100gp)", "Deep Green Spinel(250gp)",
+            "Golden Pearl(50gp)", "Golden Pearl(100gp)", "Golden Pearl(250gp)",
+            "Jade(50gp)", "Jade(100gp)", "Jade(250gp)", "Pink Pearl(50gp)",
+            "Pink Pearl(100gp)", "Pink Pearl(250gp)", "Red Garnet(50gp)",
+            "Red Garnet(100gp)", "Red Garnet(250gp)", "Red Spinel(50gp)",
+            "Red Spinel(100gp)", "Red Spinel(250gp)", "Red-Brown Spinel(50gp)",
+            "Red-Brown Spinel(100gp)", "Red-Brown Spinel(250gp)",
+            "Silver Pearl(50gp)", "Silver Pearl(100gp)", "Silver Pearl(250gp)",
+            "Tourmaline(50gp)", "Tourmaline(100gp)", "Tourmaline(250gp)",
+            "Vermillion Onyx(50gp)", "Vermillion Onyx(100gp)",
+            "Vermillion Onyx(250gp)", "White Pearl(50gp)", "White Pearl(100gp)",
+            "White Pearl(250gp)"
+        ],
+        "trinkets": [
+            "Hand Bell(5gp)", "Map Case with Map(5gp)", "1oz Ink Vial(10gp)",
+            "Inkpen(1sp)", "Small Steel Pocket Mirror(10gp)",
+            "Signal Whistle(8sp)", "White Spidersilk Scarf(250gp)",
+            "Stopwatch on Mithril Chain(400gp)", "Platinum Crest Ring(200gp)",
+            "Pearl Cufflinks(120gp)", "Gem-Studded Bronze Armbands(450gp)",
+            "Baby Sealskin Boots(100gp)", "Embossed Silk Scarf(50gp)",
+            "Masterwork Leather Gloves(120gp)",
+            "Obsidian Flensing Knife(100gp)", "Vial of Antitoxin(50gp)"
+        ],
+        "junk": [
+            "Pouch of Dried Fruits(5gp)", "Air-tight Flask(30gp)",
+            "Silver Cup(5gp)", "Handful of Dried Berries(3sp)",
+            "Cotton Noseplugs(2cp)", "Fancy Whetstone(1sp)",
+            "Flask of Common-Grade Ale(4sp)"
+        ]
+    }
 }
