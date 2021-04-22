@@ -23,6 +23,9 @@ with open(os.path.join(module_dir, "data/races.json")) as f:
 with open(os.path.join(module_dir, "data/equipment.json")) as f:
     equipment = json.load(f)
 
+with open(os.path.join(module_dir, "data/treasure.json")) as f:
+    treasure = json.load(f)
+
 
 def get_classes() -> list:
     """
@@ -62,6 +65,39 @@ def get_races() -> list:
     """
 
     return list(races.keys())
+
+
+def get_equipment() -> dict:
+    """
+    Return a dictionary with three lists of armor, melee, and ranged equipment
+    """
+
+    equip = {"armor": [], "melee": [], "ranged": []}
+
+    def populate(source, category):
+        for catergories in source.values():
+            for item_name in catergories.keys():
+                equip.get(category).append(item_name)
+
+    populate(equipment["armor"], "armor")
+    equip["armor"].append("shield")
+
+    populate(equipment["weapons"]["melee"], "melee")
+    populate(equipment["weapons"]["ranged"], "ranged")
+
+    return equip
+
+
+def get_treasure() -> dict:
+    """
+    Return a dictionary the possible treasure
+    """
+
+    low = treasure.get("low")
+    medium = treasure.get("medium")
+    high = treasure.get("high")
+
+    return {"low": low, "medium": medium, "high": high}
 
 # --------------------------------------------------------------------------- #
 
@@ -171,7 +207,7 @@ class HVNGenerator():
         """
 
         genders = ["male", "female"]
-        self.gender = genders[random.randrange(len(genders))]
+        self.gender = random.choice(genders)
 
         return self.gender
 

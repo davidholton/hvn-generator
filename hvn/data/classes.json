@@ -20,6 +20,7 @@
                 "light": true
             }
         },
+        "featureChance": 0.25,
         "features": [
             "Frail Back: This character has disadvantage on strength saves and strength-based skill checks.",
             "Strong Back: This character has advantage on strength saves and strength-based skill checks.",
@@ -55,6 +56,7 @@
                 "light": true
             }
         },
+        "featureChance": 0.40,
         "features": [
             "Diamond in the Rough: This character has advantage on any checks made to use tools they are proficient with.",
             "Expert Opinion: This character has advantage on insight and history checks made involving their job or tools they are proficient with.",
@@ -90,6 +92,7 @@
                 "shield": true
             }
         },
+        "featureChance": 0.50,
         "features": [
             "Iron-Heart Surge: Once per long rest, this character may re-roll any failed saving throw.",
             "Action Surge: Once per short rest, this character may take an additional action on their turn.",
@@ -126,6 +129,7 @@
                 "light": true
             }
         },
+        "featureChance": 1.00,
         "features": [
             "Well-Known: Other characters have advantage on checks made to identify this character and know/learn basic details about this character.",
             "Very Charismatic: Three times per long rest, this character may re-roll a failed charisma saving throw or charisma-based skill check.",
@@ -160,6 +164,7 @@
                 "light": true
             }
         },
+        "featureChance": 0.75,
         "features": [
             "Polyglot: This character is well-versed in most languages and may unknowingly say things in different languages.",
             "History Buff: This character is well-versed in local and regional history and can accurately recall historical facts.",
@@ -210,6 +215,7 @@
                 "shield": true
             }
         },
+        "featureChance": 0.50,
         "features": [
             "Precise Strike: Whenever this character is flanking their target or has advantage on attacks against their target, their melee attacks deal an additional +1d6 damage.",
             "Group Tactics: This character has advantage on attack rolls against a target if at least one of this character's allies is within 5 feet of the target.",

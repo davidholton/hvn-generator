@@ -1,5 +1,10 @@
 {
-    "lowPower": {
+    "thresholds": {
+        "high": 30,
+        "medium": 20,
+        "low": 0
+    },
+    "low": {
         "gems": [
             "Azurite(5gp)", "Azurite(10gp)", "Azurite(15gp)",
             "Banded Agate(5gp)", "Banded Agate(10gp)", "Banded Agate(15gp)",
@@ -38,7 +43,7 @@
             "Bag of Iron Nails(5sp)", "Old Whetstone(1cp)", "Clay Cup(1cp)"
         ]
     },
-    "mediumPower": {
+    "medium": {
         "gems": [
             "Black Onyx(25gp)", "Black Onyx(50gp)", "Black Onyx(75gp)",
             "Black Onyx(100gp)", "Bloodstone(25gp)", "Bloodstone(50gp)",
@@ -82,7 +87,7 @@
             "Roll of Blank Parchment", "Empty Parchment Case"
         ]
     },
-    "highPower": {
+    "high": {
         "gems": [
             "Amber(50gp)", "Amber(100gp)", "Amber(250gp)", "Amethyst(50gp)",
             "Amethyst(100gp)", "Amethyst(250gp)", "Azure Moonstone(50gp)",
