@@ -23,6 +23,9 @@ with open(os.path.join(module_dir, "data/races.json")) as f:
 with open(os.path.join(module_dir, "data/equipment.json")) as f:
     equipment = json.load(f)
 
+with open(os.path.join(module_dir, "data/treasure.json")) as f:
+    treasure = json.load(f)
+
 
 def get_classes() -> list:
     """
@@ -62,6 +65,39 @@ def get_races() -> list:
     """
 
     return list(races.keys())
+
+
+def get_equipment() -> dict:
+    """
+    Return a dictionary with three lists of armor, melee, and ranged equipment
+    """
+
+    equip = {"armor": [], "melee": [], "ranged": []}
+
+    def populate(source, category):
+        for catergories in source.values():
+            for item_name in catergories.keys():
+                equip.get(category).append(item_name)
+
+    populate(equipment["armor"], "armor")
+    equip["armor"].append("shield")
+
+    populate(equipment["weapons"]["melee"], "melee")
+    populate(equipment["weapons"]["ranged"], "ranged")
+
+    return equip
+
+
+def get_treasure() -> dict:
+    """
+    Return a dictionary the possible treasure
+    """
+
+    low = treasure.get("low")
+    medium = treasure.get("medium")
+    high = treasure.get("high")
+
+    return {"low": low, "medium": medium, "high": high}
 
 # --------------------------------------------------------------------------- #
 
@@ -171,7 +207,7 @@ class HVNGenerator():
         """
 
         genders = ["male", "female"]
-        self.gender = genders[random.randrange(len(genders))]
+        self.gender = random.choice(genders)
 
         return self.gender
 
@@ -504,6 +540,73 @@ class HVNGenerator():
 
         return self.hit_points
 
+    def gen_feature(self) -> str:
+        """
+        Generate a random feature from the class's features list. Features are
+        only generated based on a predefined class feature chance value.
+        """
+
+        feature_chance = classes.get(self.class_name)["featureChance"]
+
+        if random.random() <= feature_chance:
+            valid_features = classes.get(self.class_name)["features"]
+            self.feature = random.choice(valid_features)
+        else:
+            self.feature = None
+
+        return self.feature
+
+    def gen_treasure(self):
+        """
+        Generate three categories of treasure, gems, trinkets, and junk. Power
+        score determines what categories are picked from. Level increases
+        chances to generate that category. Multiple gems can be generated based
+        on power level
+        """
+
+        # Helper function to pick an item from each category
+        def pick_treasure(category):
+            level = random.choice(options)
+            item = random.choice(treasure[level][category])
+            loot.append(item)
+
+        options = []
+        thresholds = treasure["thresholds"]
+
+        # Get the possible loot tables from the power score
+        for level in thresholds:
+            if self.power_score >= thresholds.get(level):
+                options.append(level)
+
+        loot = []
+
+        # Calculate the number of gems to generate
+        num_gems = 0
+        if self.power_score > 5:
+            gem_chance = 0.1 + min(self.level * 0.05, 0.25)
+            if random.random() <= gem_chance:
+                if self.power_score < 10:
+                    num_gems = 1
+                else:
+                    num_gems = self.power_score // 10
+
+        # Pick the gem(s)
+        for x in range(num_gems):
+            pick_treasure("gems")
+
+        # Pick the trinket
+        trinket_chance = 0.5 + min(self.level * 0.10, 0.50)
+        if random.random() <= trinket_chance:
+            pick_treasure("trinkets")
+
+        # Pick the junk
+        junk_chance = 0.5 + min(self.level * 0.10, 0.50)
+        if random.random() <= junk_chance:
+            pick_treasure("junk")
+
+        self.treasure = loot
+        return loot
+
     def generate(self):
         self.gen_power_score()
         self.gen_level()
@@ -524,6 +627,9 @@ class HVNGenerator():
 
         self.gen_hit_dice()
         self.gen_hit_points()
+
+        self.gen_feature()
+        self.gen_treasure()
 
     def __repr__(self):
         hr = "=" * 12 + "\n"
@@ -557,6 +663,13 @@ class HVNGenerator():
         for skill, bonus in self.skill_bonuses.items():
             sign = "+" if bonus >= 0 else ""
             out += f"\t{skill}: {sign}{bonus}\n"
+        out += hr
+        if self.feature:
+            out += "Feature:\n"
+            out += self.feature + "\n"
+        out += "Treasures:\n"
+        for treasure in self.treasure:
+            out += treasure + "\n"
         out += hr
 
         return out

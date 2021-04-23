@@ -5,6 +5,7 @@ def assert_expected(values, expected):
     """
     Helper function that asserts that two dictionaries are the same
     """
+
     assert(len(values) == len(expected))
     for k, v in values.items():
         assert(expected[k] == v)
@@ -14,6 +15,7 @@ def test_level_bonus():
     """
     Ensure that the level bonus is correct when generating throw bonuses
     """
+
     count = 2
     for i in range(1, 50, 4):
         for j in range(i, i + 4):
