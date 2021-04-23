@@ -14,27 +14,8 @@ professions = hvn.get_professions()
 genders = {"male", "female"}
 
 
-# this class holds all the values that the program needs to display
-class baseGen:
-    power_score = 0
-    race = ""
-    gender = ""
-    profession = ""
-    char_class = ""
-    profession = ""
-    level = 0
-    name = ""
-    saves = {}
-    skills = {}
-    abiliity_score = {}
-
-
-class baseOpt:
-    pw_score = 0
-    race = ""
-    gender = ""
-    profession = ""
-    char_class = ""
+# this is the generator
+char = hvn.HVNGenerator()
 
 
 # creating dropdowns for the options menu
@@ -97,23 +78,23 @@ profession_widget.bind(on_release=profession_dropdown.open)
 # get the values from the dropdown
 def pw_btn(instance, value):
     data = value.split()
-    baseOpt.pw_score = int(data[2])
+    char.power_score = data[2]
 
 
 def rc_btn(instance, value):
-    baseOpt.race = value
+    char.race = value
 
 
 def gn_btn(instance, value):
-    baseOpt.gender = value
+    char.gender = value
 
 
 def cl_btn(instance, value):
-    baseOpt.char_class = value
+    char.class_name = value
 
 
 def pr_btn(instance, value):
-    baseOpt.profession = value
+    char.profession = value
 
 
 # bind the dropdowns to call functions to get all the values
@@ -137,56 +118,8 @@ profession_dropdown.bind(on_select=pr_btn)
 # generating all the options that is required to be displayed.
 # It takes options as opt that calls weather or not options have been selected
 def gen(opt):
-    if opt == "none":
-        base_class()
-    else:
-        if baseOpt.pw_score == 0:
-            baseGen.power_score = hvn.generate_power_score()
-        else:
-            baseGen.power_score = baseOpt.pw_score
-        if baseOpt.race == "":
-            baseGen.race = hvn.generate_race()
-        else:
-            baseGen.race = baseOpt.race
-        if baseOpt.gender == "":
-            baseGen.gender = hvn.generate_gender()
-        else:
-            baseGen.gender = baseOpt.gender
-        if baseOpt.profession == "":
-            baseGen.profession = hvn.generate_profession(baseGen.power_score)
-        else:
-            baseGen.profession = baseOpt.profession
-        if baseOpt.char_class == "":
-            baseGen.char_class = hvn.generate_class()
-        else:
-            baseGen.char_class = baseOpt.char_class
-
-    name = hvn.generate_full_name(baseGen.race, baseGen.gender)
-    baseGen.level = hvn.generate_level(baseGen.power_score)
-    baseGen.abiliity_score = hvn.generate_ability_scores(baseGen.race,
-                                                         baseGen.char_class)
-    baseGen.saves = hvn.generate_saves(baseGen.level, baseGen.char_class,
-                                       baseGen.abiliity_score[1])
-    baseGen.skills = hvn.generate_skills(baseGen.level, baseGen.char_class,
-                                         baseGen.abiliity_score[1])
-    baseGen.name = name[0] + ' ' + name[1]
-
-    # this is really dumb way to reset class
-    baseOpt.pw_score = 0
-    baseOpt.race = ""
-    baseOpt.gender = ""
-    baseOpt.char_class = ""
-    baseOpt.profession = ""
-
-
-# clear the data from class will be used for when the options are setup
-def base_class():
-    # this is a bad way to reset it, but for now it works
-    baseGen.power_score = hvn.generate_power_score()
-    baseGen.race = hvn.generate_race()
-    baseGen.gender = hvn.generate_gender()
-    baseGen.profession = hvn.generate_profession(baseGen.power_score)
-    baseGen.char_class = hvn.generate_class()
+    char.generate()
+    print(char)
 
 
 # class for the first screen
@@ -221,18 +154,37 @@ class HVNGenerate(Screen):
     # display all of the result data
     def __init__(self, **kwargs):
         super(HVNGenerate, self).__init__(**kwargs)
-        rc_label = Label(text=baseGen.race,
-                         pos_hint=({'x': 0, 'y': 0.4}))
-        lv_label = Label(text=str(baseGen.level),
-                         pos_hint=({'x': 0, 'y': 0.35}))
-        gn_label = Label(text=baseGen.gender,
-                         pos_hint=({'x': 0, 'y': 0.3}))
-        pr_label = Label(text=baseGen.profession,
-                         pos_hint=({'x': 0, 'y': 0.25}))
-        nm_label = Label(text=baseGen.name,
-                         pos_hint=({'x': 0, 'y': 0.2}))
-        cl_label = Label(text=baseGen.char_class,
-                         pos_hint=({'x': 0, 'y': 0.15}))
+        gen("none")
+
+        save = ""
+        for ability, score in char.saving_throws.items():
+            save += ability + ' ' + str(score) + '\n'
+
+        armor = ""
+        for ab, score in char.armor.items():
+            armor += ab + ' ' + str(score) + '\n'
+
+        skills = ""
+        for item, score in char.skill_bonuses.items():
+            skills += item + ' ' + str(score) + '\n'
+        rc_label = Label(text=char.race,
+                         pos_hint=({'x': -0.1, 'y': 0.4}))
+        lv_label = Label(text=str(char.level),
+                         pos_hint=({'x': -0.1, 'y': 0.35}))
+        gn_label = Label(text=char.gender,
+                         pos_hint=({'x': -0.1, 'y': 0.3}))
+        pr_label = Label(text=char.profession,
+                         pos_hint=({'x': -0.1, 'y': 0.25}))
+        nm_label = Label(text=char.first_name + char.last_name,
+                         pos_hint=({'x': -0.1, 'y': 0.2}))
+        cl_label = Label(text=char.class_name,
+                         pos_hint=({'x': -0.1, 'y': 0.15}))
+        sv_label = Label(text=save,
+                         pos_hint=({'x': 0.2, 'y': 0.1}))
+        ar_label = Label(text=armor,
+                         pos_hint=({'x': 0.1, 'y': 0.1}))
+        sk_label = Label(text=skills,
+                         pos_hint=({'x': 0.3, 'y': 0.1}))
 
         self.add_widget(rc_label)
         self.add_widget(lv_label)
@@ -240,6 +192,9 @@ class HVNGenerate(Screen):
         self.add_widget(pr_label)
         self.add_widget(nm_label)
         self.add_widget(cl_label)
+        self.add_widget(sv_label)
+        self.add_widget(ar_label)
+        self.add_widget(sk_label)
 
     def genBtn(self):
         self.clear_widgets()
