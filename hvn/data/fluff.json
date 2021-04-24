@@ -1,0 +1,82 @@
+{
+	"physicalBasic": {
+		"eyes": ["blue","green","brown"],
+		"hairColor": ["black", "brown", "blond", "gray", "red"],
+		"hairStyle": ["short messy","short cropped","short styled","slicked-back","medium messy","medium styled",
+					"long straight","long with curls","shoulder-length","long messy","curly mess"],
+		"skin": ["light","tan","dark"],
+		"frame": ["thin","light-weight","average","husky","fat","obese"]
+	},
+	"physicalMaiming": {
+		"nothing":{"weight":100},
+		"is missing a finger":{"weight":8},
+		"is missing several fingers":{"weight":2},
+		"has an eyepatch over a missing left eye":{"weight":2},
+		"has an eyepatch over a missing right eye":{"weight":2},
+		"has a hook for a left hand":{"weight":6},
+		"has a hook for a right hand":{"weight":6},
+		"has a wooden left hand":{"weight":4},
+		"has a wooden right hand":{"weight":4},
+		"has a wooden left arm":{weight:4],
+		"has a wooden right arm":{"weight":4},
+		"has a wooden left peg leg":{"weight":4},
+		"has a wooden right peg leg":{"weight":4},
+		"has a metal left hand":{"weight":2},
+		"has a metal right hand":{"weight":2},
+		"has a metal left arm":{weight:2],
+		"has a metal right arm":{"weight":2},
+		"has a metal left peg leg":{"weight":2},
+		"has a metal right peg leg":{"weight":2},
+		"has a glowing left eye":{"weight":1},
+		"has a glowing right eye":{"weight":1},
+		"has glowing eyes":{"weight":1}
+	},
+	"physicalScarring": {
+		"face": {
+			"nothing":{"weight":100},
+			"has a single massive facial scar.":{"weight":8},
+			"has a single medium facial scar.":{"weight":10},
+			"has a single small facial scar.":{"weight":12},
+			"has multiple massive facial scars.":{"weight":4},
+			"has multiple medium facial scars.":{"weight":5},
+			"has multiple small facial scars.":{"weight":6},
+			"has multiple faded massive facial scars.":{"weight":4},
+			"has multiple faded medium facial scars.":{"weight":5},
+			"has multiple faded small facial scars.":{"weight":6},
+			"has a single faded massive facial scar.":{"weight":8},
+			"has a single faded medium facial scar.":{"weight":10},
+			"has a single faded small facial scar.":{"weight":12},
+		},
+		"arms": {
+			"nothing":{"weight":100},
+			"has multiple scars on both arms.":{"weight":5},
+			"has multiple scars on an arm.":{"weight":10},
+			"has multiple faded scars on both arms.":{"weight":5},
+			"has multiple faded scars on an arm.":{"weight":10},
+		},
+		"legs": {
+			"nothing":{"weight":100},
+			"has multiple scars on both legs.":{"weight":5},
+			"has multiple scars on a leg.":{"weight":10},
+			"has multiple faded scars on both legs.":{"weight":5},
+			"has multiple faded scars on a leg.":{"weight":10}
+		}
+	},
+	"socialQuirks": {
+		"nothing":{"weight":100},
+		"xenophobic: doesn't like the other races.":{"weight":5},
+		"hyper-social: wants to meet everyone, wants to know everything, sometimes downright invasive.":{"weight":5},
+		"anti-social: doesn't like to socialize and has very little to say.":{"weight":5},
+		"traditional: holds traditions close to heart and doesn't like to leave their comfort zone.":{"weight":5},
+		"zealous: has a very strong desire and drive to get what they want done.":{"weight":5},
+		"stressed: is continuously stressed out by most things in life.":{"weight":5},
+		"passive: is a very laid back individual with not a lot of drive or aggression who mostly goes with the flow.":{"weight":5}
+	},
+	"vocalQuirks": {
+		"nothing":{"weight":100},
+		"has a slight lisp.":{"weight":3},
+		"has a noticeable lisp.":{"weight":2},
+		"has a bad lisp.":{"weight":1},
+		"has a verbal tick.":{"weight":3},
+	}
+}
