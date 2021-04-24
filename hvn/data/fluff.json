@@ -17,13 +17,13 @@
 		"has a hook for a right hand":{"weight":6},
 		"has a wooden left hand":{"weight":4},
 		"has a wooden right hand":{"weight":4},
-		"has a wooden left arm":{weight:4],
+		"has a wooden left arm":{"weight":4},
 		"has a wooden right arm":{"weight":4},
 		"has a wooden left peg leg":{"weight":4},
 		"has a wooden right peg leg":{"weight":4},
 		"has a metal left hand":{"weight":2},
 		"has a metal right hand":{"weight":2},
-		"has a metal left arm":{weight:2],
+		"has a metal left arm":{"weight":2},
 		"has a metal right arm":{"weight":2},
 		"has a metal left peg leg":{"weight":2},
 		"has a metal right peg leg":{"weight":2},
@@ -45,14 +45,14 @@
 			"has multiple faded small facial scars.":{"weight":6},
 			"has a single faded massive facial scar.":{"weight":8},
 			"has a single faded medium facial scar.":{"weight":10},
-			"has a single faded small facial scar.":{"weight":12},
+			"has a single faded small facial scar.":{"weight":12}
 		},
 		"arms": {
 			"nothing":{"weight":100},
 			"has multiple scars on both arms.":{"weight":5},
 			"has multiple scars on an arm.":{"weight":10},
 			"has multiple faded scars on both arms.":{"weight":5},
-			"has multiple faded scars on an arm.":{"weight":10},
+			"has multiple faded scars on an arm.":{"weight":10}
 		},
 		"legs": {
 			"nothing":{"weight":100},
@@ -77,6 +77,6 @@
 		"has a slight lisp.":{"weight":3},
 		"has a noticeable lisp.":{"weight":2},
 		"has a bad lisp.":{"weight":1},
-		"has a verbal tick.":{"weight":3},
+		"has a verbal tick.":{"weight":3}
 	}
 }
