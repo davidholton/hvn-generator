@@ -157,8 +157,20 @@ skill_to_ability = {
 
 
 class HVNGenerator():
+    fields = ["power_score", "level", "race", "gender", "class_name",
+              "first_name", "last_name", "full_name", "profession",
+              "abilities", "modifiers", "saving_throws", "skill_bonuses",
+              "equipment", "armor", "armor_class", "hit_dice", "hit_points",
+              "feature", "treasure"]
+
     def __init__(self):
-        pass
+        for field in self.fields:
+            setattr(self, field, None)
+
+    def set_custom_data(self, data: dict):
+        for k, v in data.items():
+            assert k in self.fields, f"{k} is not a field in HVNGenerator!"
+            setattr(self, k, v)
 
     def gen_power_score(self) -> int:
         """
@@ -608,28 +620,38 @@ class HVNGenerator():
         return loot
 
     def generate(self):
-        self.gen_power_score()
-        self.gen_level()
+        def protect(key: str, f):
+            """
+            Scuffed fix, but all this does is make sure that the function does
+            not overwrite whatever pre-existing / custom data.
+            """
+            if not getattr(self, key):
+                f()
+                # print(f"{key} is not defined")
 
-        self.gen_race()
-        self.gen_gender()
-        self.gen_class()
+        protect("power_score", self.gen_power_score)
+        protect("level", self.gen_level)
 
-        self.gen_full_name()
-        self.gen_profession()
+        protect("race", self.gen_race)
+        protect("gender", self.gen_gender)
+        protect("class_name", self.gen_class)
 
-        self.gen_ability_scores()
-        self.gen_saves()
-        self.gen_skills()
+        protect("first_name", self.gen_first_name)
+        protect("last_name", self.gen_last_name)
+        protect("profession", self.gen_profession)
 
-        self.gen_equipment()
-        self.gen_armor()
+        protect("abilities", self.gen_ability_scores)
+        protect("saving_throws", self.gen_saves)
+        protect("skill_bonuses", self.gen_skills)
 
-        self.gen_hit_dice()
-        self.gen_hit_points()
+        protect("equipment", self.gen_equipment)
+        protect("armor", self.gen_armor)
 
-        self.gen_feature()
-        self.gen_treasure()
+        protect("hit_dice", self.gen_hit_dice)
+        protect("hit_points", self.gen_hit_points)
+
+        protect("feature", self.gen_feature)
+        protect("treasure", self.gen_treasure)
 
     def __repr__(self):
         hr = "=" * 12 + "\n"
@@ -639,9 +661,9 @@ class HVNGenerator():
         out += f"Power Score: {self.power_score}\n"
         out += hr
         out += f"Full Name: {self.first_name} {self.last_name}\n"
-        out += f"Gender: {self.gender.capitalize()}\n"
-        out += f"Race: {self.race.capitalize()}\n"
-        out += f"Class: {self.class_name.capitalize()}\n"
+        out += f"Gender: {self.gender}\n"
+        out += f"Race: {self.race}\n"
+        out += f"Class: {self.class_name}\n"
         out += f"Profession: {self.profession}\n"
         out += hr
         out += f"Level: {self.level}\n"
@@ -650,26 +672,33 @@ class HVNGenerator():
         out += f"Hit Dice: {self.hit_dice}\n"
         out += hr
         out += "Abilities:\n"
-        for ability, score in self.abilities.items():
-            sign = "+" if self.modifiers[ability] >= 0 else ""
-            modifier = f"{sign}{self.modifiers[ability]}"
-            out += (f"\t{ability}: {score:2d} ({modifier})\n")
+        if self.abilities:
+            for ability, score in self.abilities.items():
+                sign = "+" if self.modifiers[ability] >= 0 else ""
+                modifier = f"{sign}{self.modifiers[ability]}"
+                out += (f"\t{ability}: {score:2d} ({modifier})\n")
 
         out += "Saving Throws:\n"
-        for ability, bonus in self.saving_throws.items():
-            sign = "+" if bonus >= 0 else ""
-            out += f"\t{ability}: {sign}{bonus}\n"
+        if self.saving_throws:
+            for ability, bonus in self.saving_throws.items():
+                sign = "+" if bonus >= 0 else ""
+                out += f"\t{ability}: {sign}{bonus}\n"
+
         out += "Skill Bonuses:\n"
-        for skill, bonus in self.skill_bonuses.items():
-            sign = "+" if bonus >= 0 else ""
-            out += f"\t{skill}: {sign}{bonus}\n"
+        if self.skill_bonuses:
+            for skill, bonus in self.skill_bonuses.items():
+                sign = "+" if bonus >= 0 else ""
+                out += f"\t{skill}: {sign}{bonus}\n"
         out += hr
+
         if self.feature:
             out += "Feature:\n"
             out += self.feature + "\n"
+
         out += "Treasures:\n"
-        for treasure in self.treasure:
-            out += treasure + "\n"
+        if self.treasure:
+            for treasure in self.treasure:
+                out += treasure + "\n"
         out += hr
 
         return out
@@ -681,6 +710,8 @@ class HVNGenerator():
 # if __name__ == "__main__":
 
 #     gen = HVNGenerator()
+
+#     gen.set_custom_data({"power_score": 10})
 #     gen.generate()
 
 #     print(gen)
