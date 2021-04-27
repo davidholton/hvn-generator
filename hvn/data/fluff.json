@@ -74,7 +74,7 @@
         "stressed: is continuously stressed out by most things in life.": 5,
         "passive: is a very laid back individual with not a lot of drive or aggression who mostly goes with the flow.": 5
     },
-    "vocalQuirks": {
+    "verbalQuirks": {
         "nothing": 100,
         "has a slight lisp.": 3,
         "has a noticeable lisp.": 2,

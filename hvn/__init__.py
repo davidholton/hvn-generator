@@ -216,7 +216,7 @@ class HVNGenerator():
               "abilities", "modifiers", "saving_throws", "skill_bonuses",
               "equipment", "armor", "armor_class", "hit_dice", "hit_points",
               "feature", "treasure", "person_wealth", "home_wealth",
-              "physical_traits"]
+              "physical_traits", "social_traits"]
 
     def __init__(self, custom_data: dict = {}):
         self.custom_data = set()
@@ -742,6 +742,25 @@ class HVNGenerator():
         self.physical_traits = traits
         return self.physical_traits
 
+    def gen_social_traits(self) -> dict:
+        """
+        Pick a social and verbal quirk. The decision is made from a weighted
+        choice. If nothing is picked then that quirk is None.
+        """
+
+        traits = {}
+
+        social = weighted_choice(fluff["socialQuirks"])
+        social = None if social == "nothing" else social
+        traits["social"] = social
+
+        verbal = weighted_choice(fluff["verbalQuirks"])
+        verbal = None if verbal == "nothing" else verbal
+        traits["verbal"] = verbal
+
+        self.social_traits = traits
+        return self.social_traits
+
     def generate(self):
         def protect(key: str, f):
             """
@@ -778,6 +797,7 @@ class HVNGenerator():
         protect("person_wealth", self.gen_wealth)
 
         protect("physical_traits", self.gen_physical_traits)
+        protect("social_traits", self.gen_social_traits)
 
     def __repr__(self):
         hr = "=" * 12 + "\n"
@@ -842,9 +862,15 @@ class HVNGenerator():
             if type(value) is dict:
                 for x, v in value.items():
                     if v:
-                        out += f"{x} scarring: {v}\n"
+                        out += f"\t{x} scarring: {v}\n"
             elif value:
-                out += f"{trait}: {value}\n"
+                out += f"\t{trait}: {value}\n"
+
+        out += "Social traits:\n"
+        if self.social_traits["social"]:
+            out += f"\tsocial: {self.social_traits['social']}\n"
+        if self.social_traits["verbal"]:
+            out += f"\tverbal: {self.social_traits['verbal']}\n"
         out += hr
 
         return out
