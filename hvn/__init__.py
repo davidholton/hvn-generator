@@ -161,6 +161,30 @@ def get_bonus(level) -> int:
     return math.ceil((level / 4) + 1)
 
 
+def weighted_choice(d: dict):
+    """
+    Helper function that takes a dictionary with keys as options you want to
+    pick from and the keys values as the weights. Such as:
+
+    dict = {
+        "optionA": 5,
+        "optionB": 10,
+        "optionC": 15
+    }
+
+    Only one choice is made.
+    """
+
+    population = []
+    weights = []
+
+    for key, weight in d.items():
+        population.append(key)
+        weights.append(weight)
+
+    return random.choices(population, weights)[0]
+
+
 skill_to_ability = {
     "athletics": "str",
     "acrobatics": "dex",
@@ -692,17 +716,6 @@ class HVNGenerator():
 
         The maiming and scarring are chosen off of weights/
         """
-
-        # Helper to pick a single random element from a weighted population
-        def weighted_choice(d: dict):
-            population = []
-            weights = []
-
-            for key, weight in d.items():
-                population.append(key)
-                weights.append(weight)
-
-            return random.choices(population, weights)[0]
 
         traits = {}
 
