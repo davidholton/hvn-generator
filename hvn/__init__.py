@@ -625,6 +625,33 @@ class HVNGenerator():
         self.treasure = loot
         return loot
 
+    def gen_wealth(self) -> dict:
+        """
+        Generate wealth (gold pieces, silver pieces, and copper pieces) for the
+        characters on-person wealth and at-home wealth. On person wealth is
+        based on power score, and at-home wealth is scaled off the
+        corresponding on-person wealth.
+        """
+
+        person_wealth = {"gp": 0, "sp": 0, "cp": 0}
+        home_wealth = {"gp": 0, "sp": 0, "cp": 0}
+
+        person_wealth["gp"] = self.power_score // 2
+        person_wealth["sp"] = self.power_score + random.randint(0, 10)
+        person_wealth["cp"] = (self.power_score + 1) * 3
+
+        def calc_home(key):
+            scale_factor = 4.35
+            home_wealth[key] = int((person_wealth[key] + 2) * scale_factor)
+
+        calc_home("gp")
+        calc_home("sp")
+        calc_home("cp")
+
+        self.person_wealth = person_wealth
+        self.home_wealth = home_wealth
+        return self.person_wealth, self.home_wealth
+
     def generate(self):
         def protect(key: str, f):
             """
