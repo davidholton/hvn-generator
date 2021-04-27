@@ -161,7 +161,7 @@ class HVNGenerator():
               "first_name", "last_name", "full_name", "profession",
               "abilities", "modifiers", "saving_throws", "skill_bonuses",
               "equipment", "armor", "armor_class", "hit_dice", "hit_points",
-              "feature", "treasure"]
+              "feature", "treasure", "person_wealth", "home_wealth"]
 
     def __init__(self, custom_data: dict = {}):
         self.custom_data = set()
@@ -685,6 +685,7 @@ class HVNGenerator():
 
         protect("feature", self.gen_feature)
         protect("treasure", self.gen_treasure)
+        protect("person_wealth", self.gen_wealth)
 
     def __repr__(self):
         hr = "=" * 12 + "\n"
@@ -732,6 +733,17 @@ class HVNGenerator():
         if self.treasure:
             for treasure in self.treasure:
                 out += treasure + "\n"
+
+        out += "On-person Wealth:\n"
+        if self.person_wealth:
+            for k, v in self.person_wealth.items():
+                out += f"{v}{k}\n"
+
+        out += "At-home Wealth:\n"
+        if self.home_wealth:
+            for k, v in self.home_wealth.items():
+                out += f"{v}{k}\n"
+
         out += hr
 
         return out
