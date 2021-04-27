@@ -163,13 +163,19 @@ class HVNGenerator():
               "equipment", "armor", "armor_class", "hit_dice", "hit_points",
               "feature", "treasure"]
 
-    def __init__(self):
+    def __init__(self, custom_data: dict = {}):
+        self.custom_data = set()
         for field in self.fields:
             setattr(self, field, None)
 
+        self.set_custom_data(custom_data)
+
     def set_custom_data(self, data: dict):
+        self.custom_data = set()
+
         for k, v in data.items():
             assert k in self.fields, f"{k} is not a field in HVNGenerator!"
+            self.custom_data.add(k)
             setattr(self, k, v)
 
     def gen_power_score(self) -> int:
@@ -625,7 +631,7 @@ class HVNGenerator():
             Scuffed fix, but all this does is make sure that the function does
             not overwrite whatever pre-existing / custom data.
             """
-            if not getattr(self, key):
+            if key not in self.custom_data:
                 f()
                 # print(f"{key} is not defined")
 
