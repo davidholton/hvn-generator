@@ -13,6 +13,13 @@ races = hvn.get_races()
 professions = hvn.get_professions()
 genders = {"male", "female"}
 
+#     fields = ["power_score", "level", "race", "gender", "class_name",
+#              "first_name", "last_name", "full_name", "profession",
+#              "abilities", "modifiers", "saving_throws", "skill_bonuses",
+#              "equipment", "armor", "armor_class", "hit_dice", "hit_points",
+#              "feature", "treasure"]
+
+option_field = {}
 
 # this is the generator
 char = hvn.HVNGenerator()
@@ -78,23 +85,23 @@ profession_widget.bind(on_release=profession_dropdown.open)
 # get the values from the dropdown
 def pw_btn(instance, value):
     data = value.split()
-    char.power_score = data[2]
+    option_field['power_score'] = int(data[2])
 
 
 def rc_btn(instance, value):
-    char.race = value
+    option_field['race'] = value
 
 
 def gn_btn(instance, value):
-    char.gender = value
+    option_field['gender'] = value
 
 
 def cl_btn(instance, value):
-    char.class_name = value
+    option_field['class_name'] = value
 
 
 def pr_btn(instance, value):
-    char.profession = value
+    option_field['profession'] = value
 
 
 # bind the dropdowns to call functions to get all the values
@@ -117,15 +124,16 @@ profession_dropdown.bind(on_select=pr_btn)
 
 # generating all the options that is required to be displayed.
 # It takes options as opt that calls weather or not options have been selected
-def gen(opt):
+def gen():
+    char.set_custom_data(option_field)
     char.generate()
-    print(char)
+    option_field.clear()
 
 
 # class for the first screen
 class HVNLayout(Screen):
     def genBtn(self):
-        gen("none")
+        gen()
 
     def optBtn(self):
         pass
@@ -143,7 +151,7 @@ class HVNOption(Screen):
         self.add_widget(profession_widget)
 
     def genBtn(self):
-        gen("with_opt")
+        gen()
 
     def optBtn(self):
         pass
@@ -152,9 +160,10 @@ class HVNOption(Screen):
 # class for the generated data page
 class HVNGenerate(Screen):
     # display all of the result data
+    gen()
+
     def __init__(self, **kwargs):
         super(HVNGenerate, self).__init__(**kwargs)
-        gen("none")
 
         save = ""
         for ability, score in char.saving_throws.items():
@@ -199,7 +208,7 @@ class HVNGenerate(Screen):
     def genBtn(self):
         self.clear_widgets()
         self.__init__()
-        gen("none")
+        gen()
 
     def optBtn(self):
         pass
