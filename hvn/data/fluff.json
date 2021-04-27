@@ -10,7 +10,7 @@
         "frame": ["thin", "light-weight", "average", "husky", "fat", "obese"]
     },
     "physicalMaiming": {
-        "nothing": 100,
+        "nothing": 150,
         "is missing a finger": 8,
         "is missing several fingers": 2,
         "has an eyepatch over a missing left eye": 2,

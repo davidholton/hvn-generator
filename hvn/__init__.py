@@ -26,6 +26,9 @@ with open(os.path.join(module_dir, "data/equipment.json")) as f:
 with open(os.path.join(module_dir, "data/treasure.json")) as f:
     treasure = json.load(f)
 
+with open(os.path.join(module_dir, "data/fluff.json")) as f:
+    fluff = json.load(f)
+
 
 def get_classes() -> list:
     """
@@ -99,6 +102,33 @@ def get_treasure() -> dict:
 
     return {"low": low, "medium": medium, "high": high}
 
+
+def get_fluff() -> dict:
+    """
+    Return a dictionary with the fluff data. Very similar to the actual JSON
+    format, but I removed the objects with weights in replace with just lists
+    of the keys.
+    """
+
+    def dict_to_list(d: dict) -> list:
+        return [t for t in d.keys() if t != "nothing"]
+
+    basic = {}
+    for k, v in fluff["physicalBasic"].items():
+        basic[k] = v
+
+    maiming = dict_to_list(fluff["physicalMaiming"])
+
+    scarring = {}
+    for k, v in fluff["physicalScarring"].items():
+        scarring[k] = dict_to_list(v)
+
+    socialQuirks = dict_to_list(fluff["socialQuirks"])
+    vocalQuirks = dict_to_list(fluff["vocalQuirks"])
+
+    return {"physicalBasic": basic, "maiming": maiming, "scarring": scarring,
+            "socialQuirks": socialQuirks, "vocalQuirks": vocalQuirks}
+
 # --------------------------------------------------------------------------- #
 
 
@@ -161,7 +191,8 @@ class HVNGenerator():
               "first_name", "last_name", "full_name", "profession",
               "abilities", "modifiers", "saving_throws", "skill_bonuses",
               "equipment", "armor", "armor_class", "hit_dice", "hit_points",
-              "feature", "treasure", "person_wealth", "home_wealth"]
+              "feature", "treasure", "person_wealth", "home_wealth",
+              "physical_traits"]
 
     def __init__(self, custom_data: dict = {}):
         self.custom_data = set()
@@ -652,6 +683,52 @@ class HVNGenerator():
         self.home_wealth = home_wealth
         return self.person_wealth, self.home_wealth
 
+    def gen_physical_traits(self) -> dict:
+        """
+        Return a dictionary that defines how a character should look. The keys
+        are eyes, hairColor, hairStyle, skin, and maiming whose values are
+        strings and. Then the key scarring is a sub-dictionary with key, string
+        pairs describing locations of where scars are.
+
+        The maiming and scarring are chosen off of weights/
+        """
+
+        # Helper to pick a single random element from a weighted population
+        def weighted_choice(d: dict):
+            population = []
+            weights = []
+
+            for key, weight in d.items():
+                population.append(key)
+                weights.append(weight)
+
+            return random.choices(population, weights)[0]
+
+        traits = {}
+
+        # Basic character traits
+        basic = ["eyes", "hairColor", "hairStyle", "skin", "frame"]
+        for trait in basic:
+            options = fluff["physicalBasic"].get(trait)
+            traits[trait] = random.choice(options)
+
+        # Maiming
+        maiming = weighted_choice(fluff["physicalMaiming"])
+        maiming = None if maiming == "nothing" else maiming
+
+        traits["maiming"] = maiming
+
+        # Scarring is a dictionary
+        traits["scarring"] = {}
+        for place, options in fluff["physicalScarring"].items():
+            choice = weighted_choice(options)
+            choice = None if choice == "nothing" else choice
+
+            traits["scarring"][place] = choice
+
+        self.physical_traits = traits
+        return self.physical_traits
+
     def generate(self):
         def protect(key: str, f):
             """
@@ -686,6 +763,8 @@ class HVNGenerator():
         protect("feature", self.gen_feature)
         protect("treasure", self.gen_treasure)
         protect("person_wealth", self.gen_wealth)
+
+        protect("physical_traits", self.gen_physical_traits)
 
     def __repr__(self):
         hr = "=" * 12 + "\n"
@@ -743,7 +822,16 @@ class HVNGenerator():
         if self.home_wealth:
             for k, v in self.home_wealth.items():
                 out += f"{v}{k}\n"
+        out += hr
 
+        out += "Physical traits:\n"
+        for trait, value in self.physical_traits.items():
+            if type(value) is dict:
+                for x, v in value.items():
+                    if v:
+                        out += f"{x} scarring: {v}\n"
+            elif value:
+                out += f"{trait}: {value}\n"
         out += hr
 
         return out
