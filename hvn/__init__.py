@@ -407,7 +407,7 @@ class HVNGenerator():
 
         modifiers = {}
 
-        A = 4
+        A = 3
         X = 6
         # Grabs the three highest rolls from a AdX roll six times
         rolls = [sum(roll(A, X, True)[-3:]) for i in range(6)]
