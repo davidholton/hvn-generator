@@ -4,6 +4,11 @@ from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.label import Label
 import __init__ as hvn
+from kivy.core.window import Window
+from kivy.config import Config
+Config.set('graphics', 'width', '1280')
+Config.set('graphics', 'height', '720')
+print(Window.size)
 
 # ----------------------------------------------- #
 
@@ -127,6 +132,7 @@ profession_dropdown.bind(on_select=pr_btn)
 def gen():
     char.set_custom_data(option_field)
     char.generate()
+    print(char)
     option_field.clear()
 
 
@@ -165,50 +171,99 @@ class HVNGenerate(Screen):
     def __init__(self, **kwargs):
         super(HVNGenerate, self).__init__(**kwargs)
 
-        save = ""
+        stats = f"Stats\nLevel {char.level}\n"
+        stats += f"AC {char.armor_class}\n"
+        stats += f"HP {char.hit_points}\n"
+        stats += f"Hit Dice {char.hit_dice}\n"
+
+        personal_info = f"Full Name {char.first_name} {char.last_name}\n"
+        personal_info += f"Gender {char.gender}\n"
+        personal_info += f"Race {char.race}\n"
+        personal_info += f"Class {char.class_name}\n"
+        personal_info += f"Profession {char.profession}\n"
+
+        save = "Saving Throws\n"
         for ability, score in char.saving_throws.items():
             save += ability + ' ' + str(score) + '\n'
 
-        armor = ""
+        armor = "Armor\n"
         for ab, score in char.armor.items():
             armor += ab + ' ' + str(score) + '\n'
 
-        skills = ""
+        skills = "Skills\n"
         for item, score in char.skill_bonuses.items():
             skills += item + ' ' + str(score) + '\n'
-        rc_label = Label(text=char.race,
+
+        ab = "Abilities\n"
+        for ability, score in char.abilities.items():
+            ab += ability + ' ' + str(score) + '\n'
+
+        treasure = "Treasures\n"
+        for tr in char.treasure:
+            treasure += tr + '\n'
+
+        on_person_wealth = "On Person Wealth\n"
+        for ow, amount in char.person_wealth.items():
+            on_person_wealth += ow + ' ' + str(amount) + '\n'
+
+        at_home_wealth = "At Home  Wealth\n"
+        for ow, amount in char.home_wealth.items():
+            at_home_wealth += ow + ' ' + str(amount) + '\n'
+
+        physical_traits = "Physical traits:\n"
+        for trait, value in char.physical_traits.items():
+            if type(value) is dict:
+                for x, v in value.items():
+                    if v:
+                        physical_traits += f"{x} scarring: {v}\n"
+            elif value:
+                physical_traits += f"{trait}: {value}\n"
+
+        social_traits = "Social traits:\n"
+        if char.social_traits["social"]:
+            social_traits += f"social: {char.social_traits['social']}\n"
+        if char.social_traits["verbal"]:
+            social_traits += f"verbal: {char.social_traits['verbal']}\n"
+
+        pi_label = Label(text=personal_info,
                          pos_hint=({'x': -0.1, 'y': 0.4}))
-        lv_label = Label(text=str(char.level),
-                         pos_hint=({'x': -0.1, 'y': 0.35}))
-        gn_label = Label(text=char.gender,
-                         pos_hint=({'x': -0.1, 'y': 0.3}))
-        pr_label = Label(text=char.profession,
-                         pos_hint=({'x': -0.1, 'y': 0.25}))
-        nm_label = Label(text=char.first_name + char.last_name,
-                         pos_hint=({'x': -0.1, 'y': 0.2}))
-        cl_label = Label(text=char.class_name,
-                         pos_hint=({'x': -0.1, 'y': 0.15}))
+        stat_label = Label(text=stats,
+                           pos_hint=({'x': -0.1, 'y': 0.35}))
         sv_label = Label(text=save,
                          pos_hint=({'x': 0.2, 'y': 0.1}))
         ar_label = Label(text=armor,
                          pos_hint=({'x': 0.1, 'y': 0.1}))
         sk_label = Label(text=skills,
                          pos_hint=({'x': 0.3, 'y': 0.1}))
+        ab_label = Label(text=ab,
+                         pos_hint=({'x': 0.4, 'y': 0.1}))
+        tr_label = Label(text=treasure,
+                         pos_hint=({'x': -0.1, 'y': 0.0}))
+        ow_label = Label(text=on_person_wealth,
+                         pos_hint=({'x': -0.2, 'y': -0.2}))
+        aw_label = Label(text=on_person_wealth,
+                         pos_hint=({'x': 0.0, 'y': -0.2}))
+        pt_label = Label(text=physical_traits,
+                         pos_hint=({'x': 0.2, 'y': -0.2}))
+        st_label = Label(text=social_traits,
+                         pos_hint=({'x': -0.4, 'y': -0.2}))
 
-        self.add_widget(rc_label)
-        self.add_widget(lv_label)
-        self.add_widget(gn_label)
-        self.add_widget(pr_label)
-        self.add_widget(nm_label)
-        self.add_widget(cl_label)
+        self.add_widget(pi_label)
+        self.add_widget(stat_label)
         self.add_widget(sv_label)
         self.add_widget(ar_label)
         self.add_widget(sk_label)
+        self.add_widget(ab_label)
+        self.add_widget(tr_label)
+        self.add_widget(ow_label)
+        self.add_widget(aw_label)
+        self.add_widget(pt_label)
+        self.add_widget(st_label)
 
     def genBtn(self):
         self.clear_widgets()
-        self.__init__()
         gen()
+        self.__init__()
 
     def optBtn(self):
         pass
