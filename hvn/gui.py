@@ -4,7 +4,6 @@ from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.label import Label
 import __init__ as hvn
-from kivy.graphics import Color, Rectangle
 from kivy.core.window import Window
 from kivy.config import Config
 Config.set('graphics', 'width', '1280')
@@ -201,7 +200,7 @@ class HVNGenerate(Screen):
             ab += ability + ' ' + str(score) + '\n'
 
         treasure = "Generated Treasures "
-        treasure += "High Value NPC\n"
+        treasure += "High Value NPC (HVN):\n"
         for tr in char.treasure:
             treasure += tr + '\n'
 
@@ -230,11 +229,7 @@ class HVNGenerate(Screen):
             social_traits += f"verbal: {char.social_traits['verbal']}\n"
 
         pi_label = Label(text=personal_info,
-                         pos_hint=({'x': -0.05, 'y': 0.36}))
-        with pi_label.canvas:
-            Color(1, 1, 1, 0.35)
-            Rectangle(pos=(0, 0), size=(800, 600))
-
+                         pos_hint=({'x': -0.06, 'y': 0.36}))
         # done
         stat_label = Label(text=stats,
                            pos_hint=({'x': 0.15, 'y': 0.375}))
@@ -252,10 +247,10 @@ class HVNGenerate(Screen):
                          pos_hint=({'x': -0.4, 'y': 0.0}))
         # done
         tr_label = Label(text=treasure,
-                         pos_hint=({'x': -0.026, 'y': -0.15}))
+                         pos_hint=({'x': -0.01, 'y': -0.15}))
         # done
         ow_label = Label(text=on_person_wealth,
-                         pos_hint=({'x': -0.4, 'y': -0.17}))
+                         pos_hint=({'x': -0.405, 'y': -0.17}))
         # done
         aw_label = Label(text=at_home_wealth,
                          pos_hint=({'x': -0.28, 'y': -0.17}))
