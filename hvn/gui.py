@@ -4,6 +4,7 @@ from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.label import Label
 import __init__ as hvn
+from kivy.graphics import Color, Rectangle
 from kivy.core.window import Window
 from kivy.config import Config
 Config.set('graphics', 'width', '1280')
@@ -171,26 +172,27 @@ class HVNGenerate(Screen):
     def __init__(self, **kwargs):
         super(HVNGenerate, self).__init__(**kwargs)
 
-        stats = f"Stats\nLevel {char.level}\n"
-        stats += f"AC {char.armor_class}\n"
-        stats += f"HP {char.hit_points}\n"
-        stats += f"Hit Dice {char.hit_dice}\n"
+        stats = f"Stats\nLevel: {char.level}\n"
+        stats += f"AC: {char.armor_class}\n"
+        stats += f"HP: {char.hit_points}\n"
+        stats += f"Hit: Dice {char.hit_dice}\n"
 
-        personal_info = f"Full Name {char.first_name} {char.last_name}\n"
-        personal_info += f"Gender {char.gender}\n"
-        personal_info += f"Race {char.race}\n"
-        personal_info += f"Class {char.class_name}\n"
-        personal_info += f"Profession {char.profession}\n"
+        personal_info = "Generated Personal Information\n"
+        personal_info += f"Full Name: {char.first_name} {char.last_name}\n"
+        personal_info += f"Gender: {char.gender}\n"
+        personal_info += f"Race: {char.race}\n"
+        personal_info += f"Class: {char.class_name}\n"
+        personal_info += f"Profession: {char.profession}\n"
 
         save = "Saving Throws\n"
         for ability, score in char.saving_throws.items():
             save += ability + ' ' + str(score) + '\n'
 
-        armor = "Armor\n"
+        armor = "Generated Armor statistics\n"
         for ab, score in char.armor.items():
             armor += ab + ' ' + str(score) + '\n'
 
-        skills = "Skills\n"
+        skills = "Generated Skills\n"
         for item, score in char.skill_bonuses.items():
             skills += item + ' ' + str(score) + '\n'
 
@@ -198,11 +200,12 @@ class HVNGenerate(Screen):
         for ability, score in char.abilities.items():
             ab += ability + ' ' + str(score) + '\n'
 
-        treasure = "Treasures\n"
+        treasure = "Generated Treasures "
+        treasure += "High Value NPC\n"
         for tr in char.treasure:
             treasure += tr + '\n'
 
-        on_person_wealth = "On Person Wealth\n"
+        on_person_wealth = "Wealth\n"
         for ow, amount in char.person_wealth.items():
             on_person_wealth += ow + ' ' + str(amount) + '\n'
 
@@ -210,7 +213,8 @@ class HVNGenerate(Screen):
         for ow, amount in char.home_wealth.items():
             at_home_wealth += ow + ' ' + str(amount) + '\n'
 
-        physical_traits = "Physical traits:\n"
+        physical_traits = "Generated Physical traits "
+        physical_traits += "for the high valuable NPC(HVN):\n"
         for trait, value in char.physical_traits.items():
             if type(value) is dict:
                 for x, v in value.items():
@@ -226,27 +230,41 @@ class HVNGenerate(Screen):
             social_traits += f"verbal: {char.social_traits['verbal']}\n"
 
         pi_label = Label(text=personal_info,
-                         pos_hint=({'x': -0.1, 'y': 0.4}))
+                         pos_hint=({'x': -0.05, 'y': 0.36}))
+        with pi_label.canvas:
+            Color(1, 1, 1, 0.35)
+            Rectangle(pos=(0, 0), size=(800, 600))
+
+        # done
         stat_label = Label(text=stats,
-                           pos_hint=({'x': -0.1, 'y': 0.35}))
+                           pos_hint=({'x': 0.15, 'y': 0.375}))
+        # done
         sv_label = Label(text=save,
-                         pos_hint=({'x': 0.2, 'y': 0.1}))
+                         pos_hint=({'x': -0.29, 'y': -0.001}))
+        # done
         ar_label = Label(text=armor,
-                         pos_hint=({'x': 0.1, 'y': 0.1}))
+                         pos_hint=({'x': -0.32, 'y': 0.19}))
+        # done
         sk_label = Label(text=skills,
-                         pos_hint=({'x': 0.3, 'y': 0.1}))
+                         pos_hint=({'x': 0.37, 'y': 0.16}))
+        # done
         ab_label = Label(text=ab,
-                         pos_hint=({'x': 0.4, 'y': 0.1}))
+                         pos_hint=({'x': -0.4, 'y': 0.0}))
+        # done
         tr_label = Label(text=treasure,
-                         pos_hint=({'x': -0.1, 'y': 0.0}))
+                         pos_hint=({'x': -0.026, 'y': -0.15}))
+        # done
         ow_label = Label(text=on_person_wealth,
-                         pos_hint=({'x': -0.2, 'y': -0.2}))
-        aw_label = Label(text=on_person_wealth,
-                         pos_hint=({'x': 0.0, 'y': -0.2}))
+                         pos_hint=({'x': -0.4, 'y': -0.17}))
+        # done
+        aw_label = Label(text=at_home_wealth,
+                         pos_hint=({'x': -0.28, 'y': -0.17}))
+        # done
         pt_label = Label(text=physical_traits,
-                         pos_hint=({'x': 0.2, 'y': -0.2}))
+                         pos_hint=({'x': 0.045, 'y': 0.12}))
+        #
         st_label = Label(text=social_traits,
-                         pos_hint=({'x': -0.4, 'y': -0.2}))
+                         pos_hint=({'x': 0.25, 'y': -0.4}))
 
         self.add_widget(pi_label)
         self.add_widget(stat_label)
