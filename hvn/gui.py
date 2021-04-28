@@ -4,11 +4,9 @@ from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.label import Label
 import __init__ as hvn
-from kivy.core.window import Window
 from kivy.config import Config
 Config.set('graphics', 'width', '1280')
 Config.set('graphics', 'height', '720')
-print(Window.size)
 
 # ----------------------------------------------- #
 
@@ -17,12 +15,6 @@ classes = hvn.get_classes()
 races = hvn.get_races()
 professions = hvn.get_professions()
 genders = {"male", "female"}
-
-#     fields = ["power_score", "level", "race", "gender", "class_name",
-#              "first_name", "last_name", "full_name", "profession",
-#              "abilities", "modifiers", "saving_throws", "skill_bonuses",
-#              "equipment", "armor", "armor_class", "hit_dice", "hit_points",
-#              "feature", "treasure"]
 
 option_field = {}
 
@@ -132,7 +124,6 @@ profession_dropdown.bind(on_select=pr_btn)
 def gen():
     char.set_custom_data(option_field)
     char.generate()
-    print(char)
     option_field.clear()
 
 
@@ -258,8 +249,12 @@ class HVNGenerate(Screen):
         pt_label = Label(text=physical_traits,
                          pos_hint=({'x': 0.045, 'y': 0.12}))
         #
-        st_label = Label(text=social_traits,
-                         pos_hint=({'x': 0.25, 'y': -0.4}))
+        st_label = Label(text=social_traits + " "*130 + ".",
+                         pos_hint=({'x': 0.15, 'y': -0.4}))
+        if char.feature:
+            ft_label = Label(text="Feature:" + " "*100 + ".\n" + char.feature,
+                             pos_hint=({'x': 0.11, 'y': -0.3}))
+            self.add_widget(ft_label)
 
         self.add_widget(pi_label)
         self.add_widget(stat_label)
@@ -275,8 +270,8 @@ class HVNGenerate(Screen):
 
     def genBtn(self):
         self.clear_widgets()
-        gen()
         self.__init__()
+        gen()
 
     def optBtn(self):
         pass

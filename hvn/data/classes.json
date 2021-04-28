@@ -22,16 +22,16 @@
         },
         "featureChance": 0.25,
         "features": [
-            "Frail Back: This character has disadvantage on strength saves and strength-based skill checks.",
-            "Strong Back: This character has advantage on strength saves and strength-based skill checks.",
-            "Poor Eyesight: This character has disadvantage on perception checks.",
-            "Sickly: This character has disadvantage on saves made to resist poison or disease.",
-            "Iron-Willed: Twice per long rest this character may re-roll a wisdom saving throw.",
-            "Great Memory: This character can accurately recall anything they saw or heard within the past week.",
+            "Frail Back: This character has disadvantage on strength\nsaves and strength-based skill checks.",
+            "Strong Back: This character has advantage on strength saves \nand strength-based skill checks.",
+            "Poor Eyesight: This character has disadvantage on perception \nchecks.",
+            "Sickly: This character has disadvantage on saves made to \nresist poison or disease.",
+            "Iron-Willed: Twice per long rest this character may re-roll \na wisdom saving throw.",
+            "Great Memory: This character can accurately recall anything \nthey saw or heard within the past week.",
             "Natural Sprinter: This character can Dash using a bonus action.",
-            "Hideous: This character has disadvantage on charisma-based skill checks.",
-            "Uncoordinated: This character has disadvantage on dexterity saves and dexterity-based skill checks.",
-            "Uncanny Time Sense: This character has the uncanny ability to accurately tell the time of day down to the minute."
+            "Hideous: This character has disadvantage on charisma-based \nskill checks.",
+            "Uncoordinated: This character has disadvantage on dexterity \nsaves and dexterity-based skill checks.",
+            "Uncanny Time Sense: This character has the uncanny ability \nto accurately tell the time of day down to the minute."
         ]
     },
     "expert": {
@@ -58,12 +58,12 @@
         },
         "featureChance": 0.40,
         "features": [
-            "Diamond in the Rough: This character has advantage on any checks made to use tools they are proficient with.",
-            "Expert Opinion: This character has advantage on insight and history checks made involving their job or tools they are proficient with.",
-            "Appraisal: Without making a roll, this character can accurately guess the intrinsic value of items related to their job or tools they are proficient with.",
-            "Absent-Minded: This character has disadvantage on perception checks made while working.",
-            "Lazy: This character works half as fast as the average trained person performing the same task.",
-            "Industrious: This character works twice as fast as the average trained person performing the same task."
+            "Diamond in the Rough: This character has advantage on any \nchecks made to use tools they are proficient with.",
+            "Expert Opinion: This character has advantage on insight and \nhistory checks made involving their job or tools they are proficient with.",
+            "Appraisal: Without making a roll, this character can accurately \nguess the intrinsic value of items related to their job or tools they are proficient with.",
+            "Absent-Minded: This character has disadvantage on perception \nchecks made while working.",
+            "Lazy: This character works half as fast as the average trained \nperson performing the same task.",
+            "Industrious: This character works twice as fast as the average \ntrained person performing the same task."
         ]
     },
     "warrior": {
@@ -94,15 +94,15 @@
         },
         "featureChance": 0.50,
         "features": [
-            "Iron-Heart Surge: Once per long rest, this character may re-roll any failed saving throw.",
-            "Action Surge: Once per short rest, this character may take an additional action on their turn.",
-            "Second Wind: Once per short rest, this character may regain 1d10 health as a bonus action.",
-            "Aggressive: Whenever this character reduces an enemy to 0 health, they may immediately move up to 30ft towards an enemy.",
-            "Tough: Once per short rest, this character may use their reaction to halve the damage they receieved from any single damage source.",
+            "Iron-Heart Surge: Once per long rest, this character \nmay re-roll any failed saving throw.",
+            "Action Surge: Once per short rest, this character may \ntake an additional action on their turn.",
+            "Second Wind: Once per short rest, this character may \nregain 1d10 health as a bonus action.",
+            "Aggressive: Whenever this character reduces an enemy to \n0 health, they may immediately move up to 30ft towards an enemy.",
+            "Tough: Once per short rest, this character may use their \nreaction to halve the damage they receieved from any single damage source.",
             "Attentive: While conscious, this character cannot be surprised.",
-            "Hard to Kill: Once per long rest, this character will automatically become stablized when reduced to 0 health.",
-            "Unlucky: This character has a mortal weakness to critical hits and will die instantly when critically struck.",
-            "Flat-footed: This character has disadvantage on dexterity saves and dexterity-based skill checks.",
+            "Hard to Kill: Once per long rest, this character will \nautomatically become stablized when reduced to 0 health.",
+            "Unlucky: This character has a mortal weakness to critical \nhits and will die instantly when critically struck.",
+            "Flat-footed: This character has disadvantage on dexterity \nsaves and dexterity-based skill checks.",
             "Heart Condition: This character has disadvantage on constitution saves."
         ]
     },
@@ -131,13 +131,13 @@
         },
         "featureChance": 1.00,
         "features": [
-            "Well-Known: Other characters have advantage on checks made to identify this character and know/learn basic details about this character.",
-            "Very Charismatic: Three times per long rest, this character may re-roll a failed charisma saving throw or charisma-based skill check.",
-            "Advanced Social Tactics: Twice per short rest, this character may make another character re-roll a charisma saving throw or charisma-based skill check.",
-            "Gullible: This character has disadvantage on insight checks made to discern the truth of a statement.",
-            "Brittle Morals: This character is easily coerced through threats, bribery, or blackmail.",
-            "Skittish: This character has disadvantage on checks against intimidation and on saves against effects which would impose the Frightened condition.",
-            "Gourmand: This character's life revolves around eating, they are quick to notice anything off about food or drink and they have advantage on saves against ingested poison."
+            "Well-Known: Other characters have advantage on checks made to \nidentify this character and know/learn basic details about this character.",
+            "Very Charismatic: Three times per long rest, this character may \nre-roll a failed charisma saving throw or charisma-based skill check.",
+            "Advanced Social Tactics: Twice per short rest, this character may \nmake another character re-roll a charisma saving throw or charisma-based skill check.",
+            "Gullible: This character has disadvantage on insight checks made \nto discern the truth of a statement.",
+            "Brittle Morals: This character is easily coerced through threats, \nbribery, or blackmail.",
+            "Skittish: This character has disadvantage on checks against intimidation \nand on saves against effects which would impose the Frightened condition.",
+            "Gourmand: This character's life revolves around eating, they are \nquick to notice anything off about food or drink and they have advantage on saves against ingested poison."
         ]
     },
     "adept": {
@@ -166,25 +166,25 @@
         },
         "featureChance": 0.75,
         "features": [
-            "Polyglot: This character is well-versed in most languages and may unknowingly say things in different languages.",
-            "History Buff: This character is well-versed in local and regional history and can accurately recall historical facts.",
-            "Arcane Ritualist: This character can ritually cast any 1st tier Wizard ritual spells.",
-            "Divine Ritualist: This character can ritually cast any 1st tier Cleric ritual spells.",
-            "Master Ritualist: This character can ritually cast any 1st tier Wizard or Cleric ritual spells.",
-            "Cypher Specialist: this character specializes in the art of both cyphering and de-cyphering messages and has advantage on rolls to do so.",
-            "Frail Back: This character has disadvantage on strength saves and strength-based skill checks.",
-            "Strong Back: This character has advantage on strength saves and strength-based skill checks.",
+            "Polyglot: This character is well-versed in most languages \nand may unknowingly say things in different languages.",
+            "History Buff: This character is well-versed in local and \nregional history and can accurately recall historical facts.",
+            "Arcane Ritualist: This character can ritually cast any 1st \ntier Wizard ritual spells.",
+            "Divine Ritualist: This character can ritually cast any 1st \ntier Cleric ritual spells.",
+            "Master Ritualist: This character can ritually cast any 1st \ntier Wizard or Cleric ritual spells.",
+            "Cypher Specialist: this character specializes in the art of \nboth cyphering and de-cyphering messages and has advantage on rolls to do so.",
+            "Frail Back: This character has disadvantage on strength saves \nand strength-based skill checks.",
+            "Strong Back: This character has advantage on strength saves and \nstrength-based skill checks.",
             "Poor Eyesight: This character has disadvantage on perception checks.",
-            "Sickly: This character has disadvantage on saves made to resist poison or disease.",
-            "Iron-Willed: Twice per long rest this character may re-roll a wisdom saving throw.",
-            "Great Memory: This character can accurately recall anything they saw or heard within the past week.",
+            "Sickly: This character has disadvantage on saves made to resist \npoison or disease.",
+            "Iron-Willed: Twice per long rest this character may re-roll a \nwisdom saving throw.",
+            "Great Memory: This character can accurately recall anything t\nhey saw or heard within the past week.",
             "Natural Sprinter: This character can Dash using a bonus action.",
-            "Hideous: This character has disadvantage on charisma-based skill checks.",
-            "Uncoordinated: This character has disadvantage on dexterity saves and dexterity-based skill checks.",
-            "Uncanny Time Sense: This character has the uncanny ability to accurately tell the time of day down to the minute.",
-            "Absent-Minded: This character has disadvantage on perception checks made while working.",
-            "Lazy: This character works half as fast as the average trained person performing the same task.",
-            "Industrious: This character works twice as fast as the average trained person performing the same task."
+            "Hideous: This character has disadvantage on charisma-based \nskill checks.",
+            "Uncoordinated: This character has disadvantage on dexterity \nsaves and dexterity-based skill checks.",
+            "Uncanny Time Sense: This character has the uncanny ability \nto accurately tell the time of day down to the minute.",
+            "Absent-Minded: This character has disadvantage on perception \nchecks made while working.",
+            "Lazy: This character works half as fast as the average trained \nperson performing the same task.",
+            "Industrious: This character works twice as fast as the average \ntrained person performing the same task."
         ]
     },
     "outlaw": {
@@ -217,21 +217,21 @@
         },
         "featureChance": 0.50,
         "features": [
-            "Precise Strike: Whenever this character is flanking their target or has advantage on attacks against their target, their melee attacks deal an additional +1d6 damage.",
-            "Group Tactics: This character has advantage on attack rolls against a target if at least one of this character's allies is within 5 feet of the target.",
-            "Action Surge: Once per short rest, this character may take an additional action on their turn.",
-            "Quick-Footed: This character may Dash or Disengage as a bonus action.",
-            "Acrobatic: Standing up costs this character no movement, additionally this character may replace Athletics checks with Acrobatics checks.",
-            "Frail Back: This character has disadvantage on strength saves and strength-based skill checks.",
-            "Strong Back: This character has advantage on strength saves and strength-based skill checks.",
-            "Poor Eyesight: This character has disadvantage on perception checks.",
-            "Sickly: This character has disadvantage on saves made to resist poison or disease.",
-            "Iron-Willed: Twice per long rest this character may re-roll a wisdom saving throw.",
-            "Great Memory: This character can accurately recall anything they saw or heard within the past week.",
+            "Precise Strike: Whenever this character is flanking their \ntarget or has advantage on attacks against their target, their melee attacks deal an additional +1d6 damage.",
+            "Group Tactics: This character has advantage on attack rolls \nagainst a target if at least one of this character's allies is within 5 feet of the target.",
+            "Action Surge: Once per short rest, this character may take an \nadditional action on their turn.",
+            "Quick-Footed: This character may Dash or Disengage as a bonus \naction.",
+            "Acrobatic: Standing up costs this character no movement, \nadditionally this character may replace Athletics checks with Acrobatics checks.",
+            "Frail Back: This character has disadvantage on strength saves \nand strength-based skill checks.",
+            "Strong Back: This character has advantage on strength saves \nand strength-based skill checks.",
+            "Poor Eyesight: This character has disadvantage on perception \nchecks.",
+            "Sickly: This character has disadvantage on saves made to \nresist poison or disease.",
+            "Iron-Willed: Twice per long rest this character may re-roll \na wisdom saving throw.",
+            "Great Memory: This character can accurately recall anything \nthey saw or heard within the past week.",
             "Natural Sprinter: This character can Dash using a bonus action.",
-            "Hideous: This character has disadvantage on charisma-based skill checks.",
-            "Uncoordinated: This character has disadvantage on dexterity saves and dexterity-based skill checks.",
-            "Uncanny Time Sense: This character has the uncanny ability to accurately tell the time of day down to the minute."
+            "Hideous: This character has disadvantage on charisma-based \nskill checks.",
+            "Uncoordinated: This character has disadvantage on dexterity \nsaves and dexterity-based skill checks.",
+            "Uncanny Time Sense: This character has the uncanny ability to \naccurately tell the time of day down to the minute."
         ]
     }
 }
