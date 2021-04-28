@@ -252,8 +252,8 @@ class HVNGenerate(Screen):
         st_label = Label(text=social_traits + " "*130 + ".",
                          pos_hint=({'x': 0.15, 'y': -0.4}))
         if char.feature:
-            ft_label = Label(text="Feature:" + " "*100 + ".\n" + char.feature,
-                             pos_hint=({'x': 0.11, 'y': -0.3}))
+            ft_label = Label(text="Feature:" + " "*130 + ".\n" + char.feature,
+                             pos_hint=({'x': 0.185, 'y': -0.3}))
             self.add_widget(ft_label)
 
         self.add_widget(pi_label)
