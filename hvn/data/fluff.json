@@ -67,12 +67,12 @@
     "socialQuirks": {
         "nothing": 100,
         "xenophobic: doesn't like the other races.": 5,
-        "hyper-social: wants to meet everyone, wants to know everything, sometimes downright invasive.": 5,
+        "hyper-social: wants to meet everyone, wants to know everything,\nsometimes downright invasive.": 5,
         "anti-social: doesn't like to socialize and has very little to say.": 5,
-        "traditional: holds traditions close to heart and doesn't like to leave their comfort zone.": 5,
+        "traditional: holds traditions close to heart and doesn't like to leave\ntheir comfort zone.": 5,
         "zealous: has a very strong desire and drive to get what they want done.": 5,
         "stressed: is continuously stressed out by most things in life.": 5,
-        "passive: is a very laid back individual with not a lot of drive or aggression who mostly goes with the flow.": 5
+        "passive: is a very laid back individual with not a lot of drive or\naggression who mostly goes with the flow.": 5
     },
     "verbalQuirks": {
         "nothing": 100,
